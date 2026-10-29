@@ -1,0 +1,56 @@
+{
+  "dataset": "GSM8K test",
+  "questions": 1319,
+  "evaluator": "sgl-eval 0.1.3",
+  "model": "DeepSeek-V4-Flash-0731-w8a8",
+  "source": "f6ad2f4f922d0df111dc66153f543a453267455c",
+  "temperature": 0,
+  "top_p": 1,
+  "seed": 0,
+  "thinking": false,
+  "max_tokens": 4096,
+  "concurrency": 16,
+  "dspark": {
+    "gamma": 5,
+    "verify": 6
+  },
+  "redundant_experts_per_role": 16,
+  "on_interval_window": {
+    "P": [
+      50,
+      50
+    ],
+    "D": [
+      1000,
+      1000
+    ]
+  },
+  "dataset_sha256": "af315eb2b10837ef3a4615849caf82282e6a32e6b3e4368f0508cdd6cec1d33e",
+  "paired": {
+    "both_correct": 1285,
+    "both_wrong": 34,
+    "off_only_correct": 0,
+    "on_only_correct": 0,
+    "same_answer": 1319
+  },
+  "results": {
+    "OFF": {
+      "correct": 1285,
+      "incorrect": 34,
+      "accuracy": 0.9742228961334344,
+      "errors": 0.0,
+      "truncation": 0.0
+    },
+    "ON": {
+      "correct": 1285,
+      "incorrect": 34,
+      "accuracy": 0.9742228961334344,
+      "errors": 0.0,
+      "truncation": 0.0
+    }
+  },
+  "on_rebalances": {
+    "P": 11.0,
+    "D": 3.0
+  }
+}
