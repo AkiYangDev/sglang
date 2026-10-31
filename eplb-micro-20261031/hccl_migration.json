@@ -1,0 +1,381 @@
+{
+  "experiment": "16-rank HCCL expert-weight migration",
+  "date": "2026-10-31",
+  "source_commit": "f5f46fb1a6832490273307da5f9d670219d996df",
+  "same_git_tree_as_pr_initial_commit": "950433a6fdb7c378c132f6cf38fba95d47e3f30e",
+  "git_tree": "65c3219e9e44474d28e7cacdb01f39527c925ac6",
+  "source_proof": {
+    "python/sglang/srt/hardware_backend/npu/eplb.py": {
+      "matches_commit": "950433a6fdb7c378c132f6cf38fba95d47e3f30e",
+      "lf_sha256": "d8011c8f1be1223e961ddd24bd9d777807df1387ccdecdb5e6dc2b2b77ed0fa6"
+    },
+    "python/sglang/srt/eplb/expert_location_updater.py": {
+      "matches_commit": "950433a6fdb7c378c132f6cf38fba95d47e3f30e",
+      "lf_sha256": "2a75e60e8c54352ca20be75c4de3b7f2b9eb166053d4bf7a5c23ff0070e5d60d"
+    }
+  },
+  "configuration": {
+    "hardware": "Ascend 910C",
+    "ranks": 16,
+    "backend": "hccl",
+    "group": "default WORLD",
+    "models_loaded": 0,
+    "layers": 5,
+    "physical_slots": 32,
+    "logical_experts": 30,
+    "slots_per_rank": 2,
+    "formats": {
+      "2": "ND",
+      "29": "NZ"
+    },
+    "weight_tensors_per_layer": 2,
+    "matrix": {
+      "dtype": "bfloat16",
+      "shape": [
+        2,
+        32,
+        32
+      ]
+    },
+    "auxiliary": {
+      "dtype": "float32",
+      "shape": [
+        2,
+        8
+      ],
+      "layout": "strided view of [2,16]"
+    },
+    "checks": [
+      "exact values after migration (rtol=0, atol=0)",
+      "original storage addresses",
+      "actual NZ format equals 29"
+    ],
+    "execution": "Real NPU tensors and HCCL; fixture topology and layouts; production NPU helper and shared single-layer migration"
+  },
+  "source_artifact_sha256": {
+    "NPU_RESULT.json": "530cd432f416258ccc52290945491f039502c9780ec5e9294e84144d8af2a23c",
+    "nz_micro_payload.tar": "b6bd6b73ae7c6cc5d848df89c2ae7c5e986491956036eace01d2fbb66e1cdfd1"
+  },
+  "rank_results": [
+    {
+      "rank": 0,
+      "passed": true,
+      "cases": [
+        {
+          "format": 2,
+          "passed": true,
+          "layers": 5,
+          "weight_tensors": 2,
+          "storage_addresses_preserved": true
+        },
+        {
+          "format": 29,
+          "passed": true,
+          "layers": 5,
+          "weight_tensors": 2,
+          "storage_addresses_preserved": true
+        }
+      ]
+    },
+    {
+      "rank": 1,
+      "passed": true,
+      "cases": [
+        {
+          "format": 2,
+          "passed": true,
+          "layers": 5,
+          "weight_tensors": 2,
+          "storage_addresses_preserved": true
+        },
+        {
+          "format": 29,
+          "passed": true,
+          "layers": 5,
+          "weight_tensors": 2,
+          "storage_addresses_preserved": true
+        }
+      ]
+    },
+    {
+      "rank": 10,
+      "passed": true,
+      "cases": [
+        {
+          "format": 2,
+          "passed": true,
+          "layers": 5,
+          "weight_tensors": 2,
+          "storage_addresses_preserved": true
+        },
+        {
+          "format": 29,
+          "passed": true,
+          "layers": 5,
+          "weight_tensors": 2,
+          "storage_addresses_preserved": true
+        }
+      ]
+    },
+    {
+      "rank": 11,
+      "passed": true,
+      "cases": [
+        {
+          "format": 2,
+          "passed": true,
+          "layers": 5,
+          "weight_tensors": 2,
+          "storage_addresses_preserved": true
+        },
+        {
+          "format": 29,
+          "passed": true,
+          "layers": 5,
+          "weight_tensors": 2,
+          "storage_addresses_preserved": true
+        }
+      ]
+    },
+    {
+      "rank": 12,
+      "passed": true,
+      "cases": [
+        {
+          "format": 2,
+          "passed": true,
+          "layers": 5,
+          "weight_tensors": 2,
+          "storage_addresses_preserved": true
+        },
+        {
+          "format": 29,
+          "passed": true,
+          "layers": 5,
+          "weight_tensors": 2,
+          "storage_addresses_preserved": true
+        }
+      ]
+    },
+    {
+      "rank": 13,
+      "passed": true,
+      "cases": [
+        {
+          "format": 2,
+          "passed": true,
+          "layers": 5,
+          "weight_tensors": 2,
+          "storage_addresses_preserved": true
+        },
+        {
+          "format": 29,
+          "passed": true,
+          "layers": 5,
+          "weight_tensors": 2,
+          "storage_addresses_preserved": true
+        }
+      ]
+    },
+    {
+      "rank": 14,
+      "passed": true,
+      "cases": [
+        {
+          "format": 2,
+          "passed": true,
+          "layers": 5,
+          "weight_tensors": 2,
+          "storage_addresses_preserved": true
+        },
+        {
+          "format": 29,
+          "passed": true,
+          "layers": 5,
+          "weight_tensors": 2,
+          "storage_addresses_preserved": true
+        }
+      ]
+    },
+    {
+      "rank": 15,
+      "passed": true,
+      "cases": [
+        {
+          "format": 2,
+          "passed": true,
+          "layers": 5,
+          "weight_tensors": 2,
+          "storage_addresses_preserved": true
+        },
+        {
+          "format": 29,
+          "passed": true,
+          "layers": 5,
+          "weight_tensors": 2,
+          "storage_addresses_preserved": true
+        }
+      ]
+    },
+    {
+      "rank": 2,
+      "passed": true,
+      "cases": [
+        {
+          "format": 2,
+          "passed": true,
+          "layers": 5,
+          "weight_tensors": 2,
+          "storage_addresses_preserved": true
+        },
+        {
+          "format": 29,
+          "passed": true,
+          "layers": 5,
+          "weight_tensors": 2,
+          "storage_addresses_preserved": true
+        }
+      ]
+    },
+    {
+      "rank": 3,
+      "passed": true,
+      "cases": [
+        {
+          "format": 2,
+          "passed": true,
+          "layers": 5,
+          "weight_tensors": 2,
+          "storage_addresses_preserved": true
+        },
+        {
+          "format": 29,
+          "passed": true,
+          "layers": 5,
+          "weight_tensors": 2,
+          "storage_addresses_preserved": true
+        }
+      ]
+    },
+    {
+      "rank": 4,
+      "passed": true,
+      "cases": [
+        {
+          "format": 2,
+          "passed": true,
+          "layers": 5,
+          "weight_tensors": 2,
+          "storage_addresses_preserved": true
+        },
+        {
+          "format": 29,
+          "passed": true,
+          "layers": 5,
+          "weight_tensors": 2,
+          "storage_addresses_preserved": true
+        }
+      ]
+    },
+    {
+      "rank": 5,
+      "passed": true,
+      "cases": [
+        {
+          "format": 2,
+          "passed": true,
+          "layers": 5,
+          "weight_tensors": 2,
+          "storage_addresses_preserved": true
+        },
+        {
+          "format": 29,
+          "passed": true,
+          "layers": 5,
+          "weight_tensors": 2,
+          "storage_addresses_preserved": true
+        }
+      ]
+    },
+    {
+      "rank": 6,
+      "passed": true,
+      "cases": [
+        {
+          "format": 2,
+          "passed": true,
+          "layers": 5,
+          "weight_tensors": 2,
+          "storage_addresses_preserved": true
+        },
+        {
+          "format": 29,
+          "passed": true,
+          "layers": 5,
+          "weight_tensors": 2,
+          "storage_addresses_preserved": true
+        }
+      ]
+    },
+    {
+      "rank": 7,
+      "passed": true,
+      "cases": [
+        {
+          "format": 2,
+          "passed": true,
+          "layers": 5,
+          "weight_tensors": 2,
+          "storage_addresses_preserved": true
+        },
+        {
+          "format": 29,
+          "passed": true,
+          "layers": 5,
+          "weight_tensors": 2,
+          "storage_addresses_preserved": true
+        }
+      ]
+    },
+    {
+      "rank": 8,
+      "passed": true,
+      "cases": [
+        {
+          "format": 2,
+          "passed": true,
+          "layers": 5,
+          "weight_tensors": 2,
+          "storage_addresses_preserved": true
+        },
+        {
+          "format": 29,
+          "passed": true,
+          "layers": 5,
+          "weight_tensors": 2,
+          "storage_addresses_preserved": true
+        }
+      ]
+    },
+    {
+      "rank": 9,
+      "passed": true,
+      "cases": [
+        {
+          "format": 2,
+          "passed": true,
+          "layers": 5,
+          "weight_tensors": 2,
+          "storage_addresses_preserved": true
+        },
+        {
+          "format": 29,
+          "passed": true,
+          "layers": 5,
+          "weight_tensors": 2,
+          "storage_addresses_preserved": true
+        }
+      ]
+    }
+  ]
+}
