@@ -1,0 +1,267 @@
+{
+  "device": "cpu",
+  "base": "67bd749ada5bebf3f1ed9be16a814a3243f348bd",
+  "scope": "Actual source constructors and methods; allocator/model scaffolding. Real Ascend shared-memory copy and slot lookup on NPU; reference operations on CPU. No full model run.",
+  "before": {
+    "cases": [
+      {
+        "case": "fresh_prefill",
+        "actual": [
+          10.0,
+          11.0,
+          12.0,
+          13.0
+        ],
+        "expected": [
+          10,
+          11,
+          12,
+          13
+        ],
+        "pass": true
+      },
+      {
+        "case": "same_request_chunk",
+        "actual": [
+          10.0,
+          11.0,
+          12.0,
+          13.0,
+          14.0
+        ],
+        "expected": [
+          10,
+          11,
+          12,
+          13,
+          14
+        ],
+        "pass": true
+      },
+      {
+        "case": "shared_prefix_new_request",
+        "actual": [
+          -99.0,
+          -99.0,
+          -99.0,
+          -99.0,
+          24.0
+        ],
+        "expected": [
+          10,
+          11,
+          12,
+          13,
+          24
+        ],
+        "pass": false
+      },
+      {
+        "case": "decode_host_misses",
+        "actual": [
+          -99.0,
+          -99.0,
+          24.0,
+          0.0
+        ],
+        "expected": [
+          10,
+          13,
+          24,
+          0
+        ],
+        "pass": false
+      },
+      {
+        "case": "decode_device_hits",
+        "actual": [
+          -99.0,
+          -99.0,
+          24.0,
+          0.0
+        ],
+        "expected": [
+          10,
+          13,
+          24,
+          0
+        ],
+        "pass": false
+      },
+      {
+        "case": "source_request_row_reused",
+        "actual": [
+          -99.0,
+          -99.0,
+          -99.0,
+          -99.0,
+          24.0
+        ],
+        "expected": [
+          10,
+          11,
+          12,
+          13,
+          24
+        ],
+        "pass": false
+      },
+      {
+        "case": "physical_slots_reallocated",
+        "actual": [
+          30.0,
+          31.0,
+          32.0,
+          33.0
+        ],
+        "expected": [
+          30,
+          31,
+          32,
+          33
+        ],
+        "pass": true
+      }
+    ],
+    "allocation_hook_pass": false,
+    "graph_cases": [],
+    "host_shape": [
+      3,
+      2048,
+      1,
+      576
+    ],
+    "sha256": "46344f2ca167867954fdf21b2802935526b7b19482126fd04cf5d5a4dc42d3ce"
+  },
+  "after": {
+    "cases": [
+      {
+        "case": "fresh_prefill",
+        "actual": [
+          10.0,
+          11.0,
+          12.0,
+          13.0
+        ],
+        "expected": [
+          10,
+          11,
+          12,
+          13
+        ],
+        "pass": true
+      },
+      {
+        "case": "same_request_chunk",
+        "actual": [
+          10.0,
+          11.0,
+          12.0,
+          13.0,
+          14.0
+        ],
+        "expected": [
+          10,
+          11,
+          12,
+          13,
+          14
+        ],
+        "pass": true
+      },
+      {
+        "case": "shared_prefix_new_request",
+        "actual": [
+          10.0,
+          11.0,
+          12.0,
+          13.0,
+          24.0
+        ],
+        "expected": [
+          10,
+          11,
+          12,
+          13,
+          24
+        ],
+        "pass": true
+      },
+      {
+        "case": "decode_host_misses",
+        "actual": [
+          10.0,
+          13.0,
+          24.0,
+          0.0
+        ],
+        "expected": [
+          10,
+          13,
+          24,
+          0
+        ],
+        "pass": true
+      },
+      {
+        "case": "decode_device_hits",
+        "actual": [
+          10.0,
+          13.0,
+          24.0,
+          0.0
+        ],
+        "expected": [
+          10,
+          13,
+          24,
+          0
+        ],
+        "pass": true
+      },
+      {
+        "case": "source_request_row_reused",
+        "actual": [
+          10.0,
+          11.0,
+          12.0,
+          13.0,
+          24.0
+        ],
+        "expected": [
+          10,
+          11,
+          12,
+          13,
+          24
+        ],
+        "pass": true
+      },
+      {
+        "case": "physical_slots_reallocated",
+        "actual": [
+          30.0,
+          31.0,
+          32.0,
+          33.0
+        ],
+        "expected": [
+          30,
+          31,
+          32,
+          33
+        ],
+        "pass": true
+      }
+    ],
+    "allocation_hook_pass": true,
+    "graph_cases": [],
+    "host_shape": [
+      5,
+      16,
+      1,
+      576
+    ],
+    "sha256": "b0637da914718a053ba780e96555d0f452c6cb34abcf5acdec99a45bca5bfeb2"
+  }
+}

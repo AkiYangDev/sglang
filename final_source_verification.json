@@ -1,0 +1,6 @@
+{
+  "tested_sha256": "b0637da914718a053ba780e96555d0f452c6cb34abcf5acdec99a45bca5bfeb2",
+  "final_sha256": "66ea6ec43e96426b6cbcd728b5b140b95566e3d8831b71a4d892f0ba54247b34",
+  "ast_identical": true,
+  "change": "Corrected destination layout comment after NPU test."
+}
