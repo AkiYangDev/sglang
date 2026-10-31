@@ -1,0 +1,381 @@
+{
+  "scope": "Recorded two-rank NPU function-level regression, not a new run or CI result",
+  "base": "1f834c196414db0dd201f0a1ecc9fd143aaaf119",
+  "pr_base": "ba78bce729d8b2ba05c4b3ae95c32b9bf940a859",
+  "patched_source_sha256": "c06ba36e16bcd780dc235b5f237a59f042921ff3d181cc2e9c95503a8972d2da",
+  "candidate_equivalence": "Hardware candidate inlines the post-gather slice into RMSNorm; PR moves the slice assignment after gather. No other source changes.",
+  "ranks": [
+    {
+      "rank": 0,
+      "versions": {
+        "torch": "2.10.0+cpu",
+        "torch-npu": "2.10.0.post6",
+        "sgl-kernel-npu": "2026.9.0"
+      },
+      "cases": [
+        {
+          "dtype": "torch.float32",
+          "local_rows": 1,
+          "global_rows": 2,
+          "candidate": {
+            "q_rows": 2,
+            "rope_k_rows": 2,
+            "latent_k_rows": 2,
+            "write": "success",
+            "cache_matches_reference": true
+          },
+          "main": {
+            "q_rows": 2,
+            "rope_k_rows": 2,
+            "latent_k_rows": 1,
+            "write": "success",
+            "cache_matches_reference": false
+          }
+        },
+        {
+          "dtype": "torch.float32",
+          "local_rows": 2,
+          "global_rows": 4,
+          "candidate": {
+            "q_rows": 4,
+            "rope_k_rows": 4,
+            "latent_k_rows": 4,
+            "write": "success",
+            "cache_matches_reference": true
+          },
+          "main": {
+            "q_rows": 4,
+            "rope_k_rows": 4,
+            "latent_k_rows": 2,
+            "write": "success",
+            "cache_matches_reference": false
+          }
+        },
+        {
+          "dtype": "torch.float32",
+          "local_rows": 4,
+          "global_rows": 8,
+          "candidate": {
+            "q_rows": 8,
+            "rope_k_rows": 8,
+            "latent_k_rows": 8,
+            "write": "success",
+            "cache_matches_reference": true
+          },
+          "main": {
+            "q_rows": 8,
+            "rope_k_rows": 8,
+            "latent_k_rows": 4,
+            "write": "success",
+            "cache_matches_reference": false
+          }
+        },
+        {
+          "dtype": "torch.float16",
+          "local_rows": 1,
+          "global_rows": 2,
+          "candidate": {
+            "q_rows": 2,
+            "rope_k_rows": 2,
+            "latent_k_rows": 2,
+            "write": "success",
+            "cache_matches_reference": true
+          },
+          "main": {
+            "q_rows": 2,
+            "rope_k_rows": 2,
+            "latent_k_rows": 1,
+            "write": "success",
+            "cache_matches_reference": false
+          }
+        },
+        {
+          "dtype": "torch.float16",
+          "local_rows": 2,
+          "global_rows": 4,
+          "candidate": {
+            "q_rows": 4,
+            "rope_k_rows": 4,
+            "latent_k_rows": 4,
+            "write": "success",
+            "cache_matches_reference": true
+          },
+          "main": {
+            "q_rows": 4,
+            "rope_k_rows": 4,
+            "latent_k_rows": 2,
+            "write": "success",
+            "cache_matches_reference": false
+          }
+        },
+        {
+          "dtype": "torch.float16",
+          "local_rows": 4,
+          "global_rows": 8,
+          "candidate": {
+            "q_rows": 8,
+            "rope_k_rows": 8,
+            "latent_k_rows": 8,
+            "write": "success",
+            "cache_matches_reference": true
+          },
+          "main": {
+            "q_rows": 8,
+            "rope_k_rows": 8,
+            "latent_k_rows": 4,
+            "write": "success",
+            "cache_matches_reference": false
+          }
+        },
+        {
+          "dtype": "torch.bfloat16",
+          "local_rows": 1,
+          "global_rows": 2,
+          "candidate": {
+            "q_rows": 2,
+            "rope_k_rows": 2,
+            "latent_k_rows": 2,
+            "write": "success",
+            "cache_matches_reference": true
+          },
+          "main": {
+            "q_rows": 2,
+            "rope_k_rows": 2,
+            "latent_k_rows": 1,
+            "write": "success",
+            "cache_matches_reference": false
+          }
+        },
+        {
+          "dtype": "torch.bfloat16",
+          "local_rows": 2,
+          "global_rows": 4,
+          "candidate": {
+            "q_rows": 4,
+            "rope_k_rows": 4,
+            "latent_k_rows": 4,
+            "write": "success",
+            "cache_matches_reference": true
+          },
+          "main": {
+            "q_rows": 4,
+            "rope_k_rows": 4,
+            "latent_k_rows": 2,
+            "write": "success",
+            "cache_matches_reference": false
+          }
+        },
+        {
+          "dtype": "torch.bfloat16",
+          "local_rows": 4,
+          "global_rows": 8,
+          "candidate": {
+            "q_rows": 8,
+            "rope_k_rows": 8,
+            "latent_k_rows": 8,
+            "write": "success",
+            "cache_matches_reference": true
+          },
+          "main": {
+            "q_rows": 8,
+            "rope_k_rows": 8,
+            "latent_k_rows": 4,
+            "write": "success",
+            "cache_matches_reference": false
+          }
+        }
+      ],
+      "source_hashes": {
+        "mla_source.py": "7492e7db694ef371ec7eba8c5eb8b7f05bb3d92f73d1e2c0e5aafbbcf3277934",
+        "indexer_source.py": "fc2bd4fe365f1a352587a3c89bc0654786b0b8e24dc97f9e1e5412e2edcfa275",
+        "pool_source.py": "08686c449fc31395e928a298e403827127339c0f63d487b47e0255eb3cf4dde0"
+      }
+    },
+    {
+      "rank": 1,
+      "versions": {
+        "torch": "2.10.0+cpu",
+        "torch-npu": "2.10.0.post6",
+        "sgl-kernel-npu": "2026.9.0"
+      },
+      "cases": [
+        {
+          "dtype": "torch.float32",
+          "local_rows": 1,
+          "global_rows": 2,
+          "candidate": {
+            "q_rows": 2,
+            "rope_k_rows": 2,
+            "latent_k_rows": 2,
+            "write": "success",
+            "cache_matches_reference": true
+          },
+          "main": {
+            "q_rows": 2,
+            "rope_k_rows": 2,
+            "latent_k_rows": 1,
+            "write": "success",
+            "cache_matches_reference": false
+          }
+        },
+        {
+          "dtype": "torch.float32",
+          "local_rows": 2,
+          "global_rows": 4,
+          "candidate": {
+            "q_rows": 4,
+            "rope_k_rows": 4,
+            "latent_k_rows": 4,
+            "write": "success",
+            "cache_matches_reference": true
+          },
+          "main": {
+            "q_rows": 4,
+            "rope_k_rows": 4,
+            "latent_k_rows": 2,
+            "write": "success",
+            "cache_matches_reference": false
+          }
+        },
+        {
+          "dtype": "torch.float32",
+          "local_rows": 4,
+          "global_rows": 8,
+          "candidate": {
+            "q_rows": 8,
+            "rope_k_rows": 8,
+            "latent_k_rows": 8,
+            "write": "success",
+            "cache_matches_reference": true
+          },
+          "main": {
+            "q_rows": 8,
+            "rope_k_rows": 8,
+            "latent_k_rows": 4,
+            "write": "success",
+            "cache_matches_reference": false
+          }
+        },
+        {
+          "dtype": "torch.float16",
+          "local_rows": 1,
+          "global_rows": 2,
+          "candidate": {
+            "q_rows": 2,
+            "rope_k_rows": 2,
+            "latent_k_rows": 2,
+            "write": "success",
+            "cache_matches_reference": true
+          },
+          "main": {
+            "q_rows": 2,
+            "rope_k_rows": 2,
+            "latent_k_rows": 1,
+            "write": "success",
+            "cache_matches_reference": false
+          }
+        },
+        {
+          "dtype": "torch.float16",
+          "local_rows": 2,
+          "global_rows": 4,
+          "candidate": {
+            "q_rows": 4,
+            "rope_k_rows": 4,
+            "latent_k_rows": 4,
+            "write": "success",
+            "cache_matches_reference": true
+          },
+          "main": {
+            "q_rows": 4,
+            "rope_k_rows": 4,
+            "latent_k_rows": 2,
+            "write": "success",
+            "cache_matches_reference": false
+          }
+        },
+        {
+          "dtype": "torch.float16",
+          "local_rows": 4,
+          "global_rows": 8,
+          "candidate": {
+            "q_rows": 8,
+            "rope_k_rows": 8,
+            "latent_k_rows": 8,
+            "write": "success",
+            "cache_matches_reference": true
+          },
+          "main": {
+            "q_rows": 8,
+            "rope_k_rows": 8,
+            "latent_k_rows": 4,
+            "write": "success",
+            "cache_matches_reference": false
+          }
+        },
+        {
+          "dtype": "torch.bfloat16",
+          "local_rows": 1,
+          "global_rows": 2,
+          "candidate": {
+            "q_rows": 2,
+            "rope_k_rows": 2,
+            "latent_k_rows": 2,
+            "write": "success",
+            "cache_matches_reference": true
+          },
+          "main": {
+            "q_rows": 2,
+            "rope_k_rows": 2,
+            "latent_k_rows": 1,
+            "write": "success",
+            "cache_matches_reference": false
+          }
+        },
+        {
+          "dtype": "torch.bfloat16",
+          "local_rows": 2,
+          "global_rows": 4,
+          "candidate": {
+            "q_rows": 4,
+            "rope_k_rows": 4,
+            "latent_k_rows": 4,
+            "write": "success",
+            "cache_matches_reference": true
+          },
+          "main": {
+            "q_rows": 4,
+            "rope_k_rows": 4,
+            "latent_k_rows": 2,
+            "write": "success",
+            "cache_matches_reference": false
+          }
+        },
+        {
+          "dtype": "torch.bfloat16",
+          "local_rows": 4,
+          "global_rows": 8,
+          "candidate": {
+            "q_rows": 8,
+            "rope_k_rows": 8,
+            "latent_k_rows": 8,
+            "write": "success",
+            "cache_matches_reference": true
+          },
+          "main": {
+            "q_rows": 8,
+            "rope_k_rows": 8,
+            "latent_k_rows": 4,
+            "write": "success",
+            "cache_matches_reference": false
+          }
+        }
+      ],
+      "source_hashes": {
+        "mla_source.py": "7492e7db694ef371ec7eba8c5eb8b7f05bb3d92f73d1e2c0e5aafbbcf3277934",
+        "indexer_source.py": "fc2bd4fe365f1a352587a3c89bc0654786b0b8e24dc97f9e1e5412e2edcfa275",
+        "pool_source.py": "08686c449fc31395e928a298e403827127339c0f63d487b47e0255eb3cf4dde0"
+      }
+    }
+  ]
+}
