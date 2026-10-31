@@ -1,0 +1,141 @@
+{
+  "base": "504f9cf720c835beb96563ec5186cb4e6802cc74",
+  "scope": "Actual Ascend runner constructor and clamped activation; kernel type/import/transport scaffolding, CPU arithmetic reference, no NPU/fullmodel run",
+  "dispatch": [
+    {
+      "transport": "none",
+      "kernel": "NPUUnquantMoEMethod",
+      "activation": "NPUSwigluWithLimit",
+      "args": {
+        "limit": 10.0
+      }
+    },
+    {
+      "transport": "none",
+      "kernel": "NPUW8A8Int8MoEMethod",
+      "activation": "NPUSwigluWithLimit",
+      "args": {
+        "limit": 10.0
+      }
+    },
+    {
+      "transport": "none",
+      "kernel": "_NPUBlockFp8MoEKernel",
+      "activation": "NPUSwigluWithLimit",
+      "args": {
+        "limit": 10.0
+      }
+    },
+    {
+      "transport": "none",
+      "kernel": "NPUW4A8MXFP4MoEMethod",
+      "activation": "NPUSwigluMxfp8Quant",
+      "args": {
+        "_limit": 10.0
+      }
+    },
+    {
+      "transport": "deepep",
+      "kernel": "NPUUnquantMoEMethod",
+      "activation": "NPUSwigluWithLimit",
+      "args": {
+        "limit": 10.0
+      }
+    },
+    {
+      "transport": "deepep",
+      "kernel": "NPUW8A8Int8MoEMethod",
+      "activation": "NPUSwigluWithLimit",
+      "args": {
+        "limit": 10.0
+      }
+    },
+    {
+      "transport": "deepep",
+      "kernel": "_NPUBlockFp8MoEKernel",
+      "activation": "NPUSwigluWithLimit",
+      "args": {
+        "limit": 10.0
+      }
+    },
+    {
+      "transport": "deepep",
+      "kernel": "NPUW4A8MXFP4MoEMethod",
+      "activation": "NPUSwigluMxfp8Quant",
+      "args": {
+        "_limit": 10.0
+      }
+    },
+    {
+      "transport": "ascend_ops",
+      "kernel": "NPUUnquantMoEMethod",
+      "activation": "NPUSwigluWithLimit",
+      "args": {
+        "limit": 10.0
+      }
+    },
+    {
+      "transport": "ascend_ops",
+      "kernel": "NPUW8A8Int8MoEMethod",
+      "activation": "NPUSwigluWithLimit",
+      "args": {
+        "limit": 10.0
+      }
+    },
+    {
+      "transport": "ascend_ops",
+      "kernel": "_NPUBlockFp8MoEKernel",
+      "activation": "NPUSwigluWithLimit",
+      "args": {
+        "limit": 10.0
+      }
+    },
+    {
+      "transport": "ascend_ops",
+      "kernel": "NPUW4A8MXFP4MoEMethod",
+      "activation": "NPUSwigluMxfp8Quant",
+      "args": {
+        "_limit": 10.0
+      }
+    }
+  ],
+  "gate": [
+    [
+      20.0,
+      -20.0,
+      2.0
+    ]
+  ],
+  "up": [
+    [
+      20.0,
+      -20.0,
+      3.0
+    ]
+  ],
+  "plain": [
+    [
+      400.0,
+      8.23289155960083e-07,
+      5.28125
+    ]
+  ],
+  "clamped": [
+    [
+      100.0,
+      4.116445779800415e-07,
+      5.28125
+    ]
+  ],
+  "source_sha256": "4e779f41ade33ce30e8a935ebc1b8686c0ca10a66bbe1a1b0f1cec7dd6c685a9",
+  "tp_wrapper": {
+    "pass": true,
+    "scope": "simulated two-rank gather; actual wrapper and clamped activation",
+    "actual": [
+      [
+        100.0,
+        100.0
+      ]
+    ]
+  }
+}

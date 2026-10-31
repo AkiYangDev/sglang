@@ -1,0 +1,476 @@
+{
+  "scope": "Source-extracted runner/activation/quant/GMM methods; real NPU ops, mocked transport selector (no distributed communication), CPU activation oracle, no full model",
+  "results": [
+    {
+      "version": "before",
+      "transport": "none",
+      "kind": "bf16",
+      "group_list_type": 0,
+      "limit": 10.0,
+      "pass_": false,
+      "max_error": 300.0,
+      "actual": [
+        400.0,
+        8.23289155960083e-07,
+        5.28125
+      ],
+      "expected": [
+        100.0,
+        4.116445779800415e-07,
+        5.28125
+      ]
+    },
+    {
+      "version": "before",
+      "transport": "none",
+      "kind": "bf16",
+      "group_list_type": 0,
+      "limit": null,
+      "pass_": true,
+      "max_error": 0.0,
+      "actual": [
+        400.0,
+        8.23289155960083e-07,
+        5.28125
+      ],
+      "expected": [
+        400.0,
+        8.23289155960083e-07,
+        5.28125
+      ]
+    },
+    {
+      "version": "before",
+      "transport": "none",
+      "kind": "bf16",
+      "group_list_type": 1,
+      "limit": 10.0,
+      "pass_": false,
+      "max_error": 300.0,
+      "actual": [
+        400.0,
+        8.23289155960083e-07,
+        5.28125
+      ],
+      "expected": [
+        100.0,
+        4.116445779800415e-07,
+        5.28125
+      ]
+    },
+    {
+      "version": "before",
+      "transport": "none",
+      "kind": "bf16",
+      "group_list_type": 1,
+      "limit": null,
+      "pass_": true,
+      "max_error": 0.0,
+      "actual": [
+        400.0,
+        8.23289155960083e-07,
+        5.28125
+      ],
+      "expected": [
+        400.0,
+        8.23289155960083e-07,
+        5.28125
+      ]
+    },
+    {
+      "version": "before",
+      "transport": "none",
+      "kind": "int8",
+      "group_list_type": 0,
+      "limit": 10.0,
+      "pass_": false,
+      "max_error": 300.0,
+      "actual": [
+        400.0,
+        0.0,
+        6.3125
+      ],
+      "expected": [
+        100.0,
+        0.0,
+        5.5
+      ]
+    },
+    {
+      "version": "before",
+      "transport": "none",
+      "kind": "int8",
+      "group_list_type": 0,
+      "limit": null,
+      "pass_": true,
+      "max_error": 0.0,
+      "actual": [
+        400.0,
+        0.0,
+        6.3125
+      ],
+      "expected": [
+        400.0,
+        0.0,
+        6.3125
+      ]
+    },
+    {
+      "version": "before",
+      "transport": "none",
+      "kind": "int8",
+      "group_list_type": 1,
+      "limit": 10.0,
+      "pass_": false,
+      "max_error": 300.0,
+      "actual": [
+        400.0,
+        0.0,
+        6.3125
+      ],
+      "expected": [
+        100.0,
+        0.0,
+        5.5
+      ]
+    },
+    {
+      "version": "before",
+      "transport": "none",
+      "kind": "int8",
+      "group_list_type": 1,
+      "limit": null,
+      "pass_": true,
+      "max_error": 0.0,
+      "actual": [
+        400.0,
+        0.0,
+        6.3125
+      ],
+      "expected": [
+        400.0,
+        0.0,
+        6.3125
+      ]
+    },
+    {
+      "version": "after",
+      "transport": "none",
+      "kind": "bf16",
+      "group_list_type": 0,
+      "limit": 10.0,
+      "pass_": true,
+      "max_error": 0.0,
+      "actual": [
+        100.0,
+        4.116445779800415e-07,
+        5.28125
+      ],
+      "expected": [
+        100.0,
+        4.116445779800415e-07,
+        5.28125
+      ]
+    },
+    {
+      "version": "after",
+      "transport": "none",
+      "kind": "bf16",
+      "group_list_type": 0,
+      "limit": null,
+      "pass_": true,
+      "max_error": 0.0,
+      "actual": [
+        400.0,
+        8.23289155960083e-07,
+        5.28125
+      ],
+      "expected": [
+        400.0,
+        8.23289155960083e-07,
+        5.28125
+      ]
+    },
+    {
+      "version": "after",
+      "transport": "none",
+      "kind": "bf16",
+      "group_list_type": 1,
+      "limit": 10.0,
+      "pass_": true,
+      "max_error": 0.0,
+      "actual": [
+        100.0,
+        4.116445779800415e-07,
+        5.28125
+      ],
+      "expected": [
+        100.0,
+        4.116445779800415e-07,
+        5.28125
+      ]
+    },
+    {
+      "version": "after",
+      "case": "graph_replay",
+      "kind": "bf16",
+      "pass_": true,
+      "max_error": 0.0
+    },
+    {
+      "version": "after",
+      "transport": "none",
+      "kind": "bf16",
+      "group_list_type": 1,
+      "limit": null,
+      "pass_": true,
+      "max_error": 0.0,
+      "actual": [
+        400.0,
+        8.23289155960083e-07,
+        5.28125
+      ],
+      "expected": [
+        400.0,
+        8.23289155960083e-07,
+        5.28125
+      ]
+    },
+    {
+      "version": "after",
+      "transport": "none",
+      "kind": "int8",
+      "group_list_type": 0,
+      "limit": 10.0,
+      "pass_": true,
+      "max_error": 0.0,
+      "actual": [
+        100.0,
+        0.0,
+        5.5
+      ],
+      "expected": [
+        100.0,
+        0.0,
+        5.5
+      ]
+    },
+    {
+      "version": "after",
+      "transport": "none",
+      "kind": "int8",
+      "group_list_type": 0,
+      "limit": null,
+      "pass_": true,
+      "max_error": 0.0,
+      "actual": [
+        400.0,
+        0.0,
+        6.3125
+      ],
+      "expected": [
+        400.0,
+        0.0,
+        6.3125
+      ]
+    },
+    {
+      "version": "after",
+      "transport": "none",
+      "kind": "int8",
+      "group_list_type": 1,
+      "limit": 10.0,
+      "pass_": true,
+      "max_error": 0.0,
+      "actual": [
+        100.0,
+        0.0,
+        5.5
+      ],
+      "expected": [
+        100.0,
+        0.0,
+        5.5
+      ]
+    },
+    {
+      "version": "after",
+      "case": "graph_replay",
+      "kind": "int8",
+      "pass_": true,
+      "max_error": 0.0
+    },
+    {
+      "version": "after",
+      "transport": "none",
+      "kind": "int8",
+      "group_list_type": 1,
+      "limit": null,
+      "pass_": true,
+      "max_error": 0.0,
+      "actual": [
+        400.0,
+        0.0,
+        6.3125
+      ],
+      "expected": [
+        400.0,
+        0.0,
+        6.3125
+      ]
+    },
+    {
+      "version": "after",
+      "transport": "deepep",
+      "kind": "bf16",
+      "group_list_type": 0,
+      "limit": 10.0,
+      "pass_": true,
+      "max_error": 0.0,
+      "actual": [
+        100.0,
+        4.116445779800415e-07,
+        5.28125
+      ],
+      "expected": [
+        100.0,
+        4.116445779800415e-07,
+        5.28125
+      ]
+    },
+    {
+      "version": "after",
+      "transport": "deepep",
+      "kind": "bf16",
+      "group_list_type": 1,
+      "limit": 10.0,
+      "pass_": true,
+      "max_error": 0.0,
+      "actual": [
+        100.0,
+        4.116445779800415e-07,
+        5.28125
+      ],
+      "expected": [
+        100.0,
+        4.116445779800415e-07,
+        5.28125
+      ]
+    },
+    {
+      "version": "after",
+      "transport": "deepep",
+      "kind": "int8",
+      "group_list_type": 0,
+      "limit": 10.0,
+      "pass_": true,
+      "max_error": 0.0,
+      "actual": [
+        100.0,
+        0.0,
+        5.5
+      ],
+      "expected": [
+        100.0,
+        0.0,
+        5.5
+      ]
+    },
+    {
+      "version": "after",
+      "transport": "deepep",
+      "kind": "int8",
+      "group_list_type": 1,
+      "limit": 10.0,
+      "pass_": true,
+      "max_error": 0.0,
+      "actual": [
+        100.0,
+        0.0,
+        5.5
+      ],
+      "expected": [
+        100.0,
+        0.0,
+        5.5
+      ]
+    },
+    {
+      "version": "after",
+      "transport": "ascend_ops",
+      "kind": "bf16",
+      "group_list_type": 0,
+      "limit": 10.0,
+      "pass_": true,
+      "max_error": 0.0,
+      "actual": [
+        100.0,
+        4.116445779800415e-07,
+        5.28125
+      ],
+      "expected": [
+        100.0,
+        4.116445779800415e-07,
+        5.28125
+      ]
+    },
+    {
+      "version": "after",
+      "transport": "ascend_ops",
+      "kind": "bf16",
+      "group_list_type": 1,
+      "limit": 10.0,
+      "pass_": true,
+      "max_error": 0.0,
+      "actual": [
+        100.0,
+        4.116445779800415e-07,
+        5.28125
+      ],
+      "expected": [
+        100.0,
+        4.116445779800415e-07,
+        5.28125
+      ]
+    },
+    {
+      "version": "after",
+      "transport": "ascend_ops",
+      "kind": "int8",
+      "group_list_type": 0,
+      "limit": 10.0,
+      "pass_": true,
+      "max_error": 0.0,
+      "actual": [
+        100.0,
+        0.0,
+        5.5
+      ],
+      "expected": [
+        100.0,
+        0.0,
+        5.5
+      ]
+    },
+    {
+      "version": "after",
+      "transport": "ascend_ops",
+      "kind": "int8",
+      "group_list_type": 1,
+      "limit": 10.0,
+      "pass_": true,
+      "max_error": 0.0,
+      "actual": [
+        100.0,
+        0.0,
+        5.5
+      ],
+      "expected": [
+        100.0,
+        0.0,
+        5.5
+      ]
+    }
+  ],
+  "sha256": "4e779f41ade33ce30e8a935ebc1b8686c0ca10a66bbe1a1b0f1cec7dd6c685a9"
+}
