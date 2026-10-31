@@ -1,0 +1,10 @@
+{
+  "device": "npu",
+  "passed": 297,
+  "source_sha256": {
+    "before.py": "66e8e57f575fe1739d5d22c4b8ae3129a53e33fc4b73d3958b3428906aaddbee",
+    "after.py": "27be5f0f8a793b9d8c5170805888a31abe0aef3bec3f611f33e6a674a0f673ee"
+  },
+  "ast_matches_benchmarked_expression": true,
+  "scope": "Actual prefill helper, independent Python compressed-position oracle; C4/C128, prefixes, empty and boundary cases. No model/graph test."
+}
