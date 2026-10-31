@@ -1,0 +1,1948 @@
+{
+  "versions": {
+    "torch": "2.10.0+cpu",
+    "torch-npu": "2.10.0.post6",
+    "sgl-kernel-npu": "2026.9.0"
+  },
+  "before": {
+    "cases": [
+      {
+        "case": "_OrderedChainMap({'case': (torch.float32, 'softmax', False, False, 1, 2, False)})",
+        "passed": true,
+        "error": null
+      },
+      {
+        "case": "_OrderedChainMap({'case': (torch.float32, 'softmax', False, False, 1, 2, True)})",
+        "passed": true,
+        "error": null
+      },
+      {
+        "case": "_OrderedChainMap({'case': (torch.float32, 'softmax', False, False, 1, 4, False)})",
+        "passed": true,
+        "error": null
+      },
+      {
+        "case": "_OrderedChainMap({'case': (torch.float32, 'softmax', False, False, 1, 4, True)})",
+        "passed": true,
+        "error": null
+      },
+      {
+        "case": "_OrderedChainMap({'case': (torch.float32, 'softmax', False, False, 4, 2, False)})",
+        "passed": true,
+        "error": null
+      },
+      {
+        "case": "_OrderedChainMap({'case': (torch.float32, 'softmax', False, False, 4, 2, True)})",
+        "passed": true,
+        "error": null
+      },
+      {
+        "case": "_OrderedChainMap({'case': (torch.float32, 'softmax', False, False, 4, 4, False)})",
+        "passed": true,
+        "error": null
+      },
+      {
+        "case": "_OrderedChainMap({'case': (torch.float32, 'softmax', False, False, 4, 4, True)})",
+        "passed": true,
+        "error": null
+      },
+      {
+        "case": "_OrderedChainMap({'case': (torch.float32, 'softmax', False, True, 1, 2, False)})",
+        "passed": false,
+        "error": "Tensor-likes are not close!\n\nMismatched elements: 2 / 2 (100.0%)\nGreatest absolute difference: 0.15947572886943817 at index (0, 0) (up to 2e-06 allowed)\nGreatest relative difference: 0.5999999642372131 at index (0, 0) (up to 2e-06 allowed)"
+      },
+      {
+        "case": "_OrderedChainMap({'case': (torch.float32, 'softmax', False, True, 1, 2, True)})",
+        "passed": true,
+        "error": null
+      },
+      {
+        "case": "_OrderedChainMap({'case': (torch.float32, 'softmax', False, True, 1, 4, False)})",
+        "passed": false,
+        "error": "Tensor-likes are not close!\n\nMismatched elements: 4 / 4 (100.0%)\nGreatest absolute difference: 0.15947572886943817 at index (0, 0) (up to 2e-06 allowed)\nGreatest relative difference: 0.5999999642372131 at index (0, 0) (up to 2e-06 allowed)"
+      },
+      {
+        "case": "_OrderedChainMap({'case': (torch.float32, 'softmax', False, True, 1, 4, True)})",
+        "passed": true,
+        "error": null
+      },
+      {
+        "case": "_OrderedChainMap({'case': (torch.float32, 'softmax', False, True, 4, 2, False)})",
+        "passed": false,
+        "error": "Tensor-likes are not close!\n\nMismatched elements: 8 / 8 (100.0%)\nGreatest absolute difference: 0.2614874243736267 at index (2, 0) (up to 2e-06 allowed)\nGreatest relative difference: 0.6000000834465027 at index (3, 1) (up to 2e-06 allowed)"
+      },
+      {
+        "case": "_OrderedChainMap({'case': (torch.float32, 'softmax', False, True, 4, 2, True)})",
+        "passed": false,
+        "error": "Tensor-likes are not close!\n\nMismatched elements: 4 / 8 (50.0%)\nGreatest absolute difference: 0.25817787647247314 at index (1, 0) (up to 2e-06 allowed)\nGreatest relative difference: 0.5999999642372131 at index (0, 0) (up to 2e-06 allowed)"
+      },
+      {
+        "case": "_OrderedChainMap({'case': (torch.float32, 'softmax', False, True, 4, 4, False)})",
+        "passed": false,
+        "error": "Tensor-likes are not close!\n\nMismatched elements: 16 / 16 (100.0%)\nGreatest absolute difference: 0.2614874243736267 at index (2, 0) (up to 2e-06 allowed)\nGreatest relative difference: 0.6000000834465027 at index (3, 1) (up to 2e-06 allowed)"
+      },
+      {
+        "case": "_OrderedChainMap({'case': (torch.float32, 'softmax', False, True, 4, 4, True)})",
+        "passed": false,
+        "error": "Tensor-likes are not close!\n\nMismatched elements: 8 / 16 (50.0%)\nGreatest absolute difference: 0.25817787647247314 at index (1, 0) (up to 2e-06 allowed)\nGreatest relative difference: 0.5999999642372131 at index (0, 0) (up to 2e-06 allowed)"
+      },
+      {
+        "case": "_OrderedChainMap({'case': (torch.float32, 'softmax', True, False, 1, 2, False)})",
+        "passed": true,
+        "error": null
+      },
+      {
+        "case": "_OrderedChainMap({'case': (torch.float32, 'softmax', True, False, 1, 2, True)})",
+        "passed": true,
+        "error": null
+      },
+      {
+        "case": "_OrderedChainMap({'case': (torch.float32, 'softmax', True, False, 1, 4, False)})",
+        "passed": true,
+        "error": null
+      },
+      {
+        "case": "_OrderedChainMap({'case': (torch.float32, 'softmax', True, False, 1, 4, True)})",
+        "passed": true,
+        "error": null
+      },
+      {
+        "case": "_OrderedChainMap({'case': (torch.float32, 'softmax', True, False, 4, 2, False)})",
+        "passed": true,
+        "error": null
+      },
+      {
+        "case": "_OrderedChainMap({'case': (torch.float32, 'softmax', True, False, 4, 2, True)})",
+        "passed": true,
+        "error": null
+      },
+      {
+        "case": "_OrderedChainMap({'case': (torch.float32, 'softmax', True, False, 4, 4, False)})",
+        "passed": true,
+        "error": null
+      },
+      {
+        "case": "_OrderedChainMap({'case': (torch.float32, 'softmax', True, False, 4, 4, True)})",
+        "passed": true,
+        "error": null
+      },
+      {
+        "case": "_OrderedChainMap({'case': (torch.float32, 'softmax', True, True, 1, 2, False)})",
+        "passed": false,
+        "error": "Tensor-likes are not close!\n\nMismatched elements: 2 / 2 (100.0%)\nGreatest absolute difference: 0.8418964147567749 at index (0, 0) (up to 2e-06 allowed)\nGreatest relative difference: 0.6000000238418579 at index (0, 0) (up to 2e-06 allowed)"
+      },
+      {
+        "case": "_OrderedChainMap({'case': (torch.float32, 'softmax', True, True, 1, 2, True)})",
+        "passed": true,
+        "error": null
+      },
+      {
+        "case": "_OrderedChainMap({'case': (torch.float32, 'softmax', True, True, 1, 4, False)})",
+        "passed": false,
+        "error": "Tensor-likes are not close!\n\nMismatched elements: 4 / 4 (100.0%)\nGreatest absolute difference: 0.45576632022857666 at index (0, 0) (up to 2e-06 allowed)\nGreatest relative difference: 0.5999999642372131 at index (0, 0) (up to 2e-06 allowed)"
+      },
+      {
+        "case": "_OrderedChainMap({'case': (torch.float32, 'softmax', True, True, 1, 4, True)})",
+        "passed": true,
+        "error": null
+      },
+      {
+        "case": "_OrderedChainMap({'case': (torch.float32, 'softmax', True, True, 4, 2, False)})",
+        "passed": false,
+        "error": "Tensor-likes are not close!\n\nMismatched elements: 8 / 8 (100.0%)\nGreatest absolute difference: 1.0262353420257568 at index (2, 0) (up to 2e-06 allowed)\nGreatest relative difference: 0.6000000834465027 at index (3, 1) (up to 2e-06 allowed)"
+      },
+      {
+        "case": "_OrderedChainMap({'case': (torch.float32, 'softmax', True, True, 4, 2, True)})",
+        "passed": false,
+        "error": "Tensor-likes are not close!\n\nMismatched elements: 4 / 8 (50.0%)\nGreatest absolute difference: 0.8536540269851685 at index (1, 0) (up to 2e-06 allowed)\nGreatest relative difference: 0.6000000238418579 at index (0, 0) (up to 2e-06 allowed)"
+      },
+      {
+        "case": "_OrderedChainMap({'case': (torch.float32, 'softmax', True, True, 4, 4, False)})",
+        "passed": false,
+        "error": "Tensor-likes are not close!\n\nMismatched elements: 16 / 16 (100.0%)\nGreatest absolute difference: 0.662065863609314 at index (2, 0) (up to 2e-06 allowed)\nGreatest relative difference: 0.6000000834465027 at index (1, 0) (up to 2e-06 allowed)"
+      },
+      {
+        "case": "_OrderedChainMap({'case': (torch.float32, 'softmax', True, True, 4, 4, True)})",
+        "passed": false,
+        "error": "Tensor-likes are not close!\n\nMismatched elements: 8 / 16 (50.0%)\nGreatest absolute difference: 0.517005205154419 at index (1, 0) (up to 2e-06 allowed)\nGreatest relative difference: 0.6000000834465027 at index (1, 0) (up to 2e-06 allowed)"
+      },
+      {
+        "case": "_OrderedChainMap({'case': (torch.float32, 'sigmoid', False, False, 1, 2, False)})",
+        "passed": false,
+        "error": "Tensor-likes are not close!\n\nMismatched elements: 2 / 2 (100.0%)\nGreatest absolute difference: 0.766590416431427 at index (0, 0) (up to 2e-06 allowed)\nGreatest relative difference: 0.9014132618904114 at index (0, 1) (up to 2e-06 allowed)"
+      },
+      {
+        "case": "_OrderedChainMap({'case': (torch.float32, 'sigmoid', False, False, 1, 2, True)})",
+        "passed": true,
+        "error": null
+      },
+      {
+        "case": "_OrderedChainMap({'case': (torch.float32, 'sigmoid', False, False, 1, 4, False)})",
+        "passed": false,
+        "error": "Tensor-likes are not close!\n\nMismatched elements: 4 / 4 (100.0%)\nGreatest absolute difference: 0.766590416431427 at index (0, 0) (up to 2e-06 allowed)\nGreatest relative difference: 0.9045363664627075 at index (0, 3) (up to 2e-06 allowed)"
+      },
+      {
+        "case": "_OrderedChainMap({'case': (torch.float32, 'sigmoid', False, False, 1, 4, True)})",
+        "passed": true,
+        "error": null
+      },
+      {
+        "case": "_OrderedChainMap({'case': (torch.float32, 'sigmoid', False, False, 4, 2, False)})",
+        "passed": false,
+        "error": "Tensor-likes are not close!\n\nMismatched elements: 8 / 8 (100.0%)\nGreatest absolute difference: 0.766590416431427 at index (0, 0) (up to 2e-06 allowed)\nGreatest relative difference: 0.9146930575370789 at index (3, 1) (up to 2e-06 allowed)"
+      },
+      {
+        "case": "_OrderedChainMap({'case': (torch.float32, 'sigmoid', False, False, 4, 2, True)})",
+        "passed": false,
+        "error": "Tensor-likes are not close!\n\nMismatched elements: 4 / 8 (50.0%)\nGreatest absolute difference: 0.766590416431427 at index (0, 0) (up to 2e-06 allowed)\nGreatest relative difference: 0.9014132618904114 at index (0, 1) (up to 2e-06 allowed)"
+      },
+      {
+        "case": "_OrderedChainMap({'case': (torch.float32, 'sigmoid', False, False, 4, 4, False)})",
+        "passed": false,
+        "error": "Tensor-likes are not close!\n\nMismatched elements: 16 / 16 (100.0%)\nGreatest absolute difference: 0.766590416431427 at index (0, 0) (up to 2e-06 allowed)\nGreatest relative difference: 0.9317516088485718 at index (3, 3) (up to 2e-06 allowed)"
+      },
+      {
+        "case": "_OrderedChainMap({'case': (torch.float32, 'sigmoid', False, False, 4, 4, True)})",
+        "passed": false,
+        "error": "Tensor-likes are not close!\n\nMismatched elements: 8 / 16 (50.0%)\nGreatest absolute difference: 0.766590416431427 at index (0, 0) (up to 2e-06 allowed)\nGreatest relative difference: 0.9045363664627075 at index (0, 3) (up to 2e-06 allowed)"
+      },
+      {
+        "case": "_OrderedChainMap({'case': (torch.float32, 'sigmoid', False, True, 1, 2, False)})",
+        "passed": false,
+        "error": "Tensor-likes are not close!\n\nMismatched elements: 2 / 2 (100.0%)\nGreatest absolute difference: 2.07595157623291 at index (0, 0) (up to 2e-06 allowed)\nGreatest relative difference: 0.9605653285980225 at index (0, 1) (up to 2e-06 allowed)"
+      },
+      {
+        "case": "_OrderedChainMap({'case': (torch.float32, 'sigmoid', False, True, 1, 2, True)})",
+        "passed": true,
+        "error": null
+      },
+      {
+        "case": "_OrderedChainMap({'case': (torch.float32, 'sigmoid', False, True, 1, 4, False)})",
+        "passed": false,
+        "error": "Tensor-likes are not close!\n\nMismatched elements: 4 / 4 (100.0%)\nGreatest absolute difference: 2.07595157623291 at index (0, 0) (up to 2e-06 allowed)\nGreatest relative difference: 0.9618145227432251 at index (0, 3) (up to 2e-06 allowed)"
+      },
+      {
+        "case": "_OrderedChainMap({'case': (torch.float32, 'sigmoid', False, True, 1, 4, True)})",
+        "passed": true,
+        "error": null
+      },
+      {
+        "case": "_OrderedChainMap({'case': (torch.float32, 'sigmoid', False, True, 4, 2, False)})",
+        "passed": false,
+        "error": "Tensor-likes are not close!\n\nMismatched elements: 8 / 8 (100.0%)\nGreatest absolute difference: 2.0803275108337402 at index (2, 0) (up to 2e-06 allowed)\nGreatest relative difference: 0.9658772349357605 at index (3, 1) (up to 2e-06 allowed)"
+      },
+      {
+        "case": "_OrderedChainMap({'case': (torch.float32, 'sigmoid', False, True, 4, 2, True)})",
+        "passed": false,
+        "error": "Tensor-likes are not close!\n\nMismatched elements: 4 / 8 (50.0%)\nGreatest absolute difference: 2.07595157623291 at index (0, 0) (up to 2e-06 allowed)\nGreatest relative difference: 0.9605653285980225 at index (0, 1) (up to 2e-06 allowed)"
+      },
+      {
+        "case": "_OrderedChainMap({'case': (torch.float32, 'sigmoid', False, True, 4, 4, False)})",
+        "passed": false,
+        "error": "Tensor-likes are not close!\n\nMismatched elements: 16 / 16 (100.0%)\nGreatest absolute difference: 2.0803275108337402 at index (2, 0) (up to 2e-06 allowed)\nGreatest relative difference: 0.9727006554603577 at index (3, 3) (up to 2e-06 allowed)"
+      },
+      {
+        "case": "_OrderedChainMap({'case': (torch.float32, 'sigmoid', False, True, 4, 4, True)})",
+        "passed": false,
+        "error": "Tensor-likes are not close!\n\nMismatched elements: 8 / 16 (50.0%)\nGreatest absolute difference: 2.07595157623291 at index (0, 0) (up to 2e-06 allowed)\nGreatest relative difference: 0.9618145227432251 at index (0, 3) (up to 2e-06 allowed)"
+      },
+      {
+        "case": "_OrderedChainMap({'case': (torch.float32, 'sigmoid', True, False, 1, 2, False)})",
+        "passed": false,
+        "error": "Tensor-likes are not close!\n\nMismatched elements: 2 / 2 (100.0%)\nGreatest absolute difference: 0.05254554748535156 at index (0, 0) (up to 2e-06 allowed)\nGreatest relative difference: 0.10695601999759674 at index (0, 1) (up to 2e-06 allowed)"
+      },
+      {
+        "case": "_OrderedChainMap({'case': (torch.float32, 'sigmoid', True, False, 1, 2, True)})",
+        "passed": true,
+        "error": null
+      },
+      {
+        "case": "_OrderedChainMap({'case': (torch.float32, 'sigmoid', True, False, 1, 4, False)})",
+        "passed": false,
+        "error": "Tensor-likes are not close!\n\nMismatched elements: 4 / 4 (100.0%)\nGreatest absolute difference: 0.04653632640838623 at index (0, 0) (up to 2e-06 allowed)\nGreatest relative difference: 0.18085849285125732 at index (0, 0) (up to 2e-06 allowed)"
+      },
+      {
+        "case": "_OrderedChainMap({'case': (torch.float32, 'sigmoid', True, False, 1, 4, True)})",
+        "passed": true,
+        "error": null
+      },
+      {
+        "case": "_OrderedChainMap({'case': (torch.float32, 'sigmoid', True, False, 4, 2, False)})",
+        "passed": false,
+        "error": "Tensor-likes are not close!\n\nMismatched elements: 8 / 8 (100.0%)\nGreatest absolute difference: 0.1570948362350464 at index (2, 1) (up to 2e-06 allowed)\nGreatest relative difference: 0.3321680426597595 at index (2, 1) (up to 2e-06 allowed)"
+      },
+      {
+        "case": "_OrderedChainMap({'case': (torch.float32, 'sigmoid', True, False, 4, 2, True)})",
+        "passed": false,
+        "error": "Tensor-likes are not close!\n\nMismatched elements: 4 / 8 (50.0%)\nGreatest absolute difference: 0.06067529320716858 at index (1, 1) (up to 2e-06 allowed)\nGreatest relative difference: 0.12343098968267441 at index (1, 1) (up to 2e-06 allowed)"
+      },
+      {
+        "case": "_OrderedChainMap({'case': (torch.float32, 'sigmoid', True, False, 4, 4, False)})",
+        "passed": false,
+        "error": "Tensor-likes are not close!\n\nMismatched elements: 16 / 16 (100.0%)\nGreatest absolute difference: 0.1668243706226349 at index (2, 0) (up to 2e-06 allowed)\nGreatest relative difference: 0.6076219081878662 at index (2, 0) (up to 2e-06 allowed)"
+      },
+      {
+        "case": "_OrderedChainMap({'case': (torch.float32, 'sigmoid', True, False, 4, 4, True)})",
+        "passed": false,
+        "error": "Tensor-likes are not close!\n\nMismatched elements: 8 / 16 (50.0%)\nGreatest absolute difference: 0.08229807019233704 at index (1, 0) (up to 2e-06 allowed)\nGreatest relative difference: 0.3136693835258484 at index (1, 0) (up to 2e-06 allowed)"
+      },
+      {
+        "case": "_OrderedChainMap({'case': (torch.float32, 'sigmoid', True, True, 1, 2, False)})",
+        "passed": false,
+        "error": "Tensor-likes are not close!\n\nMismatched elements: 2 / 2 (100.0%)\nGreatest absolute difference: 0.7894673943519592 at index (0, 1) (up to 2e-06 allowed)\nGreatest relative difference: 0.6427823901176453 at index (0, 1) (up to 2e-06 allowed)"
+      },
+      {
+        "case": "_OrderedChainMap({'case': (torch.float32, 'sigmoid', True, True, 1, 2, True)})",
+        "passed": true,
+        "error": null
+      },
+      {
+        "case": "_OrderedChainMap({'case': (torch.float32, 'sigmoid', True, True, 1, 4, False)})",
+        "passed": false,
+        "error": "Tensor-likes are not close!\n\nMismatched elements: 4 / 4 (100.0%)\nGreatest absolute difference: 0.38884785771369934 at index (0, 3) (up to 2e-06 allowed)\nGreatest relative difference: 0.6297795176506042 at index (0, 3) (up to 2e-06 allowed)"
+      },
+      {
+        "case": "_OrderedChainMap({'case': (torch.float32, 'sigmoid', True, True, 1, 4, True)})",
+        "passed": true,
+        "error": null
+      },
+      {
+        "case": "_OrderedChainMap({'case': (torch.float32, 'sigmoid', True, True, 4, 2, False)})",
+        "passed": false,
+        "error": "Tensor-likes are not close!\n\nMismatched elements: 8 / 8 (100.0%)\nGreatest absolute difference: 0.8665016889572144 at index (2, 1) (up to 2e-06 allowed)\nGreatest relative difference: 0.7328672409057617 at index (2, 1) (up to 2e-06 allowed)"
+      },
+      {
+        "case": "_OrderedChainMap({'case': (torch.float32, 'sigmoid', True, True, 4, 2, True)})",
+        "passed": false,
+        "error": "Tensor-likes are not close!\n\nMismatched elements: 4 / 8 (50.0%)\nGreatest absolute difference: 0.7980341911315918 at index (1, 1) (up to 2e-06 allowed)\nGreatest relative difference: 0.649372398853302 at index (1, 1) (up to 2e-06 allowed)"
+      },
+      {
+        "case": "_OrderedChainMap({'case': (torch.float32, 'sigmoid', True, True, 4, 4, False)})",
+        "passed": false,
+        "error": "Tensor-likes are not close!\n\nMismatched elements: 16 / 16 (100.0%)\nGreatest absolute difference: 0.42284131050109863 at index (2, 3) (up to 2e-06 allowed)\nGreatest relative difference: 0.7197484970092773 at index (1, 3) (up to 2e-06 allowed)"
+      },
+      {
+        "case": "_OrderedChainMap({'case': (torch.float32, 'sigmoid', True, True, 4, 4, True)})",
+        "passed": false,
+        "error": "Tensor-likes are not close!\n\nMismatched elements: 8 / 16 (50.0%)\nGreatest absolute difference: 0.4226592481136322 at index (1, 3) (up to 2e-06 allowed)\nGreatest relative difference: 0.7197484970092773 at index (1, 3) (up to 2e-06 allowed)"
+      },
+      {
+        "case": "_OrderedChainMap({'case': (torch.float16, 'softmax', False, False, 1, 2, False)})",
+        "passed": true,
+        "error": null
+      },
+      {
+        "case": "_OrderedChainMap({'case': (torch.float16, 'softmax', False, False, 1, 2, True)})",
+        "passed": true,
+        "error": null
+      },
+      {
+        "case": "_OrderedChainMap({'case': (torch.float16, 'softmax', False, False, 1, 4, False)})",
+        "passed": true,
+        "error": null
+      },
+      {
+        "case": "_OrderedChainMap({'case': (torch.float16, 'softmax', False, False, 1, 4, True)})",
+        "passed": true,
+        "error": null
+      },
+      {
+        "case": "_OrderedChainMap({'case': (torch.float16, 'softmax', False, False, 4, 2, False)})",
+        "passed": true,
+        "error": null
+      },
+      {
+        "case": "_OrderedChainMap({'case': (torch.float16, 'softmax', False, False, 4, 2, True)})",
+        "passed": true,
+        "error": null
+      },
+      {
+        "case": "_OrderedChainMap({'case': (torch.float16, 'softmax', False, False, 4, 4, False)})",
+        "passed": true,
+        "error": null
+      },
+      {
+        "case": "_OrderedChainMap({'case': (torch.float16, 'softmax', False, False, 4, 4, True)})",
+        "passed": true,
+        "error": null
+      },
+      {
+        "case": "_OrderedChainMap({'case': (torch.float16, 'softmax', False, True, 1, 2, False)})",
+        "passed": false,
+        "error": "Tensor-likes are not close!\n\nMismatched elements: 2 / 2 (100.0%)\nGreatest absolute difference: 0.1594230830669403 at index (0, 0) (up to 0.005 allowed)\nGreatest relative difference: 0.5999069809913635 at index (0, 0) (up to 0.005 allowed)"
+      },
+      {
+        "case": "_OrderedChainMap({'case': (torch.float16, 'softmax', False, True, 1, 2, True)})",
+        "passed": true,
+        "error": null
+      },
+      {
+        "case": "_OrderedChainMap({'case': (torch.float16, 'softmax', False, True, 1, 4, False)})",
+        "passed": false,
+        "error": "Tensor-likes are not close!\n\nMismatched elements: 4 / 4 (100.0%)\nGreatest absolute difference: 0.1594230830669403 at index (0, 0) (up to 0.005 allowed)\nGreatest relative difference: 0.6001462340354919 at index (0, 2) (up to 0.005 allowed)"
+      },
+      {
+        "case": "_OrderedChainMap({'case': (torch.float16, 'softmax', False, True, 1, 4, True)})",
+        "passed": true,
+        "error": null
+      },
+      {
+        "case": "_OrderedChainMap({'case': (torch.float16, 'softmax', False, True, 4, 2, False)})",
+        "passed": false,
+        "error": "Tensor-likes are not close!\n\nMismatched elements: 8 / 8 (100.0%)\nGreatest absolute difference: 0.2615806460380554 at index (2, 0) (up to 0.005 allowed)\nGreatest relative difference: 0.6000481843948364 at index (1, 0) (up to 0.005 allowed)"
+      },
+      {
+        "case": "_OrderedChainMap({'case': (torch.float16, 'softmax', False, True, 4, 2, True)})",
+        "passed": false,
+        "error": "Tensor-likes are not close!\n\nMismatched elements: 4 / 8 (50.0%)\nGreatest absolute difference: 0.2582305669784546 at index (1, 0) (up to 0.005 allowed)\nGreatest relative difference: 0.6000481843948364 at index (1, 0) (up to 0.005 allowed)"
+      },
+      {
+        "case": "_OrderedChainMap({'case': (torch.float16, 'softmax', False, True, 4, 4, False)})",
+        "passed": false,
+        "error": "Tensor-likes are not close!\n\nMismatched elements: 16 / 16 (100.0%)\nGreatest absolute difference: 0.2615806460380554 at index (2, 0) (up to 0.005 allowed)\nGreatest relative difference: 0.6001462340354919 at index (0, 2) (up to 0.005 allowed)"
+      },
+      {
+        "case": "_OrderedChainMap({'case': (torch.float16, 'softmax', False, True, 4, 4, True)})",
+        "passed": false,
+        "error": "Tensor-likes are not close!\n\nMismatched elements: 8 / 16 (50.0%)\nGreatest absolute difference: 0.2582305669784546 at index (1, 0) (up to 0.005 allowed)\nGreatest relative difference: 0.6001462340354919 at index (0, 2) (up to 0.005 allowed)"
+      },
+      {
+        "case": "_OrderedChainMap({'case': (torch.float16, 'softmax', True, False, 1, 2, False)})",
+        "passed": true,
+        "error": null
+      },
+      {
+        "case": "_OrderedChainMap({'case': (torch.float16, 'softmax', True, False, 1, 2, True)})",
+        "passed": true,
+        "error": null
+      },
+      {
+        "case": "_OrderedChainMap({'case': (torch.float16, 'softmax', True, False, 1, 4, False)})",
+        "passed": true,
+        "error": null
+      },
+      {
+        "case": "_OrderedChainMap({'case': (torch.float16, 'softmax', True, False, 1, 4, True)})",
+        "passed": true,
+        "error": null
+      },
+      {
+        "case": "_OrderedChainMap({'case': (torch.float16, 'softmax', True, False, 4, 2, False)})",
+        "passed": true,
+        "error": null
+      },
+      {
+        "case": "_OrderedChainMap({'case': (torch.float16, 'softmax', True, False, 4, 2, True)})",
+        "passed": true,
+        "error": null
+      },
+      {
+        "case": "_OrderedChainMap({'case': (torch.float16, 'softmax', True, False, 4, 4, False)})",
+        "passed": true,
+        "error": null
+      },
+      {
+        "case": "_OrderedChainMap({'case': (torch.float16, 'softmax', True, False, 4, 4, True)})",
+        "passed": true,
+        "error": null
+      },
+      {
+        "case": "_OrderedChainMap({'case': (torch.float16, 'softmax', True, True, 1, 2, False)})",
+        "passed": false,
+        "error": "Tensor-likes are not close!\n\nMismatched elements: 2 / 2 (100.0%)\nGreatest absolute difference: 0.8418257236480713 at index (0, 0) (up to 0.005 allowed)\nGreatest relative difference: 0.6000024676322937 at index (0, 0) (up to 0.005 allowed)"
+      },
+      {
+        "case": "_OrderedChainMap({'case': (torch.float16, 'softmax', True, True, 1, 2, True)})",
+        "passed": true,
+        "error": null
+      },
+      {
+        "case": "_OrderedChainMap({'case': (torch.float16, 'softmax', True, True, 1, 4, False)})",
+        "passed": false,
+        "error": "Tensor-likes are not close!\n\nMismatched elements: 4 / 4 (100.0%)\nGreatest absolute difference: 0.45561620593070984 at index (0, 0) (up to 0.005 allowed)\nGreatest relative difference: 0.6001099348068237 at index (0, 2) (up to 0.005 allowed)"
+      },
+      {
+        "case": "_OrderedChainMap({'case': (torch.float16, 'softmax', True, True, 1, 4, True)})",
+        "passed": true,
+        "error": null
+      },
+      {
+        "case": "_OrderedChainMap({'case': (torch.float16, 'softmax', True, True, 4, 2, False)})",
+        "passed": false,
+        "error": "Tensor-likes are not close!\n\nMismatched elements: 8 / 8 (100.0%)\nGreatest absolute difference: 1.0262730121612549 at index (2, 0) (up to 0.005 allowed)\nGreatest relative difference: 0.6001962423324585 at index (3, 1) (up to 0.005 allowed)"
+      },
+      {
+        "case": "_OrderedChainMap({'case': (torch.float16, 'softmax', True, True, 4, 2, True)})",
+        "passed": false,
+        "error": "Tensor-likes are not close!\n\nMismatched elements: 4 / 8 (50.0%)\nGreatest absolute difference: 0.8538285493850708 at index (1, 0) (up to 0.005 allowed)\nGreatest relative difference: 0.6000893115997314 at index (1, 0) (up to 0.005 allowed)"
+      },
+      {
+        "case": "_OrderedChainMap({'case': (torch.float16, 'softmax', True, True, 4, 4, False)})",
+        "passed": false,
+        "error": "Tensor-likes are not close!\n\nMismatched elements: 16 / 16 (100.0%)\nGreatest absolute difference: 0.6621100902557373 at index (2, 0) (up to 0.005 allowed)\nGreatest relative difference: 0.600111722946167 at index (1, 0) (up to 0.005 allowed)"
+      },
+      {
+        "case": "_OrderedChainMap({'case': (torch.float16, 'softmax', True, True, 4, 4, True)})",
+        "passed": false,
+        "error": "Tensor-likes are not close!\n\nMismatched elements: 8 / 16 (50.0%)\nGreatest absolute difference: 0.517102837562561 at index (1, 0) (up to 0.005 allowed)\nGreatest relative difference: 0.600111722946167 at index (1, 0) (up to 0.005 allowed)"
+      },
+      {
+        "case": "_OrderedChainMap({'case': (torch.float16, 'sigmoid', False, False, 1, 2, False)})",
+        "passed": false,
+        "error": "Tensor-likes are not close!\n\nMismatched elements: 2 / 2 (100.0%)\nGreatest absolute difference: 0.7665669322013855 at index (0, 0) (up to 0.005 allowed)\nGreatest relative difference: 0.9013871550559998 at index (0, 1) (up to 0.005 allowed)"
+      },
+      {
+        "case": "_OrderedChainMap({'case': (torch.float16, 'sigmoid', False, False, 1, 2, True)})",
+        "passed": true,
+        "error": null
+      },
+      {
+        "case": "_OrderedChainMap({'case': (torch.float16, 'sigmoid', False, False, 1, 4, False)})",
+        "passed": false,
+        "error": "Tensor-likes are not close!\n\nMismatched elements: 4 / 4 (100.0%)\nGreatest absolute difference: 0.7665669322013855 at index (0, 0) (up to 0.005 allowed)\nGreatest relative difference: 0.9045011401176453 at index (0, 3) (up to 0.005 allowed)"
+      },
+      {
+        "case": "_OrderedChainMap({'case': (torch.float16, 'sigmoid', False, False, 1, 4, True)})",
+        "passed": true,
+        "error": null
+      },
+      {
+        "case": "_OrderedChainMap({'case': (torch.float16, 'sigmoid', False, False, 4, 2, False)})",
+        "passed": false,
+        "error": "Tensor-likes are not close!\n\nMismatched elements: 8 / 8 (100.0%)\nGreatest absolute difference: 0.7665669322013855 at index (0, 0) (up to 0.005 allowed)\nGreatest relative difference: 0.9147120118141174 at index (3, 1) (up to 0.005 allowed)"
+      },
+      {
+        "case": "_OrderedChainMap({'case': (torch.float16, 'sigmoid', False, False, 4, 2, True)})",
+        "passed": false,
+        "error": "Tensor-likes are not close!\n\nMismatched elements: 4 / 8 (50.0%)\nGreatest absolute difference: 0.7665669322013855 at index (0, 0) (up to 0.005 allowed)\nGreatest relative difference: 0.9013871550559998 at index (0, 1) (up to 0.005 allowed)"
+      },
+      {
+        "case": "_OrderedChainMap({'case': (torch.float16, 'sigmoid', False, False, 4, 4, False)})",
+        "passed": false,
+        "error": "Tensor-likes are not close!\n\nMismatched elements: 16 / 16 (100.0%)\nGreatest absolute difference: 0.7665669322013855 at index (0, 0) (up to 0.005 allowed)\nGreatest relative difference: 0.9317373037338257 at index (3, 3) (up to 0.005 allowed)"
+      },
+      {
+        "case": "_OrderedChainMap({'case': (torch.float16, 'sigmoid', False, False, 4, 4, True)})",
+        "passed": false,
+        "error": "Tensor-likes are not close!\n\nMismatched elements: 8 / 16 (50.0%)\nGreatest absolute difference: 0.7665669322013855 at index (0, 0) (up to 0.005 allowed)\nGreatest relative difference: 0.9045011401176453 at index (0, 3) (up to 0.005 allowed)"
+      },
+      {
+        "case": "_OrderedChainMap({'case': (torch.float16, 'sigmoid', False, True, 1, 2, False)})",
+        "passed": false,
+        "error": "Tensor-likes are not close!\n\nMismatched elements: 2 / 2 (100.0%)\nGreatest absolute difference: 2.075902223587036 at index (0, 0) (up to 0.005 allowed)\nGreatest relative difference: 0.960554838180542 at index (0, 1) (up to 0.005 allowed)"
+      },
+      {
+        "case": "_OrderedChainMap({'case': (torch.float16, 'sigmoid', False, True, 1, 2, True)})",
+        "passed": true,
+        "error": null
+      },
+      {
+        "case": "_OrderedChainMap({'case': (torch.float16, 'sigmoid', False, True, 1, 4, False)})",
+        "passed": false,
+        "error": "Tensor-likes are not close!\n\nMismatched elements: 4 / 4 (100.0%)\nGreatest absolute difference: 2.075902223587036 at index (0, 0) (up to 0.005 allowed)\nGreatest relative difference: 0.9618004560470581 at index (0, 3) (up to 0.005 allowed)"
+      },
+      {
+        "case": "_OrderedChainMap({'case': (torch.float16, 'sigmoid', False, True, 1, 4, True)})",
+        "passed": true,
+        "error": null
+      },
+      {
+        "case": "_OrderedChainMap({'case': (torch.float16, 'sigmoid', False, True, 4, 2, False)})",
+        "passed": false,
+        "error": "Tensor-likes are not close!\n\nMismatched elements: 8 / 8 (100.0%)\nGreatest absolute difference: 2.0803632736206055 at index (2, 0) (up to 0.005 allowed)\nGreatest relative difference: 0.965884804725647 at index (3, 1) (up to 0.005 allowed)"
+      },
+      {
+        "case": "_OrderedChainMap({'case': (torch.float16, 'sigmoid', False, True, 4, 2, True)})",
+        "passed": false,
+        "error": "Tensor-likes are not close!\n\nMismatched elements: 4 / 8 (50.0%)\nGreatest absolute difference: 2.075902223587036 at index (0, 0) (up to 0.005 allowed)\nGreatest relative difference: 0.960554838180542 at index (0, 1) (up to 0.005 allowed)"
+      },
+      {
+        "case": "_OrderedChainMap({'case': (torch.float16, 'sigmoid', False, True, 4, 4, False)})",
+        "passed": false,
+        "error": "Tensor-likes are not close!\n\nMismatched elements: 16 / 16 (100.0%)\nGreatest absolute difference: 2.0803632736206055 at index (2, 0) (up to 0.005 allowed)\nGreatest relative difference: 0.9726949334144592 at index (3, 3) (up to 0.005 allowed)"
+      },
+      {
+        "case": "_OrderedChainMap({'case': (torch.float16, 'sigmoid', False, True, 4, 4, True)})",
+        "passed": false,
+        "error": "Tensor-likes are not close!\n\nMismatched elements: 8 / 16 (50.0%)\nGreatest absolute difference: 2.075902223587036 at index (0, 0) (up to 0.005 allowed)\nGreatest relative difference: 0.9618004560470581 at index (0, 3) (up to 0.005 allowed)"
+      },
+      {
+        "case": "_OrderedChainMap({'case': (torch.float16, 'sigmoid', True, False, 1, 2, False)})",
+        "passed": false,
+        "error": "Tensor-likes are not close!\n\nMismatched elements: 2 / 2 (100.0%)\nGreatest absolute difference: 0.05249929428100586 at index (0, 0) (up to 0.005 allowed)\nGreatest relative difference: 0.10686054080724716 at index (0, 1) (up to 0.005 allowed)"
+      },
+      {
+        "case": "_OrderedChainMap({'case': (torch.float16, 'sigmoid', True, False, 1, 2, True)})",
+        "passed": true,
+        "error": null
+      },
+      {
+        "case": "_OrderedChainMap({'case': (torch.float16, 'sigmoid', True, False, 1, 4, False)})",
+        "passed": false,
+        "error": "Tensor-likes are not close!\n\nMismatched elements: 4 / 4 (100.0%)\nGreatest absolute difference: 0.04660394787788391 at index (0, 0) (up to 0.005 allowed)\nGreatest relative difference: 0.18112410604953766 at index (0, 0) (up to 0.005 allowed)"
+      },
+      {
+        "case": "_OrderedChainMap({'case': (torch.float16, 'sigmoid', True, False, 1, 4, True)})",
+        "passed": true,
+        "error": null
+      },
+      {
+        "case": "_OrderedChainMap({'case': (torch.float16, 'sigmoid', True, False, 4, 2, False)})",
+        "passed": false,
+        "error": "Tensor-likes are not close!\n\nMismatched elements: 8 / 8 (100.0%)\nGreatest absolute difference: 0.15731680393218994 at index (2, 0) (up to 0.005 allowed)\nGreatest relative difference: 0.3321366310119629 at index (2, 1) (up to 0.005 allowed)"
+      },
+      {
+        "case": "_OrderedChainMap({'case': (torch.float16, 'sigmoid', True, False, 4, 2, True)})",
+        "passed": false,
+        "error": "Tensor-likes are not close!\n\nMismatched elements: 4 / 8 (50.0%)\nGreatest absolute difference: 0.060577392578125 at index (1, 0) (up to 0.005 allowed)\nGreatest relative difference: 0.123232401907444 at index (1, 1) (up to 0.005 allowed)"
+      },
+      {
+        "case": "_OrderedChainMap({'case': (torch.float16, 'sigmoid', True, False, 4, 4, False)})",
+        "passed": false,
+        "error": "Tensor-likes are not close!\n\nMismatched elements: 14 / 16 (87.5%)\nGreatest absolute difference: 0.16703897714614868 at index (2, 0) (up to 0.005 allowed)\nGreatest relative difference: 0.6083976626396179 at index (2, 0) (up to 0.005 allowed)"
+      },
+      {
+        "case": "_OrderedChainMap({'case': (torch.float16, 'sigmoid', True, False, 4, 4, True)})",
+        "passed": false,
+        "error": "Tensor-likes are not close!\n\nMismatched elements: 8 / 16 (50.0%)\nGreatest absolute difference: 0.0822056233882904 at index (1, 0) (up to 0.005 allowed)\nGreatest relative difference: 0.31332045793533325 at index (1, 0) (up to 0.005 allowed)"
+      },
+      {
+        "case": "_OrderedChainMap({'case': (torch.float16, 'sigmoid', True, True, 1, 2, False)})",
+        "passed": false,
+        "error": "Tensor-likes are not close!\n\nMismatched elements: 2 / 2 (100.0%)\nGreatest absolute difference: 0.7894312143325806 at index (0, 1) (up to 0.005 allowed)\nGreatest relative difference: 0.642744243144989 at index (0, 1) (up to 0.005 allowed)"
+      },
+      {
+        "case": "_OrderedChainMap({'case': (torch.float16, 'sigmoid', True, True, 1, 2, True)})",
+        "passed": true,
+        "error": null
+      },
+      {
+        "case": "_OrderedChainMap({'case': (torch.float16, 'sigmoid', True, True, 1, 4, False)})",
+        "passed": false,
+        "error": "Tensor-likes are not close!\n\nMismatched elements: 4 / 4 (100.0%)\nGreatest absolute difference: 0.38874778151512146 at index (0, 3) (up to 0.005 allowed)\nGreatest relative difference: 0.6295880079269409 at index (0, 3) (up to 0.005 allowed)"
+      },
+      {
+        "case": "_OrderedChainMap({'case': (torch.float16, 'sigmoid', True, True, 1, 4, True)})",
+        "passed": true,
+        "error": null
+      },
+      {
+        "case": "_OrderedChainMap({'case': (torch.float16, 'sigmoid', True, True, 4, 2, False)})",
+        "passed": false,
+        "error": "Tensor-likes are not close!\n\nMismatched elements: 8 / 8 (100.0%)\nGreatest absolute difference: 0.8664720058441162 at index (2, 1) (up to 0.005 allowed)\nGreatest relative difference: 0.7328546047210693 at index (2, 1) (up to 0.005 allowed)"
+      },
+      {
+        "case": "_OrderedChainMap({'case': (torch.float16, 'sigmoid', True, True, 4, 2, True)})",
+        "passed": false,
+        "error": "Tensor-likes are not close!\n\nMismatched elements: 4 / 8 (50.0%)\nGreatest absolute difference: 0.797932505607605 at index (1, 1) (up to 0.005 allowed)\nGreatest relative difference: 0.6492929458618164 at index (1, 1) (up to 0.005 allowed)"
+      },
+      {
+        "case": "_OrderedChainMap({'case': (torch.float16, 'sigmoid', True, True, 4, 4, False)})",
+        "passed": false,
+        "error": "Tensor-likes are not close!\n\nMismatched elements: 16 / 16 (100.0%)\nGreatest absolute difference: 0.42281514406204224 at index (2, 3) (up to 0.005 allowed)\nGreatest relative difference: 0.7197224497795105 at index (1, 3) (up to 0.005 allowed)"
+      },
+      {
+        "case": "_OrderedChainMap({'case': (torch.float16, 'sigmoid', True, True, 4, 4, True)})",
+        "passed": false,
+        "error": "Tensor-likes are not close!\n\nMismatched elements: 8 / 16 (50.0%)\nGreatest absolute difference: 0.4226478636264801 at index (1, 3) (up to 0.005 allowed)\nGreatest relative difference: 0.7197224497795105 at index (1, 3) (up to 0.005 allowed)"
+      },
+      {
+        "case": "_OrderedChainMap({'case': (torch.bfloat16, 'softmax', False, False, 1, 2, False)})",
+        "passed": true,
+        "error": null
+      },
+      {
+        "case": "_OrderedChainMap({'case': (torch.bfloat16, 'softmax', False, False, 1, 2, True)})",
+        "passed": true,
+        "error": null
+      },
+      {
+        "case": "_OrderedChainMap({'case': (torch.bfloat16, 'softmax', False, False, 1, 4, False)})",
+        "passed": true,
+        "error": null
+      },
+      {
+        "case": "_OrderedChainMap({'case': (torch.bfloat16, 'softmax', False, False, 1, 4, True)})",
+        "passed": true,
+        "error": null
+      },
+      {
+        "case": "_OrderedChainMap({'case': (torch.bfloat16, 'softmax', False, False, 4, 2, False)})",
+        "passed": true,
+        "error": null
+      },
+      {
+        "case": "_OrderedChainMap({'case': (torch.bfloat16, 'softmax', False, False, 4, 2, True)})",
+        "passed": true,
+        "error": null
+      },
+      {
+        "case": "_OrderedChainMap({'case': (torch.bfloat16, 'softmax', False, False, 4, 4, False)})",
+        "passed": true,
+        "error": null
+      },
+      {
+        "case": "_OrderedChainMap({'case': (torch.bfloat16, 'softmax', False, False, 4, 4, True)})",
+        "passed": true,
+        "error": null
+      },
+      {
+        "case": "_OrderedChainMap({'case': (torch.bfloat16, 'softmax', False, True, 1, 2, False)})",
+        "passed": false,
+        "error": "Tensor-likes are not close!\n\nMismatched elements: 2 / 2 (100.0%)\nGreatest absolute difference: 0.16006356477737427 at index (0, 0) (up to 0.005 allowed)\nGreatest relative difference: 0.6005937457084656 at index (0, 0) (up to 0.005 allowed)"
+      },
+      {
+        "case": "_OrderedChainMap({'case': (torch.bfloat16, 'softmax', False, True, 1, 2, True)})",
+        "passed": true,
+        "error": null
+      },
+      {
+        "case": "_OrderedChainMap({'case': (torch.bfloat16, 'softmax', False, True, 1, 4, False)})",
+        "passed": false,
+        "error": "Tensor-likes are not close!\n\nMismatched elements: 4 / 4 (100.0%)\nGreatest absolute difference: 0.16006356477737427 at index (0, 0) (up to 0.005 allowed)\nGreatest relative difference: 0.6005937457084656 at index (0, 0) (up to 0.005 allowed)"
+      },
+      {
+        "case": "_OrderedChainMap({'case': (torch.bfloat16, 'softmax', False, True, 1, 4, True)})",
+        "passed": true,
+        "error": null
+      },
+      {
+        "case": "_OrderedChainMap({'case': (torch.bfloat16, 'softmax', False, True, 4, 2, False)})",
+        "passed": false,
+        "error": "Tensor-likes are not close!\n\nMismatched elements: 8 / 8 (100.0%)\nGreatest absolute difference: 0.26118147373199463 at index (2, 0) (up to 0.005 allowed)\nGreatest relative difference: 0.6011289358139038 at index (3, 0) (up to 0.005 allowed)"
+      },
+      {
+        "case": "_OrderedChainMap({'case': (torch.bfloat16, 'softmax', False, True, 4, 2, True)})",
+        "passed": false,
+        "error": "Tensor-likes are not close!\n\nMismatched elements: 4 / 8 (50.0%)\nGreatest absolute difference: 0.25828614830970764 at index (1, 0) (up to 0.005 allowed)\nGreatest relative difference: 0.6009007096290588 at index (1, 1) (up to 0.005 allowed)"
+      },
+      {
+        "case": "_OrderedChainMap({'case': (torch.bfloat16, 'softmax', False, True, 4, 4, False)})",
+        "passed": false,
+        "error": "Tensor-likes are not close!\n\nMismatched elements: 16 / 16 (100.0%)\nGreatest absolute difference: 0.26118147373199463 at index (2, 0) (up to 0.005 allowed)\nGreatest relative difference: 0.6011289358139038 at index (3, 0) (up to 0.005 allowed)"
+      },
+      {
+        "case": "_OrderedChainMap({'case': (torch.bfloat16, 'softmax', False, True, 4, 4, True)})",
+        "passed": false,
+        "error": "Tensor-likes are not close!\n\nMismatched elements: 8 / 16 (50.0%)\nGreatest absolute difference: 0.25828614830970764 at index (1, 0) (up to 0.005 allowed)\nGreatest relative difference: 0.6009007096290588 at index (1, 1) (up to 0.005 allowed)"
+      },
+      {
+        "case": "_OrderedChainMap({'case': (torch.bfloat16, 'softmax', True, False, 1, 2, False)})",
+        "passed": true,
+        "error": null
+      },
+      {
+        "case": "_OrderedChainMap({'case': (torch.bfloat16, 'softmax', True, False, 1, 2, True)})",
+        "passed": true,
+        "error": null
+      },
+      {
+        "case": "_OrderedChainMap({'case': (torch.bfloat16, 'softmax', True, False, 1, 4, False)})",
+        "passed": true,
+        "error": null
+      },
+      {
+        "case": "_OrderedChainMap({'case': (torch.bfloat16, 'softmax', True, False, 1, 4, True)})",
+        "passed": true,
+        "error": null
+      },
+      {
+        "case": "_OrderedChainMap({'case': (torch.bfloat16, 'softmax', True, False, 4, 2, False)})",
+        "passed": true,
+        "error": null
+      },
+      {
+        "case": "_OrderedChainMap({'case': (torch.bfloat16, 'softmax', True, False, 4, 2, True)})",
+        "passed": true,
+        "error": null
+      },
+      {
+        "case": "_OrderedChainMap({'case': (torch.bfloat16, 'softmax', True, False, 4, 4, False)})",
+        "passed": true,
+        "error": null
+      },
+      {
+        "case": "_OrderedChainMap({'case': (torch.bfloat16, 'softmax', True, False, 4, 4, True)})",
+        "passed": true,
+        "error": null
+      },
+      {
+        "case": "_OrderedChainMap({'case': (torch.bfloat16, 'softmax', True, True, 1, 2, False)})",
+        "passed": false,
+        "error": "Tensor-likes are not close!\n\nMismatched elements: 2 / 2 (100.0%)\nGreatest absolute difference: 0.8435856103897095 at index (0, 0) (up to 0.005 allowed)\nGreatest relative difference: 0.6002283096313477 at index (0, 0) (up to 0.005 allowed)"
+      },
+      {
+        "case": "_OrderedChainMap({'case': (torch.bfloat16, 'softmax', True, True, 1, 2, True)})",
+        "passed": true,
+        "error": null
+      },
+      {
+        "case": "_OrderedChainMap({'case': (torch.bfloat16, 'softmax', True, True, 1, 4, False)})",
+        "passed": false,
+        "error": "Tensor-likes are not close!\n\nMismatched elements: 4 / 4 (100.0%)\nGreatest absolute difference: 0.4575454294681549 at index (0, 0) (up to 0.005 allowed)\nGreatest relative difference: 0.6007764935493469 at index (0, 0) (up to 0.005 allowed)"
+      },
+      {
+        "case": "_OrderedChainMap({'case': (torch.bfloat16, 'softmax', True, True, 1, 4, True)})",
+        "passed": true,
+        "error": null
+      },
+      {
+        "case": "_OrderedChainMap({'case': (torch.bfloat16, 'softmax', True, True, 4, 2, False)})",
+        "passed": false,
+        "error": "Tensor-likes are not close!\n\nMismatched elements: 8 / 8 (100.0%)\nGreatest absolute difference: 1.0261478424072266 at index (2, 0) (up to 0.005 allowed)\nGreatest relative difference: 0.6010369658470154 at index (1, 1) (up to 0.005 allowed)"
+      },
+      {
+        "case": "_OrderedChainMap({'case': (torch.bfloat16, 'softmax', True, True, 4, 2, True)})",
+        "passed": false,
+        "error": "Tensor-likes are not close!\n\nMismatched elements: 4 / 8 (50.0%)\nGreatest absolute difference: 0.8536638617515564 at index (1, 0) (up to 0.005 allowed)\nGreatest relative difference: 0.6010369658470154 at index (1, 1) (up to 0.005 allowed)"
+      },
+      {
+        "case": "_OrderedChainMap({'case': (torch.bfloat16, 'softmax', True, True, 4, 4, False)})",
+        "passed": false,
+        "error": "Tensor-likes are not close!\n\nMismatched elements: 16 / 16 (100.0%)\nGreatest absolute difference: 0.6615201234817505 at index (2, 0) (up to 0.005 allowed)\nGreatest relative difference: 0.6008615493774414 at index (3, 0) (up to 0.005 allowed)"
+      },
+      {
+        "case": "_OrderedChainMap({'case': (torch.bfloat16, 'softmax', True, True, 4, 4, True)})",
+        "passed": false,
+        "error": "Tensor-likes are not close!\n\nMismatched elements: 8 / 16 (50.0%)\nGreatest absolute difference: 0.516904354095459 at index (1, 0) (up to 0.005 allowed)\nGreatest relative difference: 0.600820779800415 at index (1, 1) (up to 0.005 allowed)"
+      },
+      {
+        "case": "_OrderedChainMap({'case': (torch.bfloat16, 'sigmoid', False, False, 1, 2, False)})",
+        "passed": false,
+        "error": "Tensor-likes are not close!\n\nMismatched elements: 2 / 2 (100.0%)\nGreatest absolute difference: 0.766769528388977 at index (0, 0) (up to 0.005 allowed)\nGreatest relative difference: 0.901516854763031 at index (0, 1) (up to 0.005 allowed)"
+      },
+      {
+        "case": "_OrderedChainMap({'case': (torch.bfloat16, 'sigmoid', False, False, 1, 2, True)})",
+        "passed": true,
+        "error": null
+      },
+      {
+        "case": "_OrderedChainMap({'case': (torch.bfloat16, 'sigmoid', False, False, 1, 4, False)})",
+        "passed": false,
+        "error": "Tensor-likes are not close!\n\nMismatched elements: 4 / 4 (100.0%)\nGreatest absolute difference: 0.766769528388977 at index (0, 0) (up to 0.005 allowed)\nGreatest relative difference: 0.9043980240821838 at index (0, 3) (up to 0.005 allowed)"
+      },
+      {
+        "case": "_OrderedChainMap({'case': (torch.bfloat16, 'sigmoid', False, False, 1, 4, True)})",
+        "passed": true,
+        "error": null
+      },
+      {
+        "case": "_OrderedChainMap({'case': (torch.bfloat16, 'sigmoid', False, False, 4, 2, False)})",
+        "passed": false,
+        "error": "Tensor-likes are not close!\n\nMismatched elements: 8 / 8 (100.0%)\nGreatest absolute difference: 0.766769528388977 at index (0, 0) (up to 0.005 allowed)\nGreatest relative difference: 0.9146096110343933 at index (3, 1) (up to 0.005 allowed)"
+      },
+      {
+        "case": "_OrderedChainMap({'case': (torch.bfloat16, 'sigmoid', False, False, 4, 2, True)})",
+        "passed": false,
+        "error": "Tensor-likes are not close!\n\nMismatched elements: 4 / 8 (50.0%)\nGreatest absolute difference: 0.766769528388977 at index (0, 0) (up to 0.005 allowed)\nGreatest relative difference: 0.901516854763031 at index (0, 1) (up to 0.005 allowed)"
+      },
+      {
+        "case": "_OrderedChainMap({'case': (torch.bfloat16, 'sigmoid', False, False, 4, 4, False)})",
+        "passed": false,
+        "error": "Tensor-likes are not close!\n\nMismatched elements: 16 / 16 (100.0%)\nGreatest absolute difference: 0.766769528388977 at index (0, 0) (up to 0.005 allowed)\nGreatest relative difference: 0.9317477345466614 at index (3, 3) (up to 0.005 allowed)"
+      },
+      {
+        "case": "_OrderedChainMap({'case': (torch.bfloat16, 'sigmoid', False, False, 4, 4, True)})",
+        "passed": false,
+        "error": "Tensor-likes are not close!\n\nMismatched elements: 8 / 16 (50.0%)\nGreatest absolute difference: 0.766769528388977 at index (0, 0) (up to 0.005 allowed)\nGreatest relative difference: 0.9043980240821838 at index (0, 3) (up to 0.005 allowed)"
+      },
+      {
+        "case": "_OrderedChainMap({'case': (torch.bfloat16, 'sigmoid', False, True, 1, 2, False)})",
+        "passed": false,
+        "error": "Tensor-likes are not close!\n\nMismatched elements: 2 / 2 (100.0%)\nGreatest absolute difference: 2.076591730117798 at index (0, 0) (up to 0.005 allowed)\nGreatest relative difference: 0.9606067538261414 at index (0, 1) (up to 0.005 allowed)"
+      },
+      {
+        "case": "_OrderedChainMap({'case': (torch.bfloat16, 'sigmoid', False, True, 1, 2, True)})",
+        "passed": true,
+        "error": null
+      },
+      {
+        "case": "_OrderedChainMap({'case': (torch.bfloat16, 'sigmoid', False, True, 1, 4, False)})",
+        "passed": false,
+        "error": "Tensor-likes are not close!\n\nMismatched elements: 4 / 4 (100.0%)\nGreatest absolute difference: 2.076591730117798 at index (0, 0) (up to 0.005 allowed)\nGreatest relative difference: 0.9617592096328735 at index (0, 3) (up to 0.005 allowed)"
+      },
+      {
+        "case": "_OrderedChainMap({'case': (torch.bfloat16, 'sigmoid', False, True, 1, 4, True)})",
+        "passed": true,
+        "error": null
+      },
+      {
+        "case": "_OrderedChainMap({'case': (torch.bfloat16, 'sigmoid', False, True, 4, 2, False)})",
+        "passed": false,
+        "error": "Tensor-likes are not close!\n\nMismatched elements: 8 / 8 (100.0%)\nGreatest absolute difference: 2.0799970626831055 at index (2, 0) (up to 0.005 allowed)\nGreatest relative difference: 0.9658438563346863 at index (3, 1) (up to 0.005 allowed)"
+      },
+      {
+        "case": "_OrderedChainMap({'case': (torch.bfloat16, 'sigmoid', False, True, 4, 2, True)})",
+        "passed": false,
+        "error": "Tensor-likes are not close!\n\nMismatched elements: 4 / 8 (50.0%)\nGreatest absolute difference: 2.076591730117798 at index (0, 0) (up to 0.005 allowed)\nGreatest relative difference: 0.9606067538261414 at index (0, 1) (up to 0.005 allowed)"
+      },
+      {
+        "case": "_OrderedChainMap({'case': (torch.bfloat16, 'sigmoid', False, True, 4, 4, False)})",
+        "passed": false,
+        "error": "Tensor-likes are not close!\n\nMismatched elements: 16 / 16 (100.0%)\nGreatest absolute difference: 2.0799970626831055 at index (2, 0) (up to 0.005 allowed)\nGreatest relative difference: 0.9726991057395935 at index (3, 3) (up to 0.005 allowed)"
+      },
+      {
+        "case": "_OrderedChainMap({'case': (torch.bfloat16, 'sigmoid', False, True, 4, 4, True)})",
+        "passed": false,
+        "error": "Tensor-likes are not close!\n\nMismatched elements: 8 / 16 (50.0%)\nGreatest absolute difference: 2.076591730117798 at index (0, 0) (up to 0.005 allowed)\nGreatest relative difference: 0.9617592096328735 at index (0, 3) (up to 0.005 allowed)"
+      },
+      {
+        "case": "_OrderedChainMap({'case': (torch.bfloat16, 'sigmoid', True, False, 1, 2, False)})",
+        "passed": false,
+        "error": "Tensor-likes are not close!\n\nMismatched elements: 2 / 2 (100.0%)\nGreatest absolute difference: 0.05301237106323242 at index (0, 0) (up to 0.005 allowed)\nGreatest relative difference: 0.10793361812829971 at index (0, 1) (up to 0.005 allowed)"
+      },
+      {
+        "case": "_OrderedChainMap({'case': (torch.bfloat16, 'sigmoid', True, False, 1, 2, True)})",
+        "passed": true,
+        "error": null
+      },
+      {
+        "case": "_OrderedChainMap({'case': (torch.bfloat16, 'sigmoid', True, False, 1, 4, False)})",
+        "passed": false,
+        "error": "Tensor-likes are not close!\n\nMismatched elements: 4 / 4 (100.0%)\nGreatest absolute difference: 0.04663968086242676 at index (0, 0) (up to 0.005 allowed)\nGreatest relative difference: 0.18119186162948608 at index (0, 0) (up to 0.005 allowed)"
+      },
+      {
+        "case": "_OrderedChainMap({'case': (torch.bfloat16, 'sigmoid', True, False, 1, 4, True)})",
+        "passed": true,
+        "error": null
+      },
+      {
+        "case": "_OrderedChainMap({'case': (torch.bfloat16, 'sigmoid', True, False, 4, 2, False)})",
+        "passed": false,
+        "error": "Tensor-likes are not close!\n\nMismatched elements: 8 / 8 (100.0%)\nGreatest absolute difference: 0.15744227170944214 at index (2, 0) (up to 0.005 allowed)\nGreatest relative difference: 0.3329082727432251 at index (2, 1) (up to 0.005 allowed)"
+      },
+      {
+        "case": "_OrderedChainMap({'case': (torch.bfloat16, 'sigmoid', True, False, 4, 2, True)})",
+        "passed": false,
+        "error": "Tensor-likes are not close!\n\nMismatched elements: 4 / 8 (50.0%)\nGreatest absolute difference: 0.06245243549346924 at index (1, 1) (up to 0.005 allowed)\nGreatest relative difference: 0.12706893682479858 at index (1, 1) (up to 0.005 allowed)"
+      },
+      {
+        "case": "_OrderedChainMap({'case': (torch.bfloat16, 'sigmoid', True, False, 4, 4, False)})",
+        "passed": false,
+        "error": "Tensor-likes are not close!\n\nMismatched elements: 14 / 16 (87.5%)\nGreatest absolute difference: 0.16692990064620972 at index (2, 0) (up to 0.005 allowed)\nGreatest relative difference: 0.6081225275993347 at index (2, 0) (up to 0.005 allowed)"
+      },
+      {
+        "case": "_OrderedChainMap({'case': (torch.bfloat16, 'sigmoid', True, False, 4, 4, True)})",
+        "passed": false,
+        "error": "Tensor-likes are not close!\n\nMismatched elements: 8 / 16 (50.0%)\nGreatest absolute difference: 0.08362030982971191 at index (1, 0) (up to 0.005 allowed)\nGreatest relative difference: 0.3186497688293457 at index (1, 0) (up to 0.005 allowed)"
+      },
+      {
+        "case": "_OrderedChainMap({'case': (torch.bfloat16, 'sigmoid', True, True, 1, 2, False)})",
+        "passed": false,
+        "error": "Tensor-likes are not close!\n\nMismatched elements: 2 / 2 (100.0%)\nGreatest absolute difference: 0.7897472381591797 at index (0, 1) (up to 0.005 allowed)\nGreatest relative difference: 0.6431734561920166 at index (0, 1) (up to 0.005 allowed)"
+      },
+      {
+        "case": "_OrderedChainMap({'case': (torch.bfloat16, 'sigmoid', True, True, 1, 2, True)})",
+        "passed": true,
+        "error": null
+      },
+      {
+        "case": "_OrderedChainMap({'case': (torch.bfloat16, 'sigmoid', True, True, 1, 4, False)})",
+        "passed": false,
+        "error": "Tensor-likes are not close!\n\nMismatched elements: 4 / 4 (100.0%)\nGreatest absolute difference: 0.3885500133037567 at index (0, 3) (up to 0.005 allowed)\nGreatest relative difference: 0.6294541954994202 at index (0, 3) (up to 0.005 allowed)"
+      },
+      {
+        "case": "_OrderedChainMap({'case': (torch.bfloat16, 'sigmoid', True, True, 1, 4, True)})",
+        "passed": true,
+        "error": null
+      },
+      {
+        "case": "_OrderedChainMap({'case': (torch.bfloat16, 'sigmoid', True, True, 4, 2, False)})",
+        "passed": false,
+        "error": "Tensor-likes are not close!\n\nMismatched elements: 8 / 8 (100.0%)\nGreatest absolute difference: 0.8668369650840759 at index (2, 1) (up to 0.005 allowed)\nGreatest relative difference: 0.7331632971763611 at index (2, 1) (up to 0.005 allowed)"
+      },
+      {
+        "case": "_OrderedChainMap({'case': (torch.bfloat16, 'sigmoid', True, True, 4, 2, True)})",
+        "passed": false,
+        "error": "Tensor-likes are not close!\n\nMismatched elements: 4 / 8 (50.0%)\nGreatest absolute difference: 0.7996794581413269 at index (1, 1) (up to 0.005 allowed)\nGreatest relative difference: 0.6508275866508484 at index (1, 1) (up to 0.005 allowed)"
+      },
+      {
+        "case": "_OrderedChainMap({'case': (torch.bfloat16, 'sigmoid', True, True, 4, 4, False)})",
+        "passed": false,
+        "error": "Tensor-likes are not close!\n\nMismatched elements: 16 / 16 (100.0%)\nGreatest absolute difference: 0.42289242148399353 at index (1, 3) (up to 0.005 allowed)\nGreatest relative difference: 0.7202885746955872 at index (1, 3) (up to 0.005 allowed)"
+      },
+      {
+        "case": "_OrderedChainMap({'case': (torch.bfloat16, 'sigmoid', True, True, 4, 4, True)})",
+        "passed": false,
+        "error": "Tensor-likes are not close!\n\nMismatched elements: 8 / 16 (50.0%)\nGreatest absolute difference: 0.42289242148399353 at index (1, 3) (up to 0.005 allowed)\nGreatest relative difference: 0.7202885746955872 at index (1, 3) (up to 0.005 allowed)"
+      }
+    ],
+    "passed": 84,
+    "failed": 108,
+    "errors": [],
+    "seconds": 36.515886429930106
+  },
+  "after": {
+    "cases": [
+      {
+        "case": "_OrderedChainMap({'case': (torch.float32, 'softmax', False, False, 1, 2, False)})",
+        "passed": true,
+        "error": null
+      },
+      {
+        "case": "_OrderedChainMap({'case': (torch.float32, 'softmax', False, False, 1, 2, True)})",
+        "passed": true,
+        "error": null
+      },
+      {
+        "case": "_OrderedChainMap({'case': (torch.float32, 'softmax', False, False, 1, 4, False)})",
+        "passed": true,
+        "error": null
+      },
+      {
+        "case": "_OrderedChainMap({'case': (torch.float32, 'softmax', False, False, 1, 4, True)})",
+        "passed": true,
+        "error": null
+      },
+      {
+        "case": "_OrderedChainMap({'case': (torch.float32, 'softmax', False, False, 4, 2, False)})",
+        "passed": true,
+        "error": null
+      },
+      {
+        "case": "_OrderedChainMap({'case': (torch.float32, 'softmax', False, False, 4, 2, True)})",
+        "passed": true,
+        "error": null
+      },
+      {
+        "case": "_OrderedChainMap({'case': (torch.float32, 'softmax', False, False, 4, 4, False)})",
+        "passed": true,
+        "error": null
+      },
+      {
+        "case": "_OrderedChainMap({'case': (torch.float32, 'softmax', False, False, 4, 4, True)})",
+        "passed": true,
+        "error": null
+      },
+      {
+        "case": "_OrderedChainMap({'case': (torch.float32, 'softmax', False, True, 1, 2, False)})",
+        "passed": true,
+        "error": null
+      },
+      {
+        "case": "_OrderedChainMap({'case': (torch.float32, 'softmax', False, True, 1, 2, True)})",
+        "passed": true,
+        "error": null
+      },
+      {
+        "case": "_OrderedChainMap({'case': (torch.float32, 'softmax', False, True, 1, 4, False)})",
+        "passed": true,
+        "error": null
+      },
+      {
+        "case": "_OrderedChainMap({'case': (torch.float32, 'softmax', False, True, 1, 4, True)})",
+        "passed": true,
+        "error": null
+      },
+      {
+        "case": "_OrderedChainMap({'case': (torch.float32, 'softmax', False, True, 4, 2, False)})",
+        "passed": true,
+        "error": null
+      },
+      {
+        "case": "_OrderedChainMap({'case': (torch.float32, 'softmax', False, True, 4, 2, True)})",
+        "passed": true,
+        "error": null
+      },
+      {
+        "case": "_OrderedChainMap({'case': (torch.float32, 'softmax', False, True, 4, 4, False)})",
+        "passed": true,
+        "error": null
+      },
+      {
+        "case": "_OrderedChainMap({'case': (torch.float32, 'softmax', False, True, 4, 4, True)})",
+        "passed": true,
+        "error": null
+      },
+      {
+        "case": "_OrderedChainMap({'case': (torch.float32, 'softmax', True, False, 1, 2, False)})",
+        "passed": true,
+        "error": null
+      },
+      {
+        "case": "_OrderedChainMap({'case': (torch.float32, 'softmax', True, False, 1, 2, True)})",
+        "passed": true,
+        "error": null
+      },
+      {
+        "case": "_OrderedChainMap({'case': (torch.float32, 'softmax', True, False, 1, 4, False)})",
+        "passed": true,
+        "error": null
+      },
+      {
+        "case": "_OrderedChainMap({'case': (torch.float32, 'softmax', True, False, 1, 4, True)})",
+        "passed": true,
+        "error": null
+      },
+      {
+        "case": "_OrderedChainMap({'case': (torch.float32, 'softmax', True, False, 4, 2, False)})",
+        "passed": true,
+        "error": null
+      },
+      {
+        "case": "_OrderedChainMap({'case': (torch.float32, 'softmax', True, False, 4, 2, True)})",
+        "passed": true,
+        "error": null
+      },
+      {
+        "case": "_OrderedChainMap({'case': (torch.float32, 'softmax', True, False, 4, 4, False)})",
+        "passed": true,
+        "error": null
+      },
+      {
+        "case": "_OrderedChainMap({'case': (torch.float32, 'softmax', True, False, 4, 4, True)})",
+        "passed": true,
+        "error": null
+      },
+      {
+        "case": "_OrderedChainMap({'case': (torch.float32, 'softmax', True, True, 1, 2, False)})",
+        "passed": true,
+        "error": null
+      },
+      {
+        "case": "_OrderedChainMap({'case': (torch.float32, 'softmax', True, True, 1, 2, True)})",
+        "passed": true,
+        "error": null
+      },
+      {
+        "case": "_OrderedChainMap({'case': (torch.float32, 'softmax', True, True, 1, 4, False)})",
+        "passed": true,
+        "error": null
+      },
+      {
+        "case": "_OrderedChainMap({'case': (torch.float32, 'softmax', True, True, 1, 4, True)})",
+        "passed": true,
+        "error": null
+      },
+      {
+        "case": "_OrderedChainMap({'case': (torch.float32, 'softmax', True, True, 4, 2, False)})",
+        "passed": true,
+        "error": null
+      },
+      {
+        "case": "_OrderedChainMap({'case': (torch.float32, 'softmax', True, True, 4, 2, True)})",
+        "passed": true,
+        "error": null
+      },
+      {
+        "case": "_OrderedChainMap({'case': (torch.float32, 'softmax', True, True, 4, 4, False)})",
+        "passed": true,
+        "error": null
+      },
+      {
+        "case": "_OrderedChainMap({'case': (torch.float32, 'softmax', True, True, 4, 4, True)})",
+        "passed": true,
+        "error": null
+      },
+      {
+        "case": "_OrderedChainMap({'case': (torch.float32, 'sigmoid', False, False, 1, 2, False)})",
+        "passed": true,
+        "error": null
+      },
+      {
+        "case": "_OrderedChainMap({'case': (torch.float32, 'sigmoid', False, False, 1, 2, True)})",
+        "passed": true,
+        "error": null
+      },
+      {
+        "case": "_OrderedChainMap({'case': (torch.float32, 'sigmoid', False, False, 1, 4, False)})",
+        "passed": true,
+        "error": null
+      },
+      {
+        "case": "_OrderedChainMap({'case': (torch.float32, 'sigmoid', False, False, 1, 4, True)})",
+        "passed": true,
+        "error": null
+      },
+      {
+        "case": "_OrderedChainMap({'case': (torch.float32, 'sigmoid', False, False, 4, 2, False)})",
+        "passed": true,
+        "error": null
+      },
+      {
+        "case": "_OrderedChainMap({'case': (torch.float32, 'sigmoid', False, False, 4, 2, True)})",
+        "passed": true,
+        "error": null
+      },
+      {
+        "case": "_OrderedChainMap({'case': (torch.float32, 'sigmoid', False, False, 4, 4, False)})",
+        "passed": true,
+        "error": null
+      },
+      {
+        "case": "_OrderedChainMap({'case': (torch.float32, 'sigmoid', False, False, 4, 4, True)})",
+        "passed": true,
+        "error": null
+      },
+      {
+        "case": "_OrderedChainMap({'case': (torch.float32, 'sigmoid', False, True, 1, 2, False)})",
+        "passed": true,
+        "error": null
+      },
+      {
+        "case": "_OrderedChainMap({'case': (torch.float32, 'sigmoid', False, True, 1, 2, True)})",
+        "passed": true,
+        "error": null
+      },
+      {
+        "case": "_OrderedChainMap({'case': (torch.float32, 'sigmoid', False, True, 1, 4, False)})",
+        "passed": true,
+        "error": null
+      },
+      {
+        "case": "_OrderedChainMap({'case': (torch.float32, 'sigmoid', False, True, 1, 4, True)})",
+        "passed": true,
+        "error": null
+      },
+      {
+        "case": "_OrderedChainMap({'case': (torch.float32, 'sigmoid', False, True, 4, 2, False)})",
+        "passed": true,
+        "error": null
+      },
+      {
+        "case": "_OrderedChainMap({'case': (torch.float32, 'sigmoid', False, True, 4, 2, True)})",
+        "passed": true,
+        "error": null
+      },
+      {
+        "case": "_OrderedChainMap({'case': (torch.float32, 'sigmoid', False, True, 4, 4, False)})",
+        "passed": true,
+        "error": null
+      },
+      {
+        "case": "_OrderedChainMap({'case': (torch.float32, 'sigmoid', False, True, 4, 4, True)})",
+        "passed": true,
+        "error": null
+      },
+      {
+        "case": "_OrderedChainMap({'case': (torch.float32, 'sigmoid', True, False, 1, 2, False)})",
+        "passed": true,
+        "error": null
+      },
+      {
+        "case": "_OrderedChainMap({'case': (torch.float32, 'sigmoid', True, False, 1, 2, True)})",
+        "passed": true,
+        "error": null
+      },
+      {
+        "case": "_OrderedChainMap({'case': (torch.float32, 'sigmoid', True, False, 1, 4, False)})",
+        "passed": true,
+        "error": null
+      },
+      {
+        "case": "_OrderedChainMap({'case': (torch.float32, 'sigmoid', True, False, 1, 4, True)})",
+        "passed": true,
+        "error": null
+      },
+      {
+        "case": "_OrderedChainMap({'case': (torch.float32, 'sigmoid', True, False, 4, 2, False)})",
+        "passed": true,
+        "error": null
+      },
+      {
+        "case": "_OrderedChainMap({'case': (torch.float32, 'sigmoid', True, False, 4, 2, True)})",
+        "passed": true,
+        "error": null
+      },
+      {
+        "case": "_OrderedChainMap({'case': (torch.float32, 'sigmoid', True, False, 4, 4, False)})",
+        "passed": true,
+        "error": null
+      },
+      {
+        "case": "_OrderedChainMap({'case': (torch.float32, 'sigmoid', True, False, 4, 4, True)})",
+        "passed": true,
+        "error": null
+      },
+      {
+        "case": "_OrderedChainMap({'case': (torch.float32, 'sigmoid', True, True, 1, 2, False)})",
+        "passed": true,
+        "error": null
+      },
+      {
+        "case": "_OrderedChainMap({'case': (torch.float32, 'sigmoid', True, True, 1, 2, True)})",
+        "passed": true,
+        "error": null
+      },
+      {
+        "case": "_OrderedChainMap({'case': (torch.float32, 'sigmoid', True, True, 1, 4, False)})",
+        "passed": true,
+        "error": null
+      },
+      {
+        "case": "_OrderedChainMap({'case': (torch.float32, 'sigmoid', True, True, 1, 4, True)})",
+        "passed": true,
+        "error": null
+      },
+      {
+        "case": "_OrderedChainMap({'case': (torch.float32, 'sigmoid', True, True, 4, 2, False)})",
+        "passed": true,
+        "error": null
+      },
+      {
+        "case": "_OrderedChainMap({'case': (torch.float32, 'sigmoid', True, True, 4, 2, True)})",
+        "passed": true,
+        "error": null
+      },
+      {
+        "case": "_OrderedChainMap({'case': (torch.float32, 'sigmoid', True, True, 4, 4, False)})",
+        "passed": true,
+        "error": null
+      },
+      {
+        "case": "_OrderedChainMap({'case': (torch.float32, 'sigmoid', True, True, 4, 4, True)})",
+        "passed": true,
+        "error": null
+      },
+      {
+        "case": "_OrderedChainMap({'case': (torch.float16, 'softmax', False, False, 1, 2, False)})",
+        "passed": true,
+        "error": null
+      },
+      {
+        "case": "_OrderedChainMap({'case': (torch.float16, 'softmax', False, False, 1, 2, True)})",
+        "passed": true,
+        "error": null
+      },
+      {
+        "case": "_OrderedChainMap({'case': (torch.float16, 'softmax', False, False, 1, 4, False)})",
+        "passed": true,
+        "error": null
+      },
+      {
+        "case": "_OrderedChainMap({'case': (torch.float16, 'softmax', False, False, 1, 4, True)})",
+        "passed": true,
+        "error": null
+      },
+      {
+        "case": "_OrderedChainMap({'case': (torch.float16, 'softmax', False, False, 4, 2, False)})",
+        "passed": true,
+        "error": null
+      },
+      {
+        "case": "_OrderedChainMap({'case': (torch.float16, 'softmax', False, False, 4, 2, True)})",
+        "passed": true,
+        "error": null
+      },
+      {
+        "case": "_OrderedChainMap({'case': (torch.float16, 'softmax', False, False, 4, 4, False)})",
+        "passed": true,
+        "error": null
+      },
+      {
+        "case": "_OrderedChainMap({'case': (torch.float16, 'softmax', False, False, 4, 4, True)})",
+        "passed": true,
+        "error": null
+      },
+      {
+        "case": "_OrderedChainMap({'case': (torch.float16, 'softmax', False, True, 1, 2, False)})",
+        "passed": true,
+        "error": null
+      },
+      {
+        "case": "_OrderedChainMap({'case': (torch.float16, 'softmax', False, True, 1, 2, True)})",
+        "passed": true,
+        "error": null
+      },
+      {
+        "case": "_OrderedChainMap({'case': (torch.float16, 'softmax', False, True, 1, 4, False)})",
+        "passed": true,
+        "error": null
+      },
+      {
+        "case": "_OrderedChainMap({'case': (torch.float16, 'softmax', False, True, 1, 4, True)})",
+        "passed": true,
+        "error": null
+      },
+      {
+        "case": "_OrderedChainMap({'case': (torch.float16, 'softmax', False, True, 4, 2, False)})",
+        "passed": true,
+        "error": null
+      },
+      {
+        "case": "_OrderedChainMap({'case': (torch.float16, 'softmax', False, True, 4, 2, True)})",
+        "passed": true,
+        "error": null
+      },
+      {
+        "case": "_OrderedChainMap({'case': (torch.float16, 'softmax', False, True, 4, 4, False)})",
+        "passed": true,
+        "error": null
+      },
+      {
+        "case": "_OrderedChainMap({'case': (torch.float16, 'softmax', False, True, 4, 4, True)})",
+        "passed": true,
+        "error": null
+      },
+      {
+        "case": "_OrderedChainMap({'case': (torch.float16, 'softmax', True, False, 1, 2, False)})",
+        "passed": true,
+        "error": null
+      },
+      {
+        "case": "_OrderedChainMap({'case': (torch.float16, 'softmax', True, False, 1, 2, True)})",
+        "passed": true,
+        "error": null
+      },
+      {
+        "case": "_OrderedChainMap({'case': (torch.float16, 'softmax', True, False, 1, 4, False)})",
+        "passed": true,
+        "error": null
+      },
+      {
+        "case": "_OrderedChainMap({'case': (torch.float16, 'softmax', True, False, 1, 4, True)})",
+        "passed": true,
+        "error": null
+      },
+      {
+        "case": "_OrderedChainMap({'case': (torch.float16, 'softmax', True, False, 4, 2, False)})",
+        "passed": true,
+        "error": null
+      },
+      {
+        "case": "_OrderedChainMap({'case': (torch.float16, 'softmax', True, False, 4, 2, True)})",
+        "passed": true,
+        "error": null
+      },
+      {
+        "case": "_OrderedChainMap({'case': (torch.float16, 'softmax', True, False, 4, 4, False)})",
+        "passed": true,
+        "error": null
+      },
+      {
+        "case": "_OrderedChainMap({'case': (torch.float16, 'softmax', True, False, 4, 4, True)})",
+        "passed": true,
+        "error": null
+      },
+      {
+        "case": "_OrderedChainMap({'case': (torch.float16, 'softmax', True, True, 1, 2, False)})",
+        "passed": true,
+        "error": null
+      },
+      {
+        "case": "_OrderedChainMap({'case': (torch.float16, 'softmax', True, True, 1, 2, True)})",
+        "passed": true,
+        "error": null
+      },
+      {
+        "case": "_OrderedChainMap({'case': (torch.float16, 'softmax', True, True, 1, 4, False)})",
+        "passed": true,
+        "error": null
+      },
+      {
+        "case": "_OrderedChainMap({'case': (torch.float16, 'softmax', True, True, 1, 4, True)})",
+        "passed": true,
+        "error": null
+      },
+      {
+        "case": "_OrderedChainMap({'case': (torch.float16, 'softmax', True, True, 4, 2, False)})",
+        "passed": true,
+        "error": null
+      },
+      {
+        "case": "_OrderedChainMap({'case': (torch.float16, 'softmax', True, True, 4, 2, True)})",
+        "passed": true,
+        "error": null
+      },
+      {
+        "case": "_OrderedChainMap({'case': (torch.float16, 'softmax', True, True, 4, 4, False)})",
+        "passed": true,
+        "error": null
+      },
+      {
+        "case": "_OrderedChainMap({'case': (torch.float16, 'softmax', True, True, 4, 4, True)})",
+        "passed": true,
+        "error": null
+      },
+      {
+        "case": "_OrderedChainMap({'case': (torch.float16, 'sigmoid', False, False, 1, 2, False)})",
+        "passed": true,
+        "error": null
+      },
+      {
+        "case": "_OrderedChainMap({'case': (torch.float16, 'sigmoid', False, False, 1, 2, True)})",
+        "passed": true,
+        "error": null
+      },
+      {
+        "case": "_OrderedChainMap({'case': (torch.float16, 'sigmoid', False, False, 1, 4, False)})",
+        "passed": true,
+        "error": null
+      },
+      {
+        "case": "_OrderedChainMap({'case': (torch.float16, 'sigmoid', False, False, 1, 4, True)})",
+        "passed": true,
+        "error": null
+      },
+      {
+        "case": "_OrderedChainMap({'case': (torch.float16, 'sigmoid', False, False, 4, 2, False)})",
+        "passed": true,
+        "error": null
+      },
+      {
+        "case": "_OrderedChainMap({'case': (torch.float16, 'sigmoid', False, False, 4, 2, True)})",
+        "passed": true,
+        "error": null
+      },
+      {
+        "case": "_OrderedChainMap({'case': (torch.float16, 'sigmoid', False, False, 4, 4, False)})",
+        "passed": true,
+        "error": null
+      },
+      {
+        "case": "_OrderedChainMap({'case': (torch.float16, 'sigmoid', False, False, 4, 4, True)})",
+        "passed": true,
+        "error": null
+      },
+      {
+        "case": "_OrderedChainMap({'case': (torch.float16, 'sigmoid', False, True, 1, 2, False)})",
+        "passed": true,
+        "error": null
+      },
+      {
+        "case": "_OrderedChainMap({'case': (torch.float16, 'sigmoid', False, True, 1, 2, True)})",
+        "passed": true,
+        "error": null
+      },
+      {
+        "case": "_OrderedChainMap({'case': (torch.float16, 'sigmoid', False, True, 1, 4, False)})",
+        "passed": true,
+        "error": null
+      },
+      {
+        "case": "_OrderedChainMap({'case': (torch.float16, 'sigmoid', False, True, 1, 4, True)})",
+        "passed": true,
+        "error": null
+      },
+      {
+        "case": "_OrderedChainMap({'case': (torch.float16, 'sigmoid', False, True, 4, 2, False)})",
+        "passed": true,
+        "error": null
+      },
+      {
+        "case": "_OrderedChainMap({'case': (torch.float16, 'sigmoid', False, True, 4, 2, True)})",
+        "passed": true,
+        "error": null
+      },
+      {
+        "case": "_OrderedChainMap({'case': (torch.float16, 'sigmoid', False, True, 4, 4, False)})",
+        "passed": true,
+        "error": null
+      },
+      {
+        "case": "_OrderedChainMap({'case': (torch.float16, 'sigmoid', False, True, 4, 4, True)})",
+        "passed": true,
+        "error": null
+      },
+      {
+        "case": "_OrderedChainMap({'case': (torch.float16, 'sigmoid', True, False, 1, 2, False)})",
+        "passed": true,
+        "error": null
+      },
+      {
+        "case": "_OrderedChainMap({'case': (torch.float16, 'sigmoid', True, False, 1, 2, True)})",
+        "passed": true,
+        "error": null
+      },
+      {
+        "case": "_OrderedChainMap({'case': (torch.float16, 'sigmoid', True, False, 1, 4, False)})",
+        "passed": true,
+        "error": null
+      },
+      {
+        "case": "_OrderedChainMap({'case': (torch.float16, 'sigmoid', True, False, 1, 4, True)})",
+        "passed": true,
+        "error": null
+      },
+      {
+        "case": "_OrderedChainMap({'case': (torch.float16, 'sigmoid', True, False, 4, 2, False)})",
+        "passed": true,
+        "error": null
+      },
+      {
+        "case": "_OrderedChainMap({'case': (torch.float16, 'sigmoid', True, False, 4, 2, True)})",
+        "passed": true,
+        "error": null
+      },
+      {
+        "case": "_OrderedChainMap({'case': (torch.float16, 'sigmoid', True, False, 4, 4, False)})",
+        "passed": true,
+        "error": null
+      },
+      {
+        "case": "_OrderedChainMap({'case': (torch.float16, 'sigmoid', True, False, 4, 4, True)})",
+        "passed": true,
+        "error": null
+      },
+      {
+        "case": "_OrderedChainMap({'case': (torch.float16, 'sigmoid', True, True, 1, 2, False)})",
+        "passed": true,
+        "error": null
+      },
+      {
+        "case": "_OrderedChainMap({'case': (torch.float16, 'sigmoid', True, True, 1, 2, True)})",
+        "passed": true,
+        "error": null
+      },
+      {
+        "case": "_OrderedChainMap({'case': (torch.float16, 'sigmoid', True, True, 1, 4, False)})",
+        "passed": true,
+        "error": null
+      },
+      {
+        "case": "_OrderedChainMap({'case': (torch.float16, 'sigmoid', True, True, 1, 4, True)})",
+        "passed": true,
+        "error": null
+      },
+      {
+        "case": "_OrderedChainMap({'case': (torch.float16, 'sigmoid', True, True, 4, 2, False)})",
+        "passed": true,
+        "error": null
+      },
+      {
+        "case": "_OrderedChainMap({'case': (torch.float16, 'sigmoid', True, True, 4, 2, True)})",
+        "passed": true,
+        "error": null
+      },
+      {
+        "case": "_OrderedChainMap({'case': (torch.float16, 'sigmoid', True, True, 4, 4, False)})",
+        "passed": true,
+        "error": null
+      },
+      {
+        "case": "_OrderedChainMap({'case': (torch.float16, 'sigmoid', True, True, 4, 4, True)})",
+        "passed": true,
+        "error": null
+      },
+      {
+        "case": "_OrderedChainMap({'case': (torch.bfloat16, 'softmax', False, False, 1, 2, False)})",
+        "passed": true,
+        "error": null
+      },
+      {
+        "case": "_OrderedChainMap({'case': (torch.bfloat16, 'softmax', False, False, 1, 2, True)})",
+        "passed": true,
+        "error": null
+      },
+      {
+        "case": "_OrderedChainMap({'case': (torch.bfloat16, 'softmax', False, False, 1, 4, False)})",
+        "passed": true,
+        "error": null
+      },
+      {
+        "case": "_OrderedChainMap({'case': (torch.bfloat16, 'softmax', False, False, 1, 4, True)})",
+        "passed": true,
+        "error": null
+      },
+      {
+        "case": "_OrderedChainMap({'case': (torch.bfloat16, 'softmax', False, False, 4, 2, False)})",
+        "passed": true,
+        "error": null
+      },
+      {
+        "case": "_OrderedChainMap({'case': (torch.bfloat16, 'softmax', False, False, 4, 2, True)})",
+        "passed": true,
+        "error": null
+      },
+      {
+        "case": "_OrderedChainMap({'case': (torch.bfloat16, 'softmax', False, False, 4, 4, False)})",
+        "passed": true,
+        "error": null
+      },
+      {
+        "case": "_OrderedChainMap({'case': (torch.bfloat16, 'softmax', False, False, 4, 4, True)})",
+        "passed": true,
+        "error": null
+      },
+      {
+        "case": "_OrderedChainMap({'case': (torch.bfloat16, 'softmax', False, True, 1, 2, False)})",
+        "passed": true,
+        "error": null
+      },
+      {
+        "case": "_OrderedChainMap({'case': (torch.bfloat16, 'softmax', False, True, 1, 2, True)})",
+        "passed": true,
+        "error": null
+      },
+      {
+        "case": "_OrderedChainMap({'case': (torch.bfloat16, 'softmax', False, True, 1, 4, False)})",
+        "passed": true,
+        "error": null
+      },
+      {
+        "case": "_OrderedChainMap({'case': (torch.bfloat16, 'softmax', False, True, 1, 4, True)})",
+        "passed": true,
+        "error": null
+      },
+      {
+        "case": "_OrderedChainMap({'case': (torch.bfloat16, 'softmax', False, True, 4, 2, False)})",
+        "passed": true,
+        "error": null
+      },
+      {
+        "case": "_OrderedChainMap({'case': (torch.bfloat16, 'softmax', False, True, 4, 2, True)})",
+        "passed": true,
+        "error": null
+      },
+      {
+        "case": "_OrderedChainMap({'case': (torch.bfloat16, 'softmax', False, True, 4, 4, False)})",
+        "passed": true,
+        "error": null
+      },
+      {
+        "case": "_OrderedChainMap({'case': (torch.bfloat16, 'softmax', False, True, 4, 4, True)})",
+        "passed": true,
+        "error": null
+      },
+      {
+        "case": "_OrderedChainMap({'case': (torch.bfloat16, 'softmax', True, False, 1, 2, False)})",
+        "passed": true,
+        "error": null
+      },
+      {
+        "case": "_OrderedChainMap({'case': (torch.bfloat16, 'softmax', True, False, 1, 2, True)})",
+        "passed": true,
+        "error": null
+      },
+      {
+        "case": "_OrderedChainMap({'case': (torch.bfloat16, 'softmax', True, False, 1, 4, False)})",
+        "passed": true,
+        "error": null
+      },
+      {
+        "case": "_OrderedChainMap({'case': (torch.bfloat16, 'softmax', True, False, 1, 4, True)})",
+        "passed": true,
+        "error": null
+      },
+      {
+        "case": "_OrderedChainMap({'case': (torch.bfloat16, 'softmax', True, False, 4, 2, False)})",
+        "passed": true,
+        "error": null
+      },
+      {
+        "case": "_OrderedChainMap({'case': (torch.bfloat16, 'softmax', True, False, 4, 2, True)})",
+        "passed": true,
+        "error": null
+      },
+      {
+        "case": "_OrderedChainMap({'case': (torch.bfloat16, 'softmax', True, False, 4, 4, False)})",
+        "passed": true,
+        "error": null
+      },
+      {
+        "case": "_OrderedChainMap({'case': (torch.bfloat16, 'softmax', True, False, 4, 4, True)})",
+        "passed": true,
+        "error": null
+      },
+      {
+        "case": "_OrderedChainMap({'case': (torch.bfloat16, 'softmax', True, True, 1, 2, False)})",
+        "passed": true,
+        "error": null
+      },
+      {
+        "case": "_OrderedChainMap({'case': (torch.bfloat16, 'softmax', True, True, 1, 2, True)})",
+        "passed": true,
+        "error": null
+      },
+      {
+        "case": "_OrderedChainMap({'case': (torch.bfloat16, 'softmax', True, True, 1, 4, False)})",
+        "passed": true,
+        "error": null
+      },
+      {
+        "case": "_OrderedChainMap({'case': (torch.bfloat16, 'softmax', True, True, 1, 4, True)})",
+        "passed": true,
+        "error": null
+      },
+      {
+        "case": "_OrderedChainMap({'case': (torch.bfloat16, 'softmax', True, True, 4, 2, False)})",
+        "passed": true,
+        "error": null
+      },
+      {
+        "case": "_OrderedChainMap({'case': (torch.bfloat16, 'softmax', True, True, 4, 2, True)})",
+        "passed": true,
+        "error": null
+      },
+      {
+        "case": "_OrderedChainMap({'case': (torch.bfloat16, 'softmax', True, True, 4, 4, False)})",
+        "passed": true,
+        "error": null
+      },
+      {
+        "case": "_OrderedChainMap({'case': (torch.bfloat16, 'softmax', True, True, 4, 4, True)})",
+        "passed": true,
+        "error": null
+      },
+      {
+        "case": "_OrderedChainMap({'case': (torch.bfloat16, 'sigmoid', False, False, 1, 2, False)})",
+        "passed": true,
+        "error": null
+      },
+      {
+        "case": "_OrderedChainMap({'case': (torch.bfloat16, 'sigmoid', False, False, 1, 2, True)})",
+        "passed": true,
+        "error": null
+      },
+      {
+        "case": "_OrderedChainMap({'case': (torch.bfloat16, 'sigmoid', False, False, 1, 4, False)})",
+        "passed": true,
+        "error": null
+      },
+      {
+        "case": "_OrderedChainMap({'case': (torch.bfloat16, 'sigmoid', False, False, 1, 4, True)})",
+        "passed": true,
+        "error": null
+      },
+      {
+        "case": "_OrderedChainMap({'case': (torch.bfloat16, 'sigmoid', False, False, 4, 2, False)})",
+        "passed": true,
+        "error": null
+      },
+      {
+        "case": "_OrderedChainMap({'case': (torch.bfloat16, 'sigmoid', False, False, 4, 2, True)})",
+        "passed": true,
+        "error": null
+      },
+      {
+        "case": "_OrderedChainMap({'case': (torch.bfloat16, 'sigmoid', False, False, 4, 4, False)})",
+        "passed": true,
+        "error": null
+      },
+      {
+        "case": "_OrderedChainMap({'case': (torch.bfloat16, 'sigmoid', False, False, 4, 4, True)})",
+        "passed": true,
+        "error": null
+      },
+      {
+        "case": "_OrderedChainMap({'case': (torch.bfloat16, 'sigmoid', False, True, 1, 2, False)})",
+        "passed": true,
+        "error": null
+      },
+      {
+        "case": "_OrderedChainMap({'case': (torch.bfloat16, 'sigmoid', False, True, 1, 2, True)})",
+        "passed": true,
+        "error": null
+      },
+      {
+        "case": "_OrderedChainMap({'case': (torch.bfloat16, 'sigmoid', False, True, 1, 4, False)})",
+        "passed": true,
+        "error": null
+      },
+      {
+        "case": "_OrderedChainMap({'case': (torch.bfloat16, 'sigmoid', False, True, 1, 4, True)})",
+        "passed": true,
+        "error": null
+      },
+      {
+        "case": "_OrderedChainMap({'case': (torch.bfloat16, 'sigmoid', False, True, 4, 2, False)})",
+        "passed": true,
+        "error": null
+      },
+      {
+        "case": "_OrderedChainMap({'case': (torch.bfloat16, 'sigmoid', False, True, 4, 2, True)})",
+        "passed": true,
+        "error": null
+      },
+      {
+        "case": "_OrderedChainMap({'case': (torch.bfloat16, 'sigmoid', False, True, 4, 4, False)})",
+        "passed": true,
+        "error": null
+      },
+      {
+        "case": "_OrderedChainMap({'case': (torch.bfloat16, 'sigmoid', False, True, 4, 4, True)})",
+        "passed": true,
+        "error": null
+      },
+      {
+        "case": "_OrderedChainMap({'case': (torch.bfloat16, 'sigmoid', True, False, 1, 2, False)})",
+        "passed": true,
+        "error": null
+      },
+      {
+        "case": "_OrderedChainMap({'case': (torch.bfloat16, 'sigmoid', True, False, 1, 2, True)})",
+        "passed": true,
+        "error": null
+      },
+      {
+        "case": "_OrderedChainMap({'case': (torch.bfloat16, 'sigmoid', True, False, 1, 4, False)})",
+        "passed": true,
+        "error": null
+      },
+      {
+        "case": "_OrderedChainMap({'case': (torch.bfloat16, 'sigmoid', True, False, 1, 4, True)})",
+        "passed": true,
+        "error": null
+      },
+      {
+        "case": "_OrderedChainMap({'case': (torch.bfloat16, 'sigmoid', True, False, 4, 2, False)})",
+        "passed": true,
+        "error": null
+      },
+      {
+        "case": "_OrderedChainMap({'case': (torch.bfloat16, 'sigmoid', True, False, 4, 2, True)})",
+        "passed": true,
+        "error": null
+      },
+      {
+        "case": "_OrderedChainMap({'case': (torch.bfloat16, 'sigmoid', True, False, 4, 4, False)})",
+        "passed": true,
+        "error": null
+      },
+      {
+        "case": "_OrderedChainMap({'case': (torch.bfloat16, 'sigmoid', True, False, 4, 4, True)})",
+        "passed": true,
+        "error": null
+      },
+      {
+        "case": "_OrderedChainMap({'case': (torch.bfloat16, 'sigmoid', True, True, 1, 2, False)})",
+        "passed": true,
+        "error": null
+      },
+      {
+        "case": "_OrderedChainMap({'case': (torch.bfloat16, 'sigmoid', True, True, 1, 2, True)})",
+        "passed": true,
+        "error": null
+      },
+      {
+        "case": "_OrderedChainMap({'case': (torch.bfloat16, 'sigmoid', True, True, 1, 4, False)})",
+        "passed": true,
+        "error": null
+      },
+      {
+        "case": "_OrderedChainMap({'case': (torch.bfloat16, 'sigmoid', True, True, 1, 4, True)})",
+        "passed": true,
+        "error": null
+      },
+      {
+        "case": "_OrderedChainMap({'case': (torch.bfloat16, 'sigmoid', True, True, 4, 2, False)})",
+        "passed": true,
+        "error": null
+      },
+      {
+        "case": "_OrderedChainMap({'case': (torch.bfloat16, 'sigmoid', True, True, 4, 2, True)})",
+        "passed": true,
+        "error": null
+      },
+      {
+        "case": "_OrderedChainMap({'case': (torch.bfloat16, 'sigmoid', True, True, 4, 4, False)})",
+        "passed": true,
+        "error": null
+      },
+      {
+        "case": "_OrderedChainMap({'case': (torch.bfloat16, 'sigmoid', True, True, 4, 4, True)})",
+        "passed": true,
+        "error": null
+      }
+    ],
+    "passed": 192,
+    "failed": 0,
+    "errors": [],
+    "seconds": 0.37710150983184576
+  },
+  "source_hashes": {
+    "topk_before.py": "4c15ba6e3b30cea82cf258d7d5f083e64fa540ed9c0c4c49c7f7a24a33733ff2",
+    "python/sglang/srt/hardware_backend/npu/moe/topk.py": "6a618dc145510f21afc515c067897837a404bceff3b2cbd4a0f20b44a8c44461",
+    "test_npu_topk_scoring.py": "c631f9d8e456efd7a7a40253f43fc07c6d8482205b6ca16c9e74673bb64c0053"
+  }
+}
