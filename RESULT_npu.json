@@ -1,0 +1,1868 @@
+{
+  "device": "npu",
+  "scope": "actual source copy methods; independent whole-buffer layout oracle; no model or distributed runtime",
+  "runs": {
+    "before.py": {
+      "sha256": "2a6fdbeb9fdb495a8c01952f9077871f66e943f52f1697f7555dee483ffb9484",
+      "passed": 49,
+      "total": 70,
+      "cases": [
+        {
+          "nz": false,
+          "mode": "plain",
+          "tokens": 0,
+          "mismatches": [
+            0,
+            0,
+            0,
+            0,
+            0
+          ],
+          "pass": true
+        },
+        {
+          "nz": false,
+          "mode": "plain",
+          "tokens": 1,
+          "mismatches": [
+            0,
+            0,
+            0,
+            0,
+            0
+          ],
+          "pass": true
+        },
+        {
+          "nz": false,
+          "mode": "plain",
+          "tokens": 17,
+          "mismatches": [
+            0,
+            0,
+            0,
+            0,
+            0
+          ],
+          "pass": true
+        },
+        {
+          "nz": false,
+          "mode": "plain",
+          "tokens": 127,
+          "mismatches": [
+            0,
+            0,
+            0,
+            0,
+            0
+          ],
+          "pass": true
+        },
+        {
+          "nz": false,
+          "mode": "plain",
+          "tokens": 128,
+          "mismatches": [
+            0,
+            0,
+            0,
+            0,
+            0
+          ],
+          "pass": true
+        },
+        {
+          "nz": false,
+          "mode": "plain",
+          "tokens": 129,
+          "mismatches": [
+            0,
+            0,
+            0,
+            0,
+            0
+          ],
+          "pass": true
+        },
+        {
+          "nz": false,
+          "mode": "plain",
+          "tokens": 257,
+          "mismatches": [
+            0,
+            0,
+            0,
+            0,
+            0
+          ],
+          "pass": true
+        },
+        {
+          "nz": false,
+          "mode": "dcp0",
+          "tokens": 0,
+          "mismatches": [
+            0,
+            0,
+            0,
+            0,
+            0
+          ],
+          "pass": true
+        },
+        {
+          "nz": false,
+          "mode": "dcp0",
+          "tokens": 1,
+          "mismatches": [
+            0,
+            0,
+            0,
+            0,
+            0
+          ],
+          "pass": true
+        },
+        {
+          "nz": false,
+          "mode": "dcp0",
+          "tokens": 17,
+          "mismatches": [
+            0,
+            0,
+            0,
+            0,
+            0
+          ],
+          "pass": true
+        },
+        {
+          "nz": false,
+          "mode": "dcp0",
+          "tokens": 127,
+          "mismatches": [
+            0,
+            0,
+            0,
+            0,
+            0
+          ],
+          "pass": true
+        },
+        {
+          "nz": false,
+          "mode": "dcp0",
+          "tokens": 128,
+          "mismatches": [
+            0,
+            0,
+            0,
+            0,
+            0
+          ],
+          "pass": true
+        },
+        {
+          "nz": false,
+          "mode": "dcp0",
+          "tokens": 129,
+          "mismatches": [
+            0,
+            0,
+            0,
+            0,
+            0
+          ],
+          "pass": true
+        },
+        {
+          "nz": false,
+          "mode": "dcp0",
+          "tokens": 257,
+          "mismatches": [
+            0,
+            0,
+            0,
+            0,
+            0
+          ],
+          "pass": true
+        },
+        {
+          "nz": false,
+          "mode": "dcp1",
+          "tokens": 0,
+          "mismatches": [
+            0,
+            0,
+            0,
+            0,
+            0
+          ],
+          "pass": true
+        },
+        {
+          "nz": false,
+          "mode": "dcp1",
+          "tokens": 1,
+          "mismatches": [
+            0,
+            0,
+            0,
+            0,
+            0
+          ],
+          "pass": true
+        },
+        {
+          "nz": false,
+          "mode": "dcp1",
+          "tokens": 17,
+          "mismatches": [
+            0,
+            0,
+            0,
+            0,
+            0
+          ],
+          "pass": true
+        },
+        {
+          "nz": false,
+          "mode": "dcp1",
+          "tokens": 127,
+          "mismatches": [
+            0,
+            0,
+            0,
+            0,
+            0
+          ],
+          "pass": true
+        },
+        {
+          "nz": false,
+          "mode": "dcp1",
+          "tokens": 128,
+          "mismatches": [
+            0,
+            0,
+            0,
+            0,
+            0
+          ],
+          "pass": true
+        },
+        {
+          "nz": false,
+          "mode": "dcp1",
+          "tokens": 129,
+          "mismatches": [
+            0,
+            0,
+            0,
+            0,
+            0
+          ],
+          "pass": true
+        },
+        {
+          "nz": false,
+          "mode": "dcp1",
+          "tokens": 257,
+          "mismatches": [
+            0,
+            0,
+            0,
+            0,
+            0
+          ],
+          "pass": true
+        },
+        {
+          "nz": false,
+          "mode": "draft",
+          "tokens": 0,
+          "mismatches": [
+            0,
+            0,
+            0,
+            0,
+            0
+          ],
+          "pass": true
+        },
+        {
+          "nz": false,
+          "mode": "draft",
+          "tokens": 1,
+          "mismatches": [
+            0,
+            0,
+            0,
+            0,
+            0
+          ],
+          "pass": true
+        },
+        {
+          "nz": false,
+          "mode": "draft",
+          "tokens": 17,
+          "mismatches": [
+            0,
+            0,
+            0,
+            0,
+            0
+          ],
+          "pass": true
+        },
+        {
+          "nz": false,
+          "mode": "draft",
+          "tokens": 127,
+          "mismatches": [
+            0,
+            0,
+            0,
+            0,
+            0
+          ],
+          "pass": true
+        },
+        {
+          "nz": false,
+          "mode": "draft",
+          "tokens": 128,
+          "mismatches": [
+            0,
+            0,
+            0,
+            0,
+            0
+          ],
+          "pass": true
+        },
+        {
+          "nz": false,
+          "mode": "draft",
+          "tokens": 129,
+          "mismatches": [
+            0,
+            0,
+            0,
+            0,
+            0
+          ],
+          "pass": true
+        },
+        {
+          "nz": false,
+          "mode": "draft",
+          "tokens": 257,
+          "mismatches": [
+            0,
+            0,
+            0,
+            0,
+            0
+          ],
+          "pass": true
+        },
+        {
+          "nz": false,
+          "mode": "packed",
+          "tokens": 0,
+          "mismatches": [
+            0,
+            0,
+            0,
+            0,
+            0,
+            0
+          ],
+          "pass": true
+        },
+        {
+          "nz": false,
+          "mode": "packed",
+          "tokens": 1,
+          "mismatches": [
+            0,
+            0,
+            0,
+            0,
+            0,
+            0
+          ],
+          "pass": true
+        },
+        {
+          "nz": false,
+          "mode": "packed",
+          "tokens": 17,
+          "mismatches": [
+            0,
+            0,
+            0,
+            0,
+            0,
+            0
+          ],
+          "pass": true
+        },
+        {
+          "nz": false,
+          "mode": "packed",
+          "tokens": 127,
+          "mismatches": [
+            0,
+            0,
+            0,
+            0,
+            0,
+            0
+          ],
+          "pass": true
+        },
+        {
+          "nz": false,
+          "mode": "packed",
+          "tokens": 128,
+          "mismatches": [
+            0,
+            0,
+            0,
+            0,
+            0,
+            0
+          ],
+          "pass": true
+        },
+        {
+          "nz": false,
+          "mode": "packed",
+          "tokens": 129,
+          "mismatches": [
+            0,
+            0,
+            0,
+            0,
+            0,
+            0
+          ],
+          "pass": true
+        },
+        {
+          "nz": false,
+          "mode": "packed",
+          "tokens": 257,
+          "mismatches": [
+            0,
+            0,
+            0,
+            0,
+            0,
+            0
+          ],
+          "pass": true
+        },
+        {
+          "nz": true,
+          "mode": "plain",
+          "tokens": 0,
+          "mismatches": [
+            0,
+            0,
+            0,
+            0,
+            0
+          ],
+          "pass": true
+        },
+        {
+          "nz": true,
+          "mode": "plain",
+          "tokens": 1,
+          "mismatches": [
+            1009,
+            125,
+            1007,
+            125,
+            0
+          ],
+          "pass": false
+        },
+        {
+          "nz": true,
+          "mode": "plain",
+          "tokens": 17,
+          "mismatches": [
+            16047,
+            2014,
+            16102,
+            2025,
+            0
+          ],
+          "pass": false
+        },
+        {
+          "nz": true,
+          "mode": "plain",
+          "tokens": 127,
+          "mismatches": [
+            66349,
+            8222,
+            66379,
+            8209,
+            0
+          ],
+          "pass": false
+        },
+        {
+          "nz": true,
+          "mode": "plain",
+          "tokens": 128,
+          "mismatches": [
+            67472,
+            8348,
+            67441,
+            8343,
+            0
+          ],
+          "pass": false
+        },
+        {
+          "nz": true,
+          "mode": "plain",
+          "tokens": 129,
+          "mismatches": [
+            68452,
+            8467,
+            68435,
+            8461,
+            0
+          ],
+          "pass": false
+        },
+        {
+          "nz": true,
+          "mode": "plain",
+          "tokens": 257,
+          "mismatches": [
+            132960,
+            16541,
+            132993,
+            16542,
+            0
+          ],
+          "pass": false
+        },
+        {
+          "nz": true,
+          "mode": "dcp0",
+          "tokens": 0,
+          "mismatches": [
+            0,
+            0,
+            0,
+            0,
+            0
+          ],
+          "pass": true
+        },
+        {
+          "nz": true,
+          "mode": "dcp0",
+          "tokens": 1,
+          "mismatches": [
+            1012,
+            126,
+            1003,
+            126,
+            0
+          ],
+          "pass": false
+        },
+        {
+          "nz": true,
+          "mode": "dcp0",
+          "tokens": 17,
+          "mismatches": [
+            15024,
+            1890,
+            14985,
+            1889,
+            0
+          ],
+          "pass": false
+        },
+        {
+          "nz": true,
+          "mode": "dcp0",
+          "tokens": 127,
+          "mismatches": [
+            2934,
+            286,
+            2928,
+            283,
+            0
+          ],
+          "pass": false
+        },
+        {
+          "nz": true,
+          "mode": "dcp0",
+          "tokens": 128,
+          "mismatches": [
+            2929,
+            279,
+            2936,
+            282,
+            0
+          ],
+          "pass": false
+        },
+        {
+          "nz": true,
+          "mode": "dcp0",
+          "tokens": 129,
+          "mismatches": [
+            2935,
+            279,
+            2933,
+            280,
+            0
+          ],
+          "pass": false
+        },
+        {
+          "nz": true,
+          "mode": "dcp0",
+          "tokens": 257,
+          "mismatches": [
+            6836,
+            654,
+            6832,
+            666,
+            0
+          ],
+          "pass": false
+        },
+        {
+          "nz": true,
+          "mode": "dcp1",
+          "tokens": 0,
+          "mismatches": [
+            0,
+            0,
+            0,
+            0,
+            0
+          ],
+          "pass": true
+        },
+        {
+          "nz": true,
+          "mode": "dcp1",
+          "tokens": 1,
+          "mismatches": [
+            0,
+            0,
+            0,
+            0,
+            0
+          ],
+          "pass": true
+        },
+        {
+          "nz": true,
+          "mode": "dcp1",
+          "tokens": 17,
+          "mismatches": [
+            0,
+            0,
+            0,
+            0,
+            0
+          ],
+          "pass": true
+        },
+        {
+          "nz": true,
+          "mode": "dcp1",
+          "tokens": 127,
+          "mismatches": [
+            1940,
+            190,
+            1952,
+            190,
+            0
+          ],
+          "pass": false
+        },
+        {
+          "nz": true,
+          "mode": "dcp1",
+          "tokens": 128,
+          "mismatches": [
+            2926,
+            284,
+            2935,
+            281,
+            0
+          ],
+          "pass": false
+        },
+        {
+          "nz": true,
+          "mode": "dcp1",
+          "tokens": 129,
+          "mismatches": [
+            3917,
+            376,
+            3907,
+            376,
+            0
+          ],
+          "pass": false
+        },
+        {
+          "nz": true,
+          "mode": "dcp1",
+          "tokens": 257,
+          "mismatches": [
+            0,
+            0,
+            0,
+            0,
+            0
+          ],
+          "pass": true
+        },
+        {
+          "nz": true,
+          "mode": "draft",
+          "tokens": 0,
+          "mismatches": [
+            0,
+            0,
+            0,
+            0,
+            0
+          ],
+          "pass": true
+        },
+        {
+          "nz": true,
+          "mode": "draft",
+          "tokens": 1,
+          "mismatches": [
+            1009,
+            128,
+            1005,
+            127,
+            0
+          ],
+          "pass": false
+        },
+        {
+          "nz": true,
+          "mode": "draft",
+          "tokens": 17,
+          "mismatches": [
+            16078,
+            2019,
+            16080,
+            2025,
+            0
+          ],
+          "pass": false
+        },
+        {
+          "nz": true,
+          "mode": "draft",
+          "tokens": 127,
+          "mismatches": [
+            66469,
+            8230,
+            66378,
+            8260,
+            0
+          ],
+          "pass": false
+        },
+        {
+          "nz": true,
+          "mode": "draft",
+          "tokens": 128,
+          "mismatches": [
+            67378,
+            8335,
+            67484,
+            8339,
+            0
+          ],
+          "pass": false
+        },
+        {
+          "nz": true,
+          "mode": "draft",
+          "tokens": 129,
+          "mismatches": [
+            68465,
+            8455,
+            68424,
+            8463,
+            0
+          ],
+          "pass": false
+        },
+        {
+          "nz": true,
+          "mode": "draft",
+          "tokens": 257,
+          "mismatches": [
+            132951,
+            16508,
+            132886,
+            16535,
+            0
+          ],
+          "pass": false
+        },
+        {
+          "nz": true,
+          "mode": "packed",
+          "tokens": 0,
+          "mismatches": [
+            0,
+            0,
+            0,
+            0,
+            0,
+            0
+          ],
+          "pass": true
+        },
+        {
+          "nz": true,
+          "mode": "packed",
+          "tokens": 1,
+          "mismatches": [
+            0,
+            0,
+            0,
+            0,
+            0,
+            0
+          ],
+          "pass": true
+        },
+        {
+          "nz": true,
+          "mode": "packed",
+          "tokens": 17,
+          "mismatches": [
+            0,
+            0,
+            0,
+            0,
+            0,
+            0
+          ],
+          "pass": true
+        },
+        {
+          "nz": true,
+          "mode": "packed",
+          "tokens": 127,
+          "mismatches": [
+            0,
+            0,
+            0,
+            0,
+            0,
+            0
+          ],
+          "pass": true
+        },
+        {
+          "nz": true,
+          "mode": "packed",
+          "tokens": 128,
+          "mismatches": [
+            0,
+            0,
+            0,
+            0,
+            0,
+            0
+          ],
+          "pass": true
+        },
+        {
+          "nz": true,
+          "mode": "packed",
+          "tokens": 129,
+          "mismatches": [
+            0,
+            0,
+            0,
+            0,
+            0,
+            0
+          ],
+          "pass": true
+        },
+        {
+          "nz": true,
+          "mode": "packed",
+          "tokens": 257,
+          "mismatches": [
+            0,
+            0,
+            0,
+            0,
+            0,
+            0
+          ],
+          "pass": true
+        }
+      ]
+    },
+    "after.py": {
+      "sha256": "6b21834d544f8bbf520fe4d3580a4ee21f2e3593dcf70061e589abfd55b47e53",
+      "passed": 70,
+      "total": 70,
+      "cases": [
+        {
+          "nz": false,
+          "mode": "plain",
+          "tokens": 0,
+          "mismatches": [
+            0,
+            0,
+            0,
+            0,
+            0
+          ],
+          "pass": true
+        },
+        {
+          "nz": false,
+          "mode": "plain",
+          "tokens": 1,
+          "mismatches": [
+            0,
+            0,
+            0,
+            0,
+            0
+          ],
+          "pass": true
+        },
+        {
+          "nz": false,
+          "mode": "plain",
+          "tokens": 17,
+          "mismatches": [
+            0,
+            0,
+            0,
+            0,
+            0
+          ],
+          "pass": true
+        },
+        {
+          "nz": false,
+          "mode": "plain",
+          "tokens": 127,
+          "mismatches": [
+            0,
+            0,
+            0,
+            0,
+            0
+          ],
+          "pass": true
+        },
+        {
+          "nz": false,
+          "mode": "plain",
+          "tokens": 128,
+          "mismatches": [
+            0,
+            0,
+            0,
+            0,
+            0
+          ],
+          "pass": true
+        },
+        {
+          "nz": false,
+          "mode": "plain",
+          "tokens": 129,
+          "mismatches": [
+            0,
+            0,
+            0,
+            0,
+            0
+          ],
+          "pass": true
+        },
+        {
+          "nz": false,
+          "mode": "plain",
+          "tokens": 257,
+          "mismatches": [
+            0,
+            0,
+            0,
+            0,
+            0
+          ],
+          "pass": true
+        },
+        {
+          "nz": false,
+          "mode": "dcp0",
+          "tokens": 0,
+          "mismatches": [
+            0,
+            0,
+            0,
+            0,
+            0
+          ],
+          "pass": true
+        },
+        {
+          "nz": false,
+          "mode": "dcp0",
+          "tokens": 1,
+          "mismatches": [
+            0,
+            0,
+            0,
+            0,
+            0
+          ],
+          "pass": true
+        },
+        {
+          "nz": false,
+          "mode": "dcp0",
+          "tokens": 17,
+          "mismatches": [
+            0,
+            0,
+            0,
+            0,
+            0
+          ],
+          "pass": true
+        },
+        {
+          "nz": false,
+          "mode": "dcp0",
+          "tokens": 127,
+          "mismatches": [
+            0,
+            0,
+            0,
+            0,
+            0
+          ],
+          "pass": true
+        },
+        {
+          "nz": false,
+          "mode": "dcp0",
+          "tokens": 128,
+          "mismatches": [
+            0,
+            0,
+            0,
+            0,
+            0
+          ],
+          "pass": true
+        },
+        {
+          "nz": false,
+          "mode": "dcp0",
+          "tokens": 129,
+          "mismatches": [
+            0,
+            0,
+            0,
+            0,
+            0
+          ],
+          "pass": true
+        },
+        {
+          "nz": false,
+          "mode": "dcp0",
+          "tokens": 257,
+          "mismatches": [
+            0,
+            0,
+            0,
+            0,
+            0
+          ],
+          "pass": true
+        },
+        {
+          "nz": false,
+          "mode": "dcp1",
+          "tokens": 0,
+          "mismatches": [
+            0,
+            0,
+            0,
+            0,
+            0
+          ],
+          "pass": true
+        },
+        {
+          "nz": false,
+          "mode": "dcp1",
+          "tokens": 1,
+          "mismatches": [
+            0,
+            0,
+            0,
+            0,
+            0
+          ],
+          "pass": true
+        },
+        {
+          "nz": false,
+          "mode": "dcp1",
+          "tokens": 17,
+          "mismatches": [
+            0,
+            0,
+            0,
+            0,
+            0
+          ],
+          "pass": true
+        },
+        {
+          "nz": false,
+          "mode": "dcp1",
+          "tokens": 127,
+          "mismatches": [
+            0,
+            0,
+            0,
+            0,
+            0
+          ],
+          "pass": true
+        },
+        {
+          "nz": false,
+          "mode": "dcp1",
+          "tokens": 128,
+          "mismatches": [
+            0,
+            0,
+            0,
+            0,
+            0
+          ],
+          "pass": true
+        },
+        {
+          "nz": false,
+          "mode": "dcp1",
+          "tokens": 129,
+          "mismatches": [
+            0,
+            0,
+            0,
+            0,
+            0
+          ],
+          "pass": true
+        },
+        {
+          "nz": false,
+          "mode": "dcp1",
+          "tokens": 257,
+          "mismatches": [
+            0,
+            0,
+            0,
+            0,
+            0
+          ],
+          "pass": true
+        },
+        {
+          "nz": false,
+          "mode": "draft",
+          "tokens": 0,
+          "mismatches": [
+            0,
+            0,
+            0,
+            0,
+            0
+          ],
+          "pass": true
+        },
+        {
+          "nz": false,
+          "mode": "draft",
+          "tokens": 1,
+          "mismatches": [
+            0,
+            0,
+            0,
+            0,
+            0
+          ],
+          "pass": true
+        },
+        {
+          "nz": false,
+          "mode": "draft",
+          "tokens": 17,
+          "mismatches": [
+            0,
+            0,
+            0,
+            0,
+            0
+          ],
+          "pass": true
+        },
+        {
+          "nz": false,
+          "mode": "draft",
+          "tokens": 127,
+          "mismatches": [
+            0,
+            0,
+            0,
+            0,
+            0
+          ],
+          "pass": true
+        },
+        {
+          "nz": false,
+          "mode": "draft",
+          "tokens": 128,
+          "mismatches": [
+            0,
+            0,
+            0,
+            0,
+            0
+          ],
+          "pass": true
+        },
+        {
+          "nz": false,
+          "mode": "draft",
+          "tokens": 129,
+          "mismatches": [
+            0,
+            0,
+            0,
+            0,
+            0
+          ],
+          "pass": true
+        },
+        {
+          "nz": false,
+          "mode": "draft",
+          "tokens": 257,
+          "mismatches": [
+            0,
+            0,
+            0,
+            0,
+            0
+          ],
+          "pass": true
+        },
+        {
+          "nz": false,
+          "mode": "packed",
+          "tokens": 0,
+          "mismatches": [
+            0,
+            0,
+            0,
+            0,
+            0,
+            0
+          ],
+          "pass": true
+        },
+        {
+          "nz": false,
+          "mode": "packed",
+          "tokens": 1,
+          "mismatches": [
+            0,
+            0,
+            0,
+            0,
+            0,
+            0
+          ],
+          "pass": true
+        },
+        {
+          "nz": false,
+          "mode": "packed",
+          "tokens": 17,
+          "mismatches": [
+            0,
+            0,
+            0,
+            0,
+            0,
+            0
+          ],
+          "pass": true
+        },
+        {
+          "nz": false,
+          "mode": "packed",
+          "tokens": 127,
+          "mismatches": [
+            0,
+            0,
+            0,
+            0,
+            0,
+            0
+          ],
+          "pass": true
+        },
+        {
+          "nz": false,
+          "mode": "packed",
+          "tokens": 128,
+          "mismatches": [
+            0,
+            0,
+            0,
+            0,
+            0,
+            0
+          ],
+          "pass": true
+        },
+        {
+          "nz": false,
+          "mode": "packed",
+          "tokens": 129,
+          "mismatches": [
+            0,
+            0,
+            0,
+            0,
+            0,
+            0
+          ],
+          "pass": true
+        },
+        {
+          "nz": false,
+          "mode": "packed",
+          "tokens": 257,
+          "mismatches": [
+            0,
+            0,
+            0,
+            0,
+            0,
+            0
+          ],
+          "pass": true
+        },
+        {
+          "nz": true,
+          "mode": "plain",
+          "tokens": 0,
+          "mismatches": [
+            0,
+            0,
+            0,
+            0,
+            0
+          ],
+          "pass": true
+        },
+        {
+          "nz": true,
+          "mode": "plain",
+          "tokens": 1,
+          "mismatches": [
+            0,
+            0,
+            0,
+            0,
+            0
+          ],
+          "pass": true
+        },
+        {
+          "nz": true,
+          "mode": "plain",
+          "tokens": 17,
+          "mismatches": [
+            0,
+            0,
+            0,
+            0,
+            0
+          ],
+          "pass": true
+        },
+        {
+          "nz": true,
+          "mode": "plain",
+          "tokens": 127,
+          "mismatches": [
+            0,
+            0,
+            0,
+            0,
+            0
+          ],
+          "pass": true
+        },
+        {
+          "nz": true,
+          "mode": "plain",
+          "tokens": 128,
+          "mismatches": [
+            0,
+            0,
+            0,
+            0,
+            0
+          ],
+          "pass": true
+        },
+        {
+          "nz": true,
+          "mode": "plain",
+          "tokens": 129,
+          "mismatches": [
+            0,
+            0,
+            0,
+            0,
+            0
+          ],
+          "pass": true
+        },
+        {
+          "nz": true,
+          "mode": "plain",
+          "tokens": 257,
+          "mismatches": [
+            0,
+            0,
+            0,
+            0,
+            0
+          ],
+          "pass": true
+        },
+        {
+          "nz": true,
+          "mode": "dcp0",
+          "tokens": 0,
+          "mismatches": [
+            0,
+            0,
+            0,
+            0,
+            0
+          ],
+          "pass": true
+        },
+        {
+          "nz": true,
+          "mode": "dcp0",
+          "tokens": 1,
+          "mismatches": [
+            0,
+            0,
+            0,
+            0,
+            0
+          ],
+          "pass": true
+        },
+        {
+          "nz": true,
+          "mode": "dcp0",
+          "tokens": 17,
+          "mismatches": [
+            0,
+            0,
+            0,
+            0,
+            0
+          ],
+          "pass": true
+        },
+        {
+          "nz": true,
+          "mode": "dcp0",
+          "tokens": 127,
+          "mismatches": [
+            0,
+            0,
+            0,
+            0,
+            0
+          ],
+          "pass": true
+        },
+        {
+          "nz": true,
+          "mode": "dcp0",
+          "tokens": 128,
+          "mismatches": [
+            0,
+            0,
+            0,
+            0,
+            0
+          ],
+          "pass": true
+        },
+        {
+          "nz": true,
+          "mode": "dcp0",
+          "tokens": 129,
+          "mismatches": [
+            0,
+            0,
+            0,
+            0,
+            0
+          ],
+          "pass": true
+        },
+        {
+          "nz": true,
+          "mode": "dcp0",
+          "tokens": 257,
+          "mismatches": [
+            0,
+            0,
+            0,
+            0,
+            0
+          ],
+          "pass": true
+        },
+        {
+          "nz": true,
+          "mode": "dcp1",
+          "tokens": 0,
+          "mismatches": [
+            0,
+            0,
+            0,
+            0,
+            0
+          ],
+          "pass": true
+        },
+        {
+          "nz": true,
+          "mode": "dcp1",
+          "tokens": 1,
+          "mismatches": [
+            0,
+            0,
+            0,
+            0,
+            0
+          ],
+          "pass": true
+        },
+        {
+          "nz": true,
+          "mode": "dcp1",
+          "tokens": 17,
+          "mismatches": [
+            0,
+            0,
+            0,
+            0,
+            0
+          ],
+          "pass": true
+        },
+        {
+          "nz": true,
+          "mode": "dcp1",
+          "tokens": 127,
+          "mismatches": [
+            0,
+            0,
+            0,
+            0,
+            0
+          ],
+          "pass": true
+        },
+        {
+          "nz": true,
+          "mode": "dcp1",
+          "tokens": 128,
+          "mismatches": [
+            0,
+            0,
+            0,
+            0,
+            0
+          ],
+          "pass": true
+        },
+        {
+          "nz": true,
+          "mode": "dcp1",
+          "tokens": 129,
+          "mismatches": [
+            0,
+            0,
+            0,
+            0,
+            0
+          ],
+          "pass": true
+        },
+        {
+          "nz": true,
+          "mode": "dcp1",
+          "tokens": 257,
+          "mismatches": [
+            0,
+            0,
+            0,
+            0,
+            0
+          ],
+          "pass": true
+        },
+        {
+          "nz": true,
+          "mode": "draft",
+          "tokens": 0,
+          "mismatches": [
+            0,
+            0,
+            0,
+            0,
+            0
+          ],
+          "pass": true
+        },
+        {
+          "nz": true,
+          "mode": "draft",
+          "tokens": 1,
+          "mismatches": [
+            0,
+            0,
+            0,
+            0,
+            0
+          ],
+          "pass": true
+        },
+        {
+          "nz": true,
+          "mode": "draft",
+          "tokens": 17,
+          "mismatches": [
+            0,
+            0,
+            0,
+            0,
+            0
+          ],
+          "pass": true
+        },
+        {
+          "nz": true,
+          "mode": "draft",
+          "tokens": 127,
+          "mismatches": [
+            0,
+            0,
+            0,
+            0,
+            0
+          ],
+          "pass": true
+        },
+        {
+          "nz": true,
+          "mode": "draft",
+          "tokens": 128,
+          "mismatches": [
+            0,
+            0,
+            0,
+            0,
+            0
+          ],
+          "pass": true
+        },
+        {
+          "nz": true,
+          "mode": "draft",
+          "tokens": 129,
+          "mismatches": [
+            0,
+            0,
+            0,
+            0,
+            0
+          ],
+          "pass": true
+        },
+        {
+          "nz": true,
+          "mode": "draft",
+          "tokens": 257,
+          "mismatches": [
+            0,
+            0,
+            0,
+            0,
+            0
+          ],
+          "pass": true
+        },
+        {
+          "nz": true,
+          "mode": "packed",
+          "tokens": 0,
+          "mismatches": [
+            0,
+            0,
+            0,
+            0,
+            0,
+            0
+          ],
+          "pass": true
+        },
+        {
+          "nz": true,
+          "mode": "packed",
+          "tokens": 1,
+          "mismatches": [
+            0,
+            0,
+            0,
+            0,
+            0,
+            0
+          ],
+          "pass": true
+        },
+        {
+          "nz": true,
+          "mode": "packed",
+          "tokens": 17,
+          "mismatches": [
+            0,
+            0,
+            0,
+            0,
+            0,
+            0
+          ],
+          "pass": true
+        },
+        {
+          "nz": true,
+          "mode": "packed",
+          "tokens": 127,
+          "mismatches": [
+            0,
+            0,
+            0,
+            0,
+            0,
+            0
+          ],
+          "pass": true
+        },
+        {
+          "nz": true,
+          "mode": "packed",
+          "tokens": 128,
+          "mismatches": [
+            0,
+            0,
+            0,
+            0,
+            0,
+            0
+          ],
+          "pass": true
+        },
+        {
+          "nz": true,
+          "mode": "packed",
+          "tokens": 129,
+          "mismatches": [
+            0,
+            0,
+            0,
+            0,
+            0,
+            0
+          ],
+          "pass": true
+        },
+        {
+          "nz": true,
+          "mode": "packed",
+          "tokens": 257,
+          "mismatches": [
+            0,
+            0,
+            0,
+            0,
+            0,
+            0
+          ],
+          "pass": true
+        }
+      ]
+    }
+  }
+}
