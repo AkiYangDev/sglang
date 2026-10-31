@@ -1,0 +1,19 @@
+{
+  "device": "npu",
+  "torch": "2.10.0+cpu",
+  "prefill_cases_passed": 168,
+  "mode_controls_passed": 4,
+  "tensor_cpu_calls": {
+    "before": 168,
+    "after": 0
+  },
+  "device_to_host_cpu_calls": {
+    "before": 168,
+    "after": 0
+  },
+  "source_sha256": {
+    "before.py": "66e8e57f575fe1739d5d22c4b8ae3129a53e33fc4b73d3958b3428906aaddbee",
+    "after.py": "a9ae68d13f76a7a10108e43fa8173f07addd5b051bcee24b8ff3fb7c1b487aea"
+  },
+  "scope": "Actual init and prefill methods; parent metadata, unrelated kernels and outer dispatch scaffolded. Independent CPU position oracle. No model, graph or timing test."
+}
