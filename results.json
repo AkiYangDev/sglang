@@ -1,0 +1,122 @@
+{
+  "versions": [
+    "2.10.0+cpu",
+    "2.10.0.post6"
+  ],
+  "controls": [
+    [
+      null,
+      0,
+      0,
+      1048576
+    ],
+    [
+      1048576,
+      6,
+      6,
+      1048576
+    ],
+    [
+      2097152,
+      6,
+      6,
+      1048576
+    ],
+    [
+      32768,
+      0,
+      0,
+      33024
+    ],
+    [
+      139264,
+      6,
+      6,
+      139648
+    ],
+    [
+      139264,
+      6,
+      16,
+      140032
+    ],
+    [
+      1048500,
+      6,
+      6,
+      1048576
+    ],
+    [
+      1,
+      0,
+      0,
+      384
+    ]
+  ],
+  "gather_cases_exact": 24,
+  "full_table_pairs_exact": 12,
+  "changed_position_graph_replays_exact": 4,
+  "allocation": [
+    {
+      "rows": 1048576,
+      "main_bytes": 2684361728,
+      "without_real_imag_copies_bytes": 2147488768
+    },
+    {
+      "rows": 139648,
+      "main_bytes": 365497344,
+      "without_real_imag_copies_bytes": 289999872
+    },
+    {
+      "rows": 33024,
+      "main_bytes": 84548608,
+      "without_real_imag_copies_bytes": 67638272
+    }
+  ],
+  "scope": "RoPE tables only; synthetic runtime config; no full model or compressor execution",
+  "initializer": {
+    "initializer_cases": [
+      [
+        true,
+        0,
+        2432
+      ],
+      [
+        true,
+        4,
+        2432
+      ],
+      [
+        true,
+        128,
+        2432
+      ],
+      [
+        false,
+        0,
+        8192
+      ],
+      [
+        false,
+        4,
+        8192
+      ],
+      [
+        false,
+        128,
+        8192
+      ]
+    ],
+    "npu_default_device_prefix_exact": true,
+    "scope": "production initializer RoPE section; unrelated projections omitted"
+  },
+  "head": "099c2c23047f41cfa251881d7961f1e3effbd572",
+  "base": "bebee560cc2ba9a322b0ca79ee6da3c13160cf39",
+  "files_sha256": {
+    "context_freqs.py": "12604cd2ea6ca48c2c1bdbb0a76b7f37909e6b0da96925e0617f1b86277025ea",
+    "context_init.py": "542c28d557946b6eb9f46d44722c68cd46e8336852980425a28806df11357833",
+    "context_integration.py": "266eb87dfbd5562b06d149b43aba7622df405509c1557d7c1bb5ab6aecb4dce3",
+    "context_probe.py": "f7bf740328df934f78411a3ceae4734c60a43e7e0869d608b2f03beccfca67aa",
+    "context_rope.py": "a557f5b0033d039857973dcaa86cf991f3c27491f9aadb3a8fcfdb98bd67c01a"
+  }
+}
