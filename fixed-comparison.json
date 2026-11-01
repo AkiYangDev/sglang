@@ -1,0 +1,125 @@
+{
+  "FIXED_ON": {
+    "status": "COMPLETED",
+    "fixture_sha256": "05aeafabe881a70336d3a454b21f68e31bf296849abaf98e7db62eeee55b0be9",
+    "retraction_cutpoints": [
+      64,
+      64
+    ],
+    "retractions": [
+      0,
+      1,
+      1
+    ],
+    "repeat_ids_firstdiff": null,
+    "repeat_logprobs_firstdiff": null,
+    "vs_control": [
+      87,
+      87
+    ],
+    "metrics": [
+      {
+        "round": 0,
+        "output": 300,
+        "e2e_s": 7.245812654495239,
+        "correct": 206,
+        "proposed": 480,
+        "verify": 96,
+        "AL": 3.125,
+        "strict_AR": 0.42916666666666664
+      },
+      {
+        "round": 1,
+        "output": 300,
+        "e2e_s": 9.389333724975586,
+        "correct": 203,
+        "proposed": 500,
+        "verify": 100,
+        "AL": 3.0,
+        "strict_AR": 0.406
+      },
+      {
+        "round": 2,
+        "output": 300,
+        "e2e_s": 9.516448974609375,
+        "correct": 203,
+        "proposed": 500,
+        "verify": 100,
+        "AL": 3.0,
+        "strict_AR": 0.406
+      }
+    ]
+  },
+  "FIXED_BASE": {
+    "status": "COMPLETED",
+    "fixture_sha256": "05aeafabe881a70336d3a454b21f68e31bf296849abaf98e7db62eeee55b0be9",
+    "retraction_cutpoints": [
+      64,
+      64
+    ],
+    "retractions": [
+      0,
+      1,
+      1
+    ],
+    "repeat_ids_firstdiff": null,
+    "repeat_logprobs_firstdiff": null,
+    "vs_control": [
+      87,
+      87
+    ],
+    "metrics": [
+      {
+        "round": 0,
+        "output": 300,
+        "e2e_s": 6.9404778480529785,
+        "correct": 206,
+        "proposed": 480,
+        "verify": 96,
+        "AL": 3.125,
+        "strict_AR": 0.42916666666666664
+      },
+      {
+        "round": 1,
+        "output": 300,
+        "e2e_s": 9.41934609413147,
+        "correct": 203,
+        "proposed": 500,
+        "verify": 100,
+        "AL": 3.0,
+        "strict_AR": 0.406
+      },
+      {
+        "round": 2,
+        "output": 300,
+        "e2e_s": 9.644299030303955,
+        "correct": 203,
+        "proposed": 500,
+        "verify": 100,
+        "AL": 3.0,
+        "strict_AR": 0.406
+      }
+    ]
+  },
+  "cross_arm": {
+    "cutpoint_prefixes_equal": true,
+    "fixture_equal": true,
+    "comparisons": [
+      {
+        "round": 0,
+        "tokens_firstdiff": null,
+        "logprobs_firstdiff": null
+      },
+      {
+        "round": 1,
+        "tokens_firstdiff": null,
+        "logprobs_firstdiff": null
+      },
+      {
+        "round": 2,
+        "tokens_firstdiff": null,
+        "logprobs_firstdiff": null
+      }
+    ]
+  }
+}
