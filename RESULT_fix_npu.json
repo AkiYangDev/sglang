@@ -1,0 +1,12 @@
+{
+  "device": "npu",
+  "torch_version": "2.10.0+cpu",
+  "cases_passed": 432,
+  "conversion_calls_removed": 54,
+  "nonempty_cases_with_one_call_removed": 36,
+  "source_sha256": {
+    "before.py": "66e8e57f575fe1739d5d22c4b8ae3129a53e33fc4b73d3958b3428906aaddbee",
+    "after.py": "2b826c8fe619a926961737703f2826a252bc9cbe5d18442fdae9147ed709b086"
+  },
+  "scope": "Actual before/after methods with metadata fixtures and independent length oracle. CPU conversion-call counts are not physical H2D measurements. No captured graph, model or timing test."
+}

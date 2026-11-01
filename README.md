@@ -14,9 +14,13 @@ created by the context builder. Other branches retain their existing copy.
 36 nonempty cases remove one conversion call each; 18 empty cases also
 remove a call. No numerical difference was found in these fixture tests.
 
-No NPU run was performed because available devices had resident workloads.
+CPU and real Ascend NPU runs each passed all 432 cases, using identical source
+hashes. NPU environment: torch 2.10.0+cpu and torch_npu 2.10.0.post6.
+The NPU test executes real device copies and device operations, with results
+copied back and checked against the independent oracle. Copy counts are
+instrumented Tensor.to calls, not profiler measurements.
 No captured-graph replay, full model, TTFT/TPOT or timing validation is claimed.
-The script also accepts `npu` for a future device run with torch_npu.
+Run `python validate_fix.py npu` with torch_npu to repeat the device test.
 
 validation.png is a report generated from saved results, not a terminal screenshot.
 This evidence branch is separate from the production PR.
