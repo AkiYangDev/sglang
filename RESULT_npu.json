@@ -1,0 +1,28 @@
+{
+  "device": "npu",
+  "checks": 144,
+  "exact": true,
+  "memory": [
+    {
+      "implementation": "before",
+      "positions": 262144,
+      "tables": 2,
+      "live_bytes": 671095808
+    },
+    {
+      "implementation": "after",
+      "positions": 262144,
+      "tables": 2,
+      "live_bytes": 536876032
+    }
+  ],
+  "graph": "2 changed-position replays exact",
+  "saved_payload_bytes": 134217728,
+  "allocator_padding_delta_bytes": 2048,
+  "measured_saved_bytes": 134219776,
+  "projected_saved_bytes_1M_two_tables": 536870912,
+  "versions": {
+    "torch": "2.10.0+cpu",
+    "torch_npu": "2.10.0.post6"
+  }
+}

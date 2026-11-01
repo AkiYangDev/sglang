@@ -1,0 +1,7 @@
+{
+  "device": "cpu",
+  "checks": 144,
+  "exact": true,
+  "memory": [],
+  "graph": null
+}
