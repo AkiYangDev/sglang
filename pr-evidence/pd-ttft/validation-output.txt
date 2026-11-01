@@ -1,0 +1,17 @@
+PD non-streaming first-token timestamp
+Selected output from CPU validation; rendered from saved logs
+
+Unmodified source: delayed internal output used as first-token time
+AssertionError: 2.0035304490011185 second difference
+1 failed, 14 warnings in 13.37s
+
+Patched source: handoff -> pickle/msgpack -> real output handler
+114 passed, 14 warnings in 15.09s
+ALL_PASS
+
+Includes first-write/retraction, unset metrics, old wire defaults,
+Python handler, Rust decode latency and existing regression suites.
+Warnings: existing torch.jit.script_method deprecation.
+
+CPU component validation; no post-patch model/PD transfer benchmark.
+Production diff: 4 files. No test files in PR.
