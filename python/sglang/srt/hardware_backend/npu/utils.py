@@ -231,7 +231,6 @@ def init_npu_backend():
             e,
         )
 
-
     import torch_npu
 
     # These imports lead to unpredictable behavior in diffusion models
