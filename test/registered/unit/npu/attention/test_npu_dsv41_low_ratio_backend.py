@@ -717,6 +717,28 @@ class TestRatioMetadata(unittest.TestCase):
 
 
 class TestGraphBuffers(unittest.TestCase):
+    def test_verify_candidate_metadata_has_one_length_per_query(self):
+        backend = _low_ratio_backend(ratios=(1, 2, 1))
+        backend._dsv41_candidate_source_layer = 1
+        backend._dsv41_index_source_layers = (1, 3)
+        backend._dsv41_candidate_block_size = 8
+        backend._dsv41_candidate_topk_blocks = 16
+
+        def schedule(*, candidate_block_length, cu_seqlens_q, **kwargs):
+            self.assertEqual(candidate_block_length.numel(), int(cu_seqlens_q[-1]))
+            return torch.zeros(1024, dtype=torch.int32)
+
+        with patch.object(DS41, "quant_sparse_lightning_indexer_metadata", schedule):
+            for bs, width in ((1, 1), (1, 2), (2, 6)):
+                with self.subTest(bs=bs, width=width):
+                    metadata = SimpleNamespace(
+                        block_tables=torch.zeros((bs, 2), dtype=torch.int32),
+                        kernel_metadata={},
+                    )
+                    _seed_graph_index_page_tables(backend, bs=bs, cols=2)
+                    backend._init_dsv41_graph_metadata(metadata, bs, width, "cpu")
+
+
     def test_init_allocates_stable_buffers_and_dispatch_tables(self):
         backend = _low_ratio_backend()
         metadata = SimpleNamespace(block_tables=torch.zeros((4, 2), dtype=torch.int32))
