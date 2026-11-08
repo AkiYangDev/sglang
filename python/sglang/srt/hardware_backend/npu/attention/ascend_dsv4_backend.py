@@ -1770,7 +1770,10 @@ class LowRatioCompressAscendBackendMixin:
         if buf is None or buf.shape[0] != t:
             buf = torch.empty((t, 1), dtype=torch.int32, device=positions.device)
             setattr(fm, f"dsv41_cmp_topk_length_c{ratio}", buf)
-        lens = ((positions + 1) // ratio).clamp_max(int(self._dsv4_index_topk))
+        lens = positions + 1
+        if ratio != 1:
+            lens = lens // ratio
+        lens = lens.clamp_max(int(self._dsv4_index_topk))
         # Same dead-row rule as _dsv41_window_indices: a row with no live KV
         # has length 0, not (0 + 1)//ratio.
         live_rows = self._dsv41_live_rows_for(fm, forward_batch, t)
