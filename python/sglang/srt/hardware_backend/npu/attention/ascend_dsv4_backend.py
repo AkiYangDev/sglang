@@ -1522,12 +1522,23 @@ class LowRatioCompressAscendBackendMixin:
         first.
         """
         fm = self.forward_metadata
-        kv_lens = self._dsv41_qli_kv_lens(forward_batch)
         cu_seqlens_q = fm.actual_seq_lengths_q_pa
         if cu_seqlens_q is None:
             return {}
+        kv_lens = self._dsv41_qli_kv_lens(forward_batch)
         ds41 = _ds41_ops()
         out: dict = {}
+        lengths_by_ratio = {}
+
+        def lengths_for_ratio(ratio):
+            # Scheduling inputs are read-only. Reuse within this build only;
+            # the next graph refresh must read its own live lengths.
+            if ratio not in lengths_by_ratio:
+                lengths_by_ratio[ratio] = (
+                    (kv_lens if ratio == 1 else kv_lens // ratio).to(torch.int32),
+                    None if ratio == 1 else (kv_lens % ratio).to(torch.int32),
+                )
+            return lengths_by_ratio[ratio]
 
         def keep(key: str, metadata: torch.Tensor) -> None:
             # aclgraph binds the address at capture: refresh in place.
@@ -1539,7 +1550,7 @@ class LowRatioCompressAscendBackendMixin:
 
         batch_size = int(forward_batch.batch_size)
         for ratio in self._dsv41_low_ratios():
-            cmp_lens = (kv_lens // ratio).to(torch.int32)
+            cmp_lens, cmp_residual = lengths_for_ratio(ratio)
             keep(
                 f"c{ratio}a_qli_metadata",
                 ds41.quant_lightning_indexer_metadata(
@@ -1547,9 +1558,7 @@ class LowRatioCompressAscendBackendMixin:
                     seqused_q=None,
                     seqused_k=cmp_lens,
                     # mask_mode=3 + cmp_ratio != 1 requires the residual (README).
-                    cmp_residual_k=(
-                        None if ratio == 1 else (kv_lens % ratio).to(torch.int32)
-                    ),
+                    cmp_residual_k=cmp_residual,
                     batch_size=batch_size,
                     num_heads_q=self._dsv4_index_n_heads,
                     num_heads_k=1,
@@ -1570,7 +1579,7 @@ class LowRatioCompressAscendBackendMixin:
                     f"candidate_topk_blocks/candidate_block_size "
                     f"({self._dsv41_candidate_topk_blocks}/{block})."
                 )
-            cmp_lens = (kv_lens // candidate_ratio).to(torch.int32)
+            cmp_lens, cmp_residual = lengths_for_ratio(candidate_ratio)
             # Level one publishes blocks, so its dispatch table is a separate
             # instance from the plain per-ratio one.
             keep(
@@ -1579,11 +1588,7 @@ class LowRatioCompressAscendBackendMixin:
                     cu_seqlens_q=cu_seqlens_q,
                     seqused_q=None,
                     seqused_k=cmp_lens,
-                    cmp_residual_k=(
-                        None
-                        if candidate_ratio == 1
-                        else (kv_lens % candidate_ratio).to(torch.int32)
-                    ),
+                    cmp_residual_k=cmp_residual,
                     batch_size=batch_size,
                     num_heads_q=self._dsv4_index_n_heads,
                     num_heads_k=1,
@@ -1614,7 +1619,7 @@ class LowRatioCompressAscendBackendMixin:
                     candidate_block_length=visible_blocks.to(torch.int32).view(-1, 1),
                     cu_seqlens_q=cu_seqlens_q,
                     seqused_q=None,
-                    seqused_k=(kv_lens // candidate_ratio).to(torch.int32),
+                    seqused_k=cmp_lens,
                     cmp_residual_k=None,
                     batch_size=batch_size,
                     num_heads_q=self._dsv4_index_n_heads,

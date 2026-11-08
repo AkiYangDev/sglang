@@ -1971,9 +1971,44 @@ class TestKernelMetadataBuilders(unittest.TestCase):
         backend, fm = self._backend()
         fm.actual_seq_lengths_q_pa = None
         recorder, calls = _metadata_recorder((1024,))
-        with patch.object(DS41, "quant_lightning_indexer_metadata", recorder):
+        with (
+            patch.object(DS41, "quant_lightning_indexer_metadata", recorder),
+            patch.object(backend, "_dsv41_qli_kv_lens", side_effect=AssertionError),
+        ):
             self.assertEqual(backend._dsv41_index_kernel_metadata(self._batch()), {})
         self.assertEqual(calls, [])
+
+    def test_candidate_lengths_are_shared_within_each_refresh_only(self):
+        for ratio, consumers in ((1, True), (2, False)):
+            with self.subTest(candidate_ratio=ratio):
+                backend, _ = self._backend()
+                backend._dsv41_candidate_source_layer = ratio
+                backend._dsv41_index_source_layers = (ratio, 3) if consumers else (ratio,)
+                backend._dsv41_candidate_block_size = 8
+                backend._dsv41_candidate_topk_blocks = 16
+                recorder, calls = _metadata_recorder((1024,))
+                with (
+                    patch.object(DS41, "quant_lightning_indexer_metadata", recorder),
+                    patch.object(DS41, "quant_sparse_lightning_indexer_metadata", recorder),
+                ):
+                    for live in ([5, 6], [0, 1], [4096, 4097], [5, 6]):
+                        calls.clear()
+                        batch = self._batch()
+                        batch.seq_lens.copy_(torch.tensor(live, dtype=torch.int32))
+                        backend._dsv41_index_kernel_metadata(batch)
+                        self.assertEqual(len(calls), 4 if consumers else 3)
+                        shared = {}
+                        for _, kwargs in calls:
+                            r = kwargs["cmp_ratio"]
+                            lengths = kwargs["seqused_k"]
+                            self.assertIs(lengths, shared.setdefault(r, lengths))
+                            self.assertEqual(lengths.tolist(), [x // r for x in live])
+                            residual = kwargs["cmp_residual_k"]
+                            if r == 1 or "candidate_block_length" in kwargs:
+                                self.assertIsNone(residual)
+                            else:
+                                self.assertEqual(residual.tolist(), [x % r for x in live])
+                        self.assertEqual(batch.seq_lens.tolist(), live)
 
 
 class _Mode:
@@ -2133,7 +2168,8 @@ class TestQliKvLens(unittest.TestCase):
             batch_size=2,
             draft_token_num=3,
         )
-        backend._dsv41_index_kernel_metadata(batch)
+        with patch.object(DS41, "quant_lightning_indexer_metadata", spy):
+            backend._dsv41_index_kernel_metadata(batch)
         # ratio 1 first, then ratio 2; the bound is the final length:
         # 9//2 == 4 covers the group pos 7 closes.
         self.assertIsNone(seen[0]["cmp_residual_k"])
@@ -2159,7 +2195,8 @@ class TestQliKvLens(unittest.TestCase):
             positions=[6, 5], out_cache_loc=[0, 0], seq_lens=[6, 5], batch_size=2
         )
         batch.forward_mode = _Mode("decode")
-        backend._dsv41_index_kernel_metadata(batch)
+        with patch.object(DS41, "quant_lightning_indexer_metadata", spy):
+            backend._dsv41_index_kernel_metadata(batch)
         # Decode ignores the final mirror.
         self.assertEqual(seen[1]["seqused_k"].tolist(), [3, 2])
 
