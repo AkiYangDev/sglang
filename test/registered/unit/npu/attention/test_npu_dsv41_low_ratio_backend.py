@@ -1079,6 +1079,56 @@ class TestIndexerRopeSource(unittest.TestCase):
         # Ratio 1 has no unfinished group, so the residual must stay None.
         self.assertIsNone(seen["qli_kwargs"]["cmp_residual_k"])
 
+    def test_query_rope_reuses_only_matching_forward_tables(self):
+        from sglang.srt.hardware_backend.npu.dsv4.dsv4_rope import (
+            Dsv4NpuRoPE,
+            prime_rope_cos_sin,
+        )
+
+        freqs = torch.polar(
+            torch.ones(32, 32), torch.arange(32 * 32).reshape(32, 32).float() / 97
+        )
+        layer = SimpleNamespace(
+            freqs_cis=freqs, rotary_emb=None, indexer=self._fake_indexer(4, 128)
+        )
+        table = Dsv4NpuRoPE.for_freqs(freqs)
+        table.ensure_tables(torch.bfloat16)
+        backend = _low_ratio_backend()
+        batch = SimpleNamespace()
+        positions = torch.tensor([1, 5, 7])
+        x = torch.zeros(3, 8)
+        with (
+            patch.object(
+                sys.modules["torch_npu"],
+                "npu_dynamic_mx_quant",
+                return_value=(
+                    torch.zeros(3, 4, 64, dtype=torch.uint8),
+                    torch.zeros(3, 4, 4, dtype=torch.uint8),
+                ),
+            ),
+            patch.object(Dsv4NpuRoPE, "apply_rotary_mul_inplace") as apply_rope,
+        ):
+            # The same positions storage changes each forward, as with graph inputs.
+            for values in ([1, 5, 7], [2, 17, 31], [1, 5, 7]):
+                positions.copy_(torch.tensor(values))
+                prime_rope_cos_sin([layer], batch, positions)
+                local_positions = positions.flip(0)
+                for current_batch, pos, gathers in (
+                    (batch, positions, 0),
+                    (SimpleNamespace(), positions, 1),
+                    (batch, local_positions, 1),
+                ):
+                    expected = table.get_cos_sin(pos, torch.bfloat16, view_4d=True)
+                    with patch.object(
+                        table, "get_cos_sin", wraps=table.get_cos_sin
+                    ) as gather:
+                        backend._dsv41_index_q(layer, x, x, pos, current_batch)
+                    self.assertEqual(gather.call_count, gathers)
+                    for actual, reference in zip(
+                        apply_rope.call_args.args[2:4], expected
+                    ):
+                        torch.testing.assert_close(actual, reference, rtol=0, atol=0)
+
     def test_lengths_come_from_seq_lens_not_from_captured_metadata(self):
         # A ratio-2 layer: seqused_k is the compressed length, cmp_residual_k
         # the live remainder. 7 tokens -> 3 full pairs + 1 left over; neither

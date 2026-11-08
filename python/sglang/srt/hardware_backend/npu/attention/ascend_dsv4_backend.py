@@ -1261,7 +1261,7 @@ class LowRatioCompressAscendBackendMixin:
                 combined_block_size=indexer.candidate_block_size,
             )
 
-    def _dsv41_index_q(self, layer, x, q_lora, pos):
+    def _dsv41_index_q(self, layer, x, q_lora, pos, forward_batch):
         """Packed MXFP4 Q, its E8M0 scales and the head weights, for both
         indexers (QLI and QSLI share the same Q side).
         """
@@ -1272,20 +1272,22 @@ class LowRatioCompressAscendBackendMixin:
 
         q, _ = indexer.wq_b(q_lora)
         q = q.view(t, indexer.n_heads, indexer.index_head_dim)
-        from sglang.srt.hardware_backend.npu.dsv4.dsv4_rope import Dsv4NpuRoPE
+        from sglang.srt.hardware_backend.npu.dsv4.dsv4_rope import (
+            Dsv4NpuRoPE,
+            rope_cos_sin,
+        )
 
         # DeepseekV41Indexer is built without its own freqs_cis/rotary_emb, so
         # the layer's own table (compress_rope_theta + YaRN) ropes its Q and
         # the index K.
-        table = Dsv4NpuRoPE.for_freqs(
-            layer.freqs_cis, getattr(layer, "rotary_emb", None)
-        )
-        cos, sin = table.get_cos_sin(
+        # Reuse this forward's gathered tables; local positions fall back to
+        # gathering through the same helper used by the attention Q path.
+        cos, sin = rope_cos_sin(
+            layer.freqs_cis,
+            getattr(layer, "rotary_emb", None),
+            forward_batch,
             pos,
             torch.bfloat16,
-            view_4d=True,
-            allow_build=False,
-            cache_dtype=torch.bfloat16,
         )
         Dsv4NpuRoPE.apply_rotary_mul_inplace(
             q,
@@ -1317,7 +1319,9 @@ class LowRatioCompressAscendBackendMixin:
         pool = self.token_to_kv_pool
         t = int(q_lora.shape[0])
         packed_dim = indexer.index_head_dim // 2
-        q_packed, descale_q, w = self._dsv41_index_q(layer, x, q_lora, pos)
+        q_packed, descale_q, w = self._dsv41_index_q(
+            layer, x, q_lora, pos, forward_batch
+        )
 
         k = pool.get_index_k(layer.layer_id)
         k_scale = pool.get_index_scale(layer.layer_id)
@@ -1441,7 +1445,9 @@ class LowRatioCompressAscendBackendMixin:
                 "DeepSeek-V4.1 QSLI candidate blocks are stale: "
                 f"{candidate_indices.shape[0]} rows published, {t} needed."
             )
-        q_packed, descale_q, w = self._dsv41_index_q(layer, x, q_lora, pos)
+        q_packed, descale_q, w = self._dsv41_index_q(
+            layer, x, q_lora, pos, forward_batch
+        )
         page_table = getattr(fm, f"c{ratio}_index_page_table", None)
         if page_table is None:
             raise RuntimeError(
