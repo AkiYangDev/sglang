@@ -978,9 +978,7 @@ class TestIndexerRopeSource(unittest.TestCase):
             head_weights=lambda x: torch.zeros(x.shape[0], n_heads),
         )
 
-    def _run(
-        self, *, ratio, seq_lens, n_heads=4, index_head_dim=128, packed=64, topk=3
-    ):
+    def _run(self, *, ratio, seq_lens, n_heads=4, index_head_dim=128, packed=64, topk=3):
         """Run ``_dsv41_index_full_topk`` against stubbed ops; return what QLI saw."""
         import sglang.srt.hardware_backend.npu.dsv4.dsv4_rope as rope_mod
 
@@ -1042,6 +1040,8 @@ class TestIndexerRopeSource(unittest.TestCase):
             rotary_emb=None,
             indexer=self._fake_indexer(n_heads, index_head_dim),
         )
+        batch = SimpleNamespace(seq_lens=torch.tensor(seq_lens, dtype=torch.int32))
+        backend._prepare_dsv41_index_lengths(batch)
         with (
             patch.object(
                 sys.modules["torch_npu"],
@@ -1054,7 +1054,7 @@ class TestIndexerRopeSource(unittest.TestCase):
             patch.object(rope_mod, "Dsv4NpuRoPE", _RopeStub),
             patch.object(DS41, "quant_lightning_indexer", _QLI()),
         ):
-            out = backend._dsv41_index_full_topk(
+            out, _ = backend._dsv41_index_full_topk(
                 layer,
                 torch.zeros(1, 8),
                 torch.zeros(1, 8),
@@ -1062,7 +1062,7 @@ class TestIndexerRopeSource(unittest.TestCase):
                 # seqused_k / cmp_residual_k come from this batch's seq_lens
                 # (a graph input refreshed every replay), not from a captured
                 # metadata tensor.
-                SimpleNamespace(seq_lens=torch.tensor(seq_lens, dtype=torch.int32)),
+                batch,
             )
         return seen, sentinel, layer, out
 
@@ -1977,6 +1977,41 @@ class TestKernelMetadataBuilders(unittest.TestCase):
         ):
             self.assertEqual(backend._dsv41_index_kernel_metadata(self._batch()), {})
         self.assertEqual(calls, [])
+
+    def test_compute_lengths_refresh_without_rebinding(self):
+        for verify in (False, True):
+            with self.subTest(verify=verify):
+                backend, fm = self._backend()
+                batch = self._batch()
+                batch.forward_mode = _Mode("target_verify" if verify else "decode")
+                fm.seq_lens_cpu_int = torch.zeros(2, dtype=torch.int32)
+                original = fm.dsv41_index_lengths
+                for live in ([0, 1], [17, 32], [0, 1]):
+                    batch.seq_lens.copy_(torch.tensor([3, 4] if verify else live))
+                    fm.seq_lens_cpu_int.copy_(torch.tensor(live))
+                    # Both graph preparation and eager metadata use this refresh.
+                    backend.init_forward_metadata_in_graph(batch)
+                    with patch.object(
+                        backend, "_dsv41_qli_kv_lens", side_effect=AssertionError
+                    ):
+                        for ratio in (1, 2, 1, 2):
+                            lengths, residual = backend._dsv41_compute_index_lengths(
+                                batch, ratio
+                            )
+                            self.assertIs(lengths, original[ratio][0])
+                            self.assertEqual(lengths.tolist(), [n // ratio for n in live])
+                            self.assertIs(residual, original[ratio][1])
+                            if ratio != 1:
+                                self.assertEqual(
+                                    residual.tolist(), [n % ratio for n in live]
+                                )
+                # CP must read the local length even when prepared globals exist.
+                batch.attn_cp_metadata = SimpleNamespace()
+                batch.seq_lens.fill_(9)
+                fm.seq_lens_cpu_int.fill_(9)
+                self.assertEqual(
+                    backend._dsv41_compute_index_lengths(batch, 2)[0].tolist(), [4, 4]
+                )
 
     def test_candidate_lengths_are_shared_within_each_refresh_only(self):
         for ratio, consumers in ((1, True), (2, False)):

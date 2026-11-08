@@ -1336,15 +1336,13 @@ class LowRatioCompressAscendBackendMixin:
         # seqused_k is the compressed history length, cmp_residual_k its
         # unfinished-group remainder. Verify must derive both from the batch's
         # FINAL KV length (it includes the rows this block writes); decode
-        # keeps reading seq_lens. Both are graph inputs refreshed every replay,
-        # never a captured metadata buffer.
-        kv_lens = self._dsv41_qli_kv_lens(forward_batch)
+        # keeps reading seq_lens. Preparation refreshes the shared compute
+        # buffers every replay; CP retains its local length read.
+        cmp_lens, cmp_residual = self._dsv41_compute_index_lengths(forward_batch, ratio)
         # Same index_topk the metadata op and the graph buffer are sized with.
         topk = self._dsv4_index_topk
         key = (
-            f"c{ratio}a_qli_candidate_metadata"
-            if candidate
-            else f"c{ratio}a_qli_metadata"
+            f"c{ratio}a_qli_candidate_metadata" if candidate else f"c{ratio}a_qli_metadata"
         )
         metadata = fm.kernel_metadata.get(key)
         if metadata is None:
@@ -1361,8 +1359,8 @@ class LowRatioCompressAscendBackendMixin:
             cu_seqlens_q=fm.actual_seq_lengths_q_pa,
             cu_seqlens_k=None,
             seqused_q=None,
-            seqused_k=(kv_lens // ratio).to(torch.int32),
-            cmp_residual_k=(None if ratio == 1 else (kv_lens % ratio).to(torch.int32)),
+            seqused_k=cmp_lens,
+            cmp_residual_k=cmp_residual,
             block_table=page_table.to(torch.int32),
             output_idx_offset=None,
             metadata=metadata,
@@ -1458,6 +1456,7 @@ class LowRatioCompressAscendBackendMixin:
                 "before the index layers."
             )
         topk = self._dsv4_index_topk
+        cmp_lens, _ = self._dsv41_compute_index_lengths(forward_batch, ratio)
         qsli_k = self._dsv41_qsli_cache(layer)
         indices, _ = _ds41_ops().quant_sparse_lightning_indexer(
             q=q_packed,
@@ -1470,7 +1469,7 @@ class LowRatioCompressAscendBackendMixin:
             cu_seqlens_q=fm.actual_seq_lengths_q_pa,
             cu_seqlens_k=None,
             seqused_q=None,
-            seqused_k=(self._dsv41_qli_kv_lens(forward_batch) // ratio).to(torch.int32),
+            seqused_k=cmp_lens,
             # Only mask_mode=3 with cmp_ratio != 1 needs it; consumers are
             # ratio-1 layers.
             cmp_residual_k=None,
@@ -1515,6 +1514,38 @@ class LowRatioCompressAscendBackendMixin:
             return final[:bs].to(torch.int64)
         return forward_batch.seq_lens.to(torch.int64)
 
+    def _prepare_dsv41_index_lengths(self, forward_batch: ForwardBatch) -> dict:
+        """Refresh per-ratio inputs without rebinding captured compute buffers."""
+        fm = self.forward_metadata
+        kv_lens = self._dsv41_qli_kv_lens(forward_batch)
+        previous = getattr(fm, "dsv41_index_lengths", {})
+        lengths = {}
+        for ratio in self._dsv41_low_ratios():
+            values = (
+                (kv_lens if ratio == 1 else kv_lens // ratio).to(torch.int32),
+                None if ratio == 1 else (kv_lens % ratio).to(torch.int32),
+            )
+            buffers = previous.get(ratio, (None, None))
+            current = []
+            for value, buf in zip(values, buffers):
+                if value is not None and buf is not None and buf.shape == value.shape:
+                    buf.copy_(value)
+                    value = buf
+                current.append(value)
+            lengths[ratio] = tuple(current)
+        fm.dsv41_index_lengths = lengths
+        return lengths
+
+    def _dsv41_compute_index_lengths(self, forward_batch: ForwardBatch, ratio: int):
+        # CP can switch metadata/lengths inside the model; retain its local read.
+        if getattr(forward_batch, "attn_cp_metadata", None) is not None:
+            kv_lens = self._dsv41_qli_kv_lens(forward_batch)
+            return (
+                (kv_lens // ratio).to(torch.int32),
+                None if ratio == 1 else (kv_lens % ratio).to(torch.int32),
+            )
+        return self.forward_metadata.dsv41_index_lengths[ratio]
+
     def _dsv41_index_kernel_metadata(self, forward_batch: ForwardBatch) -> dict:
         """QLI dispatch tables, one per low ratio (the ``[1024]`` int32 tensor
         the compute entry point requires). Built from the batch's final KV
@@ -1525,20 +1556,9 @@ class LowRatioCompressAscendBackendMixin:
         cu_seqlens_q = fm.actual_seq_lengths_q_pa
         if cu_seqlens_q is None:
             return {}
-        kv_lens = self._dsv41_qli_kv_lens(forward_batch)
+        lengths_by_ratio = self._prepare_dsv41_index_lengths(forward_batch)
         ds41 = _ds41_ops()
         out: dict = {}
-        lengths_by_ratio = {}
-
-        def lengths_for_ratio(ratio):
-            # Scheduling inputs are read-only. Reuse within this build only;
-            # the next graph refresh must read its own live lengths.
-            if ratio not in lengths_by_ratio:
-                lengths_by_ratio[ratio] = (
-                    (kv_lens if ratio == 1 else kv_lens // ratio).to(torch.int32),
-                    None if ratio == 1 else (kv_lens % ratio).to(torch.int32),
-                )
-            return lengths_by_ratio[ratio]
 
         def keep(key: str, metadata: torch.Tensor) -> None:
             # aclgraph binds the address at capture: refresh in place.
@@ -1550,7 +1570,7 @@ class LowRatioCompressAscendBackendMixin:
 
         batch_size = int(forward_batch.batch_size)
         for ratio in self._dsv41_low_ratios():
-            cmp_lens, cmp_residual = lengths_for_ratio(ratio)
+            cmp_lens, cmp_residual = lengths_by_ratio[ratio]
             keep(
                 f"c{ratio}a_qli_metadata",
                 ds41.quant_lightning_indexer_metadata(
@@ -1579,7 +1599,7 @@ class LowRatioCompressAscendBackendMixin:
                     f"candidate_topk_blocks/candidate_block_size "
                     f"({self._dsv41_candidate_topk_blocks}/{block})."
                 )
-            cmp_lens, cmp_residual = lengths_for_ratio(candidate_ratio)
+            cmp_lens, cmp_residual = lengths_by_ratio[candidate_ratio]
             # Level one publishes blocks, so its dispatch table is a separate
             # instance from the plain per-ratio one.
             keep(
@@ -2056,6 +2076,13 @@ class LowRatioCompressAscendBackendMixin:
         self, metadata, bs: int, tokens_per_req: int, device
     ) -> None:
         """Allocate the aclgraph-persistent low-ratio buffers for one bs bucket."""
+        metadata.dsv41_index_lengths = {
+            ratio: (
+                torch.zeros(bs, dtype=torch.int32, device=device),
+                None if ratio == 1 else torch.zeros(bs, dtype=torch.int32, device=device),
+            )
+            for ratio in self._dsv41_low_ratios()
+        }
         t = bs * tokens_per_req
         for ratio in self._dsv41_low_ratios():
             pad = min(t, t // ratio + bs)
@@ -2205,9 +2232,7 @@ class LowRatioCompressAscendBackendMixin:
 
         if self._dsv41_has_candidate_consumers():
             # One candidate length per query row, including every verify token.
-            probe_candidate_lengths = torch.ones(
-                (t, 1), dtype=torch.int32, device=device
-            )
+            probe_candidate_lengths = torch.ones((t, 1), dtype=torch.int32, device=device)
             probe = ds41.quant_sparse_lightning_indexer_metadata(
                 candidate_block_length=probe_candidate_lengths,
                 cu_seqlens_q=cu_seqlens_q,
@@ -2849,6 +2874,7 @@ class DeepseekV4AscendAttnBackend(
     def init_forward_metadata_in_graph(self, forward_batch: ForwardBatch) -> None:
         super().init_forward_metadata_in_graph(forward_batch)
         if self._dsv4_has_low_ratio:
+            self._prepare_dsv41_index_lengths(forward_batch)
             # Record one preparation before the layers. Pre-planned replay can
             # update positions after out-of-graph metadata was prepared.
             self._dsv41_window_indices(forward_batch)
