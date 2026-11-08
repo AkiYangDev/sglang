@@ -1778,6 +1778,9 @@ def _metadata_recorder(shape):
 
     def record(*args, **kwargs):
         calls.append((args, kwargs))
+        out = kwargs.get("out")
+        if out is not None:
+            return out.zero_()
         return torch.zeros(*shape, dtype=torch.int32)
 
     return record, calls
@@ -2012,6 +2015,40 @@ class TestKernelMetadataBuilders(unittest.TestCase):
                 self.assertEqual(
                     backend._dsv41_compute_index_lengths(batch, 2)[0].tolist(), [4, 4]
                 )
+
+    def test_metadata_builders_write_existing_outputs(self):
+        backend, fm = self._backend()
+        backend._dsv41_candidate_source_layer = 1
+        backend._dsv41_index_source_layers = (1, 3)
+        backend._dsv41_candidate_block_size = 8
+        backend._dsv41_candidate_topk_blocks = 16
+        recorder, calls = _metadata_recorder((1024,))
+        with (
+            patch.object(DS41, "quant_lightning_indexer_metadata", recorder),
+            patch.object(DS41, "quant_sparse_lightning_indexer_metadata", recorder),
+            patch.object(DS41, "mixed_quant_sparse_flash_mla_metadata", recorder),
+        ):
+            for builder in (
+                backend._dsv41_attention_kernel_metadata,
+                backend._dsv41_index_kernel_metadata,
+            ):
+                fm.kernel_metadata.update(builder(self._batch()))
+            pointers = {buf.data_ptr() for buf in fm.kernel_metadata.values()}
+            original_copy = torch.Tensor.copy_
+
+            def copy_non_metadata(tensor, *args, **kwargs):
+                self.assertNotIn(tensor.data_ptr(), pointers)
+                return original_copy(tensor, *args, **kwargs)
+
+            calls.clear()
+            with patch.object(torch.Tensor, "copy_", copy_non_metadata):
+                for builder in (
+                    backend._dsv41_attention_kernel_metadata,
+                    backend._dsv41_index_kernel_metadata,
+                ):
+                    builder(self._batch())
+            self.assertEqual(len(calls), 7)
+            self.assertEqual({kw["out"].data_ptr() for _, kw in calls}, pointers)
 
     def test_candidate_lengths_are_shared_within_each_refresh_only(self):
         for ratio, consumers in ((1, True), (2, False)):

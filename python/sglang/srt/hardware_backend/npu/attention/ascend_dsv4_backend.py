@@ -1563,7 +1563,7 @@ class LowRatioCompressAscendBackendMixin:
         def keep(key: str, metadata: torch.Tensor) -> None:
             # aclgraph binds the address at capture: refresh in place.
             buf = fm.kernel_metadata.get(key)
-            if buf is not None and buf.shape == metadata.shape:
+            if buf is not None and buf is not metadata and buf.shape == metadata.shape:
                 buf.copy_(metadata)
                 metadata = buf
             out[key] = metadata
@@ -1574,6 +1574,7 @@ class LowRatioCompressAscendBackendMixin:
             keep(
                 f"c{ratio}a_qli_metadata",
                 ds41.quant_lightning_indexer_metadata(
+                    out=fm.kernel_metadata.get(f"c{ratio}a_qli_metadata"),
                     cu_seqlens_q=cu_seqlens_q,
                     seqused_q=None,
                     seqused_k=cmp_lens,
@@ -1605,6 +1606,9 @@ class LowRatioCompressAscendBackendMixin:
             keep(
                 f"c{candidate_ratio}a_qli_candidate_metadata",
                 ds41.quant_lightning_indexer_metadata(
+                    out=fm.kernel_metadata.get(
+                        f"c{candidate_ratio}a_qli_candidate_metadata"
+                    ),
                     cu_seqlens_q=cu_seqlens_q,
                     seqused_q=None,
                     seqused_k=cmp_lens,
@@ -1636,6 +1640,7 @@ class LowRatioCompressAscendBackendMixin:
             keep(
                 f"c{candidate_ratio}a_qsli_metadata",
                 ds41.quant_sparse_lightning_indexer_metadata(
+                    out=fm.kernel_metadata.get(f"c{candidate_ratio}a_qsli_metadata"),
                     candidate_block_length=visible_blocks.to(torch.int32).view(-1, 1),
                     cu_seqlens_q=cu_seqlens_q,
                     seqused_q=None,
@@ -1787,6 +1792,7 @@ class LowRatioCompressAscendBackendMixin:
                 cmp_lengths = self._dsv41_cmp_topk_length(forward_batch, ratio)
             key = f"{attention_type}_metadata"
             metadata = ds41.mixed_quant_sparse_flash_mla_metadata(
+                out=fm.kernel_metadata.get(key),
                 ori_topk_length=win_lengths,
                 cmp_topk_length=cmp_lengths,
                 cu_seqlens_q=cu_seqlens_q,
@@ -1801,7 +1807,7 @@ class LowRatioCompressAscendBackendMixin:
             )
             # aclgraph binds the address at capture: refresh in place.
             buf = fm.kernel_metadata.get(key)
-            if buf is not None and buf.shape == metadata.shape:
+            if buf is not None and buf is not metadata and buf.shape == metadata.shape:
                 buf.copy_(metadata)
                 metadata = buf
             out[key] = metadata
