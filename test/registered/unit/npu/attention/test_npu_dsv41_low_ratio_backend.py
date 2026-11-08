@@ -1130,9 +1130,7 @@ class TestLowRatioAttentionBody(unittest.TestCase):
         backend.forward_metadata = fm
         backend.token_to_kv_pool = SimpleNamespace(
             head_dim=512,
-            get_swa_buffer=lambda lid: torch.zeros(
-                (1, window, 1, 544), dtype=torch.uint8
-            ),
+            get_swa_buffer=lambda lid: torch.zeros((1, window, 1, 544), dtype=torch.uint8),
             get_compress_buffer=lambda lid, compressed: torch.zeros(
                 (1, 2, 1, 320), dtype=torch.uint8
             ),
@@ -1143,10 +1141,16 @@ class TestLowRatioAttentionBody(unittest.TestCase):
             seq_lens=torch.tensor(seq_lens, dtype=torch.int32),
             batch_size=1,
         )
-        with patch.object(DS41, "mixed_quant_sparse_flash_mla", _MQSMLA()):
-            out = backend._forward_low_ratio_attention(
-                torch.zeros(1, 64, 512), layer, batch, None, ratio
-            )
+        fm.kernel_metadata.update(backend._dsv41_attention_kernel_metadata(batch))
+        with (
+            patch.object(DS41, "mixed_quant_sparse_flash_mla", _MQSMLA()),
+            patch.object(backend, "_dsv41_window_indices", side_effect=AssertionError),
+            patch.object(backend, "_dsv41_cmp_topk_length", side_effect=AssertionError),
+        ):
+            for _ in range(2):
+                out = backend._forward_low_ratio_attention(
+                    torch.zeros(1, 64, 512), layer, batch, None, ratio
+                )
         return seen, fm, layer, out
 
     def test_both_sides_are_wired_with_their_own_block_tables(self):
@@ -1823,17 +1827,21 @@ class TestKernelMetadataBuilders(unittest.TestCase):
         # Call order is (ratio 0, *low_ratios): the window table first, with
         # has_cmp_kv=False and an all-zero compressed length (no compressed pool).
         win_args, win_kwargs = calls[0]
-        self.assertIs(win_args[0], fm.dsv41_win_topk_length)
+        self.assertIs(win_kwargs["ori_topk_length"], fm.dsv41_win_topk_length)
         self.assertIs(win_kwargs["has_cmp_kv"], False)
-        self.assertTrue(torch.all(win_args[1] == 0))
-        self.assertEqual(win_args[1].shape, win_args[0].shape)
+        self.assertTrue(torch.all(win_kwargs["cmp_topk_length"] == 0))
+        self.assertEqual(
+            win_kwargs["cmp_topk_length"].shape, win_kwargs["ori_topk_length"].shape
+        )
 
         for (args, kwargs), ratio in zip(calls[1:], (1, 2)):
-            self.assertEqual(tuple(args[0].shape), (2, 1))
+            self.assertEqual(tuple(kwargs["ori_topk_length"].shape), (2, 1))
             self.assertIs(kwargs["has_cmp_kv"], True)
             # The per-query compressed length is the graph-resident buffer, so
             # the mixed builder refreshes rather than allocates.
-            self.assertIs(args[1], getattr(fm, f"dsv41_cmp_topk_length_c{ratio}"))
+            self.assertIs(
+                kwargs["cmp_topk_length"], getattr(fm, f"dsv41_cmp_topk_length_c{ratio}")
+            )
 
         for args, kwargs in calls:
             self.assertEqual(kwargs["num_heads_q"], 64)
@@ -1857,6 +1865,71 @@ class TestKernelMetadataBuilders(unittest.TestCase):
             backend._dsv41_attention_kernel_metadata(self._batch())
         for _, kwargs in calls:
             self.assertEqual(kwargs["head_dim"], 384)
+
+    def test_in_graph_lengths_refresh_once_before_layers(self):
+        for width in (1, 3):
+            with self.subTest(width=width):
+                backend, fm = self._backend(tokens_per_req=width)
+                rows = 2 * width
+                fm.dsv41_live_mask_buf = torch.ones(rows, dtype=torch.bool)
+                batch = _batch(
+                    positions=list(range(rows)),
+                    out_cache_loc=[0] * rows,
+                    seq_lens=[8, 0],
+                    batch_size=2,
+                )
+                buffers = (
+                    fm.dsv41_win_sparse_indices,
+                    fm.dsv41_win_topk_length,
+                    fm.dsv41_cmp_topk_length_c1,
+                    fm.dsv41_cmp_topk_length_c2,
+                )
+                pointers = [buf.data_ptr() for buf in buffers]
+                # Capture preparation, changed positions after out-of-graph
+                # prep, idle replay, and a return to the original positions.
+                for offset, live in ((5, True), (4096, True), (1, False), (5, True)):
+                    batch.positions.copy_(torch.arange(rows) + offset)
+                    fm.dsv41_live_mask_buf[:width].fill_(live)
+                    fm.dsv41_live_mask_buf[width:].fill_(False)
+                    with (
+                        patch.object(
+                            DS41,
+                            "mixed_quant_sparse_flash_mla_metadata",
+                            side_effect=AssertionError,
+                        ),
+                        patch.object(
+                            backend,
+                            "_dsv41_window_indices",
+                            wraps=backend._dsv41_window_indices,
+                        ) as window,
+                        patch.object(
+                            backend,
+                            "_dsv41_cmp_topk_length",
+                            wraps=backend._dsv41_cmp_topk_length,
+                        ) as compressed,
+                    ):
+                        backend.init_forward_metadata_in_graph(batch)
+                    self.assertEqual(window.call_count, 1)
+                    self.assertEqual(compressed.call_count, 2)
+                    current = (
+                        fm.dsv41_win_sparse_indices,
+                        fm.dsv41_win_topk_length,
+                        fm.dsv41_cmp_topk_length_c1,
+                        fm.dsv41_cmp_topk_length_c2,
+                    )
+                    self.assertEqual([buf.data_ptr() for buf in current], pointers)
+                    for row, position in enumerate(batch.positions.tolist()):
+                        active = live and row < width
+                        length = min(position + 1, 128) if active else 0
+                        expected = list(range(position - length + 1, position + 1))
+                        expected += [-1] * (128 - length)
+                        self.assertEqual(buffers[0][row, 0].tolist(), expected)
+                        self.assertEqual(buffers[1][row, 0].item(), length)
+                        for ratio, buf in zip((1, 2), buffers[2:]):
+                            self.assertEqual(
+                                buf[row, 0].item(),
+                                min((position + 1) // ratio, 512) if active else 0,
+                            )
 
     def test_qli_metadata_derives_the_lengths_and_the_residual_per_ratio(self):
         backend, fm = self._backend()
@@ -2110,7 +2183,7 @@ class TestVerifyPaddingRows(unittest.TestCase):
             draft_token_num=2,
         )
         indices, lengths = backend._dsv41_window_indices(batch)
-        self.assertEqual(lengths[:, 0].tolist(), [2, 2, 0, 0])
+        self.assertEqual(lengths[:, 0].tolist(), [4, 4, 0, 0])
         # Live rows unchanged; padding rows emit no indices at all.
         self.assertEqual(indices[0, 0].tolist(), [1, 2, 3, 4])
         self.assertEqual(indices[1, 0].tolist(), [2, 3, 4, 5])
@@ -2119,7 +2192,7 @@ class TestVerifyPaddingRows(unittest.TestCase):
             backend._dsv41_cmp_topk_length(batch, 2)[:, 0].tolist(), [2, 3, 0, 0]
         )
         self.assertEqual(
-            backend._dsv41_cmp_topk_length(batch, 1)[:, 0].tolist(), [2, 3, 0, 0]
+            backend._dsv41_cmp_topk_length(batch, 1)[:, 0].tolist(), [3, 3, 0, 0]
         )
 
     def test_decode_rows_keep_the_per_row_rule(self):

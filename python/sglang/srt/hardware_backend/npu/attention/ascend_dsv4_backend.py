@@ -1805,7 +1805,14 @@ class LowRatioCompressAscendBackendMixin:
         """
         fm = self.forward_metadata
         pool = self.token_to_kv_pool
-        win_indices, win_lengths = self._dsv41_window_indices(forward_batch)
+        # Eager metadata prep and the in-graph hook prepare these once per
+        # forward. CP can switch to local positions inside the model.
+        is_cp = getattr(forward_batch, "attn_cp_metadata", None) is not None
+        if is_cp:
+            win_indices, win_lengths = self._dsv41_window_indices(forward_batch)
+        else:
+            win_indices = fm.dsv41_win_sparse_indices
+            win_lengths = fm.dsv41_win_topk_length
         metadata = fm.kernel_metadata.get(
             "win_metadata" if compress_ratio == 0 else f"c{compress_ratio}a_metadata"
         )
@@ -1853,7 +1860,11 @@ class LowRatioCompressAscendBackendMixin:
                 cmp_block_table=cmp_bt,
                 # One length per query row, from the position, capped by
                 # index_topk; the trailing -1 pad is skipped by the operator.
-                cmp_topk_length=self._dsv41_cmp_topk_length(forward_batch, compress_ratio),
+                cmp_topk_length=(
+                    self._dsv41_cmp_topk_length(forward_batch, compress_ratio)
+                    if is_cp
+                    else getattr(fm, f"dsv41_cmp_topk_length_c{compress_ratio}")
+                ),
             )
         # The DSL attention is caller-allocated: pass the output and the
         # (unused, empty) softmax-lse tensors explicitly.
@@ -2829,6 +2840,15 @@ class DeepseekV4AscendAttnBackend(
             forward_batch=forward_batch,
             in_capture=in_capture,
         )
+
+    def init_forward_metadata_in_graph(self, forward_batch: ForwardBatch) -> None:
+        super().init_forward_metadata_in_graph(forward_batch)
+        if self._dsv4_has_low_ratio:
+            # Record one preparation before the layers. Pre-planned replay can
+            # update positions after out-of-graph metadata was prepared.
+            self._dsv41_window_indices(forward_batch)
+            for ratio in self._dsv41_low_ratios():
+                self._dsv41_cmp_topk_length(forward_batch, ratio)
 
     def _init_dsv4_graph_metadata(
         self,
