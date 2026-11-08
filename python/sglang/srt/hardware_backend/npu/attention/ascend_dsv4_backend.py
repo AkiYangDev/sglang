@@ -1845,29 +1845,21 @@ class LowRatioCompressAscendBackendMixin:
                     f"c{compress_ratio}_topk_indices; the indexer source layer "
                     "must run before this layer."
                 )
-            # Reserved by the operator; derived so the value stays live.
-            compressed_lens = (forward_batch.seq_lens // compress_ratio).to(torch.int32)
             cmp_kv = pool.get_compress_buffer(layer.layer_id, False).view(torch.uint8)
             cmp_bt = getattr(fm, f"c{compress_ratio}_page_table").to(torch.int32)
             attn_kwargs.update(
                 cmp_kv=cmp_kv,
                 cmp_sparse_indices=topk.view(-1, 1, topk.shape[-1]).to(torch.int32),
                 cmp_block_table=cmp_bt,
-                # Reserved by the operator.
-                seqused_cmp_kv=compressed_lens,
                 # One length per query row, from the position, capped by
                 # index_topk; the trailing -1 pad is skipped by the operator.
-                cmp_topk_length=self._dsv41_cmp_topk_length(
-                    forward_batch, compress_ratio
-                ),
+                cmp_topk_length=self._dsv41_cmp_topk_length(forward_batch, compress_ratio),
             )
         # The DSL attention is caller-allocated: pass the output and the
         # (unused, empty) softmax-lse tensors explicitly.
         attn_out = torch.empty(q.shape, dtype=torch.bfloat16, device=q.device)
         lse = torch.empty((0,), dtype=torch.float32, device=q.device)
-        _ds41_ops().mixed_quant_sparse_flash_mla(
-            q, out=attn_out, lse=lse, **attn_kwargs
-        )
+        _ds41_ops().mixed_quant_sparse_flash_mla(q, out=attn_out, lse=lse, **attn_kwargs)
         return attn_out
 
     # ---- V4.1 metadata assembly ------------------------------------------------

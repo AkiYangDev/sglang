@@ -1168,8 +1168,8 @@ class TestLowRatioAttentionBody(unittest.TestCase):
         # Per-query lengths are derived from the live positions: p = 6 -> the
         # 7th token closes the 3rd pair, capped by index_topk.
         self.assertEqual(kw["cmp_topk_length"].tolist(), [[3]])
-        # Reserved by the operator, but derived from seq_lens.
-        self.assertEqual(kw["seqused_cmp_kv"].tolist(), [3])
+        # The DSL kernel does not consume this optional sequence bound.
+        self.assertNotIn("seqused_cmp_kv", kw)
         # One float32 sink per Q head, shared by every row.
         self.assertEqual(kw["sinks"].shape, (64,))
         self.assertEqual(kw["sinks"].dtype, torch.float32)
