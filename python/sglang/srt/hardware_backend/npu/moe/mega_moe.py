@@ -94,9 +94,8 @@ def prepare_mega_moe_arch22_weights(
 ) -> bool:
     """Build per-expert NZ tensors for arch22.
 
-    Returns True when the per-expert list is the canonical storage, i.e. the
-    caller must release the stacked grouped-matmul weight. Returns False when
-    the fused op is inactive (or on arch35), so the stacked weight stays.
+    Return True only when both phases use the list. A mixed configuration
+    still needs the stacked grouped-matmul weight for its non-fused phase.
     """
     config = getattr(getattr(layer, "dispatcher", None), "moe_ascend_ops_config", None)
     if config is None or not config.uses_fused_op:
@@ -126,7 +125,7 @@ def prepare_mega_moe_arch22_weights(
     else:
         for dest, source in zip(previous, experts, strict=True):
             dest.copy_(source)
-    return True
+    return config.prefill == config.decode == "fused_op"
 
 
 def release_mega_moe_stacked_weight(layer, prefix) -> None:
